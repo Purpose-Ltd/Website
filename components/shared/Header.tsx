@@ -52,7 +52,7 @@ export default function Header() {
           {/* Desktop navigation - Absolute positioning */}
           <a
             href="#individuals"
-            className="hidden lg:block absolute text-xl xl:text-2xl font-bold leading-6 text-[#120C2B] hover:text-[var(--primary-button)] transition-colors opacity-0 animate-fade-in-delay-1 cursor-pointer"
+            className="hidden lg:block absolute text-xl xl:text-2xl font-bold leading-6 text-[#120C2B] hover:bg-radial-1 hover:bg-clip-text hover:text-transparent hover:[-webkit-background-clip:text] hover:[-webkit-text-fill-color:transparent] transition-all opacity-0 animate-fade-in-delay-1 cursor-pointer"
             style={{
               left: '187px',
               top: '30px'
@@ -62,7 +62,7 @@ export default function Header() {
           </a>
           <a
             href="#companies"
-            className="hidden lg:block absolute text-xl xl:text-2xl font-bold leading-6 text-[#120C2B] hover:text-[var(--primary-button)] transition-colors opacity-0 animate-fade-in-delay-2 cursor-pointer"
+            className="hidden lg:block absolute text-xl xl:text-2xl font-bold leading-6 text-[#120C2B] hover:bg-radial-1 hover:bg-clip-text hover:text-transparent hover:[-webkit-background-clip:text] hover:[-webkit-text-fill-color:transparent] transition-all opacity-0 animate-fade-in-delay-2 cursor-pointer"
             style={{
               left: '370.94px',
               top: '30px'
@@ -72,7 +72,7 @@ export default function Header() {
           </a>
           <Link
             href="/about"
-            className="hidden lg:block absolute text-xl xl:text-2xl font-bold leading-6 text-[#120C2B] hover:text-[var(--primary-button)] transition-colors opacity-0 animate-fade-in-delay-2 cursor-pointer"
+            className="hidden lg:block absolute text-xl xl:text-2xl font-bold leading-6 text-[#120C2B] hover:bg-radial-1 hover:bg-clip-text hover:text-transparent hover:[-webkit-background-clip:text] hover:[-webkit-text-fill-color:transparent] transition-all opacity-0 animate-fade-in-delay-2 cursor-pointer"
             style={{
               left: '559.8px',
               top: '30px'
@@ -89,7 +89,7 @@ export default function Header() {
               right: '-80px'
             }}
           >
-            <CTAButton href="/cta">Transform your hiring</CTAButton>
+            <CTAButton href="/cta">Start hiring</CTAButton>
           </div>
 
           {/* Mobile menu button */}
@@ -146,21 +146,21 @@ export default function Header() {
           <div className="space-y-2 py-6 px-6">
             <a
               href="#individuals"
-              className="block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[var(--primary-text)] hover:bg-[var(--hover-background)]"
+              className="block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[var(--primary-text)] hover:bg-radial-1 hover:bg-clip-text hover:text-transparent hover:[-webkit-background-clip:text] hover:[-webkit-text-fill-color:transparent] transition-all"
               onClick={() => setMobileMenuOpen(false)}
             >
               Individuals
             </a>
             <a
               href="#companies"
-              className="block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[var(--primary-text)] hover:bg-[var(--hover-background)]"
+              className="block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[var(--primary-text)] hover:bg-radial-1 hover:bg-clip-text hover:text-transparent hover:[-webkit-background-clip:text] hover:[-webkit-text-fill-color:transparent] transition-all"
               onClick={() => setMobileMenuOpen(false)}
             >
               Companies
             </a>
             <Link
               href="/about"
-              className="block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[var(--primary-text)] hover:bg-[var(--hover-background)]"
+              className="block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[var(--primary-text)] hover:bg-radial-1 hover:bg-clip-text hover:text-transparent hover:[-webkit-background-clip:text] hover:[-webkit-text-fill-color:transparent] transition-all"
               onClick={() => setMobileMenuOpen(false)}
             >
               About us
@@ -170,7 +170,7 @@ export default function Header() {
               className="block rounded-lg px-3 py-2 text-center text-base font-semibold leading-7 bg-[var(--primary-button)] text-white hover:bg-[var(--primary-button-hover)] transition-colors mt-4"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Transform your hiring
+              Start hiring
             </Link>
           </div>
         </div>

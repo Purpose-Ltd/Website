@@ -14,7 +14,7 @@ export default function CTAButton({
   className = '',
 }: CTAButtonProps) {
   const baseStyles =
-    'w-[271px] h-[50px] flex-shrink-0 rounded-full border-2 border-white bg-radial-1 shadow-cta text-white text-xl font-semibold flex items-center justify-center transition-transform duration-200 hover:scale-105'
+    'w-[271px] h-[50px] flex-shrink-0 rounded-full border border-white bg-radial-1 shadow-cta text-white text-xl font-semibold flex items-center justify-center transition-transform duration-200 hover:scale-105'
 
   const combinedStyles = `${baseStyles} ${className}`
 
