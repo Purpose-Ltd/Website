@@ -84,6 +84,15 @@ const config: Config = {
         'fade-in-slow-4': 'fadeInSlow 1.5s ease-out 0.4s forwards, float1 7.5s ease-in-out 1.9s infinite',
         'draw-ellipse': 'drawEllipse 1.2s ease-out 0.2s forwards',
         'typewriter': 'typewriter 1.2s steps(80) 0.3s forwards, blinkCursor 0.8s step-end infinite',
+        'wobble-1': 'wobble1 8s ease-in-out infinite',
+        'wobble-2': 'wobble2 7s ease-in-out infinite',
+        'wobble-3': 'wobble3 9s ease-in-out infinite',
+        'wobble-4': 'wobble4 8.5s ease-in-out infinite',
+        'wobble-5': 'wobble5 8s ease-in-out infinite',
+        'float1': 'float1 8s ease-in-out infinite',
+        'float2': 'float2 7s ease-in-out infinite',
+        'float3': 'float3 9s ease-in-out infinite',
+        'float4': 'float4 8.5s ease-in-out infinite',
       },
       keyframes: {
         slide: {
@@ -129,6 +138,31 @@ const config: Config = {
           '0%, 100%': { transform: 'translate(0, 0) rotate(134.213deg)' },
           '33%': { transform: 'translate(-15px, -15px) rotate(134.213deg)' },
           '66%': { transform: 'translate(20px, 10px) rotate(134.213deg)' },
+        },
+        wobble1: {
+          '0%, 100%': { transform: 'translate(0, 0) rotate(134.213deg)' },
+          '33%': { transform: 'translate(15px, -20px) rotate(134.213deg)' },
+          '66%': { transform: 'translate(-10px, 10px) rotate(134.213deg)' },
+        },
+        wobble2: {
+          '0%, 100%': { transform: 'translate(0, 0) rotate(134.213deg)' },
+          '33%': { transform: 'translate(-20px, 15px) rotate(134.213deg)' },
+          '66%': { transform: 'translate(10px, -15px) rotate(134.213deg)' },
+        },
+        wobble3: {
+          '0%, 100%': { transform: 'translate(0, 0) rotate(134.213deg)' },
+          '33%': { transform: 'translate(10px, 20px) rotate(134.213deg)' },
+          '66%': { transform: 'translate(-15px, -10px) rotate(134.213deg)' },
+        },
+        wobble4: {
+          '0%, 100%': { transform: 'translate(0, 0) rotate(134.213deg)' },
+          '33%': { transform: 'translate(-15px, -15px) rotate(134.213deg)' },
+          '66%': { transform: 'translate(20px, 10px) rotate(134.213deg)' },
+        },
+        wobble5: {
+          '0%, 100%': { transform: 'translate(0, 0) rotate(134.213deg)' },
+          '33%': { transform: 'translate(15px, -20px) rotate(134.213deg)' },
+          '66%': { transform: 'translate(-10px, 10px) rotate(134.213deg)' },
         },
       },
       backdropBlur: {

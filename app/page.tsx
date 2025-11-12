@@ -2,7 +2,7 @@
 
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from '@/components/shared/Header'
 
 export default function Home() {
@@ -12,6 +12,13 @@ export default function Home() {
   const [openIndividualBox, setOpenIndividualBox] = useState<null | 1 | 2 | 3>(null)
   const [diskRotation, setDiskRotation] = useState(0)
   const [isExpanding, setIsExpanding] = useState(false)
+
+  // Animation states
+  const [scrollProgress, setScrollProgress] = useState(0)
+  const [circlesInPosition, setCirclesInPosition] = useState(false)
+  const [showContent, setShowContent] = useState(false)
+  const [scrollEnabled, setScrollEnabled] = useState(false)
+  const [isOnHeroSection, setIsOnHeroSection] = useState(true)
 
   // Derived state for compatibility
   const uploadCVOpen = openIndividualBox === 1
@@ -29,8 +36,153 @@ export default function Home() {
     }, 700)
   }
 
+  // Handle scroll-triggered animation with viewport locking
+  useEffect(() => {
+    let animationComplete = false
+    let scrollAccumulator = 0
+    let lastScrollTime = Date.now()
+
+    const handleWheel = (e: WheelEvent) => {
+      // Block ALL scrolling until animation is complete
+      if (!scrollEnabled) {
+        e.preventDefault()
+
+        // Only process downward scrolls for animation if circles aren't in position
+        if (!circlesInPosition && e.deltaY > 0) {
+          const currentTime = Date.now()
+          const timeDelta = currentTime - lastScrollTime
+          lastScrollTime = currentTime
+
+          // Calculate current progress before applying new scroll
+          const currentProgress = scrollAccumulator / 400
+
+          // Progressive speed limiting: slower near the end (after 85% progress)
+          let speedCap = 50 // Default: allow faster scrolling in the beginning
+          if (currentProgress > 0.85) {
+            // Drastically slow down in final 15% to prevent rushing through the end
+            speedCap = 12
+          } else if (currentProgress > 0.7) {
+            // Moderate slowdown after 70%
+            speedCap = 30
+          }
+
+          const cappedDelta = Math.min(e.deltaY, speedCap)
+
+          // Only update if enough time has passed (throttle to 60fps max)
+          if (timeDelta >= 16) {
+            // Accumulate scroll amount with capped delta
+            scrollAccumulator += cappedDelta
+
+            // Calculate progress based on accumulated scroll
+            const progress = Math.min(scrollAccumulator / 400, 1) // 400px of scroll = full animation
+            setScrollProgress(progress)
+
+            // When animation completes
+            if (progress >= 1 && !animationComplete) {
+              animationComplete = true
+              setCirclesInPosition(true)
+
+              // Show content immediately
+              setShowContent(true)
+
+              // Enable scroll immediately after transition completes
+              setTimeout(() => {
+                document.body.style.overflow = 'auto'
+                document.body.style.position = ''
+                document.body.style.width = ''
+                setScrollEnabled(true)
+              }, 2600) // Just 100ms after transition completes
+            }
+          }
+        }
+      }
+    }
+
+    // Lock body scroll initially if animation hasn't completed
+    if (!circlesInPosition) {
+      document.body.style.overflow = 'hidden'
+      document.body.style.position = 'fixed'
+      document.body.style.width = '100%'
+    }
+
+    window.addEventListener('wheel', handleWheel, { passive: false })
+
+    return () => {
+      window.removeEventListener('wheel', handleWheel)
+      // Cleanup: ensure scroll is re-enabled
+      document.body.style.overflow = 'auto'
+      document.body.style.position = ''
+      document.body.style.width = ''
+    }
+  }, [circlesInPosition, scrollEnabled])
+
+  // Track if user is on hero section
+  useEffect(() => {
+    if (!scrollEnabled) return // Don't track until scrolling is enabled
+
+    const handleScroll = () => {
+      const heroSectionHeight = window.innerHeight // Hero section is full viewport height
+      const scrollPosition = window.scrollY
+
+      // Update state based on scroll position
+      if (scrollPosition < heroSectionHeight * 0.8) {
+        // Still on hero section (with 20% buffer)
+        setIsOnHeroSection(true)
+      } else {
+        // Scrolled past hero section
+        setIsOnHeroSection(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [scrollEnabled])
+
   return (
-    <div className="min-h-screen overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden" style={{ background: 'linear-gradient(180deg, #EEE9FC 0%, #D3E3FF 50%, #DDFCF6 100%)' }}>
+      {/* Scroll Progress Indicator */}
+      {!circlesInPosition && scrollProgress > 0 && (
+        <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 z-50 bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg">
+          <div className="flex items-center gap-3">
+            <div className="w-32 h-1 bg-gray-200 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-gradient-to-r from-[#5323E5] to-[#6DECD3] transition-all duration-300"
+                style={{ width: `${scrollProgress * 100}%` }}
+              />
+            </div>
+            <span className="text-sm font-medium text-gray-600">
+              {Math.round(scrollProgress * 100)}%
+            </span>
+          </div>
+        </div>
+      )}
+
+      {/* Scroll Available Indicator - Only visible on hero section */}
+      {scrollEnabled && isOnHeroSection && (
+        <button
+          onClick={() => {
+            window.scrollTo({
+              top: window.innerHeight,
+              behavior: 'auto'
+            })
+          }}
+          className="fixed bottom-10 left-1/2 transform -translate-x-1/2 z-50 animate-bounce opacity-60 hover:opacity-100 transition-opacity cursor-pointer"
+          aria-label="Scroll to next section"
+        >
+          <svg
+            className="w-6 h-6 text-gray-500"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </button>
+      )}
+
       {/* Hero Section - First Screen */}
       <div className="relative w-full min-h-screen lg:h-[1054px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0">
         {/* Hero content container - Responsive */}
@@ -40,53 +192,69 @@ export default function Home() {
             {/* Decorative circles on the right - hidden on mobile */}
             {/* Upper right circle */}
             <div
-              className="hidden lg:block absolute w-[668.371px] h-[668.371px] rounded-full bg-circle-gradient -z-10 flex-shrink-0 opacity-0 animate-fade-in-slow"
+              className="hidden lg:block absolute w-[668.371px] h-[668.371px] rounded-full bg-circle-gradient flex-shrink-0 animate-wobble-1"
               style={{
-                left: '1400px',
-                bottom: '654px',
-                transform: 'rotate(134.213deg)'
+                left: `${600 + (1400 - 600) * scrollProgress}px`,
+                bottom: `${400 + (654 - 400) * scrollProgress}px`,
+                transform: 'rotate(134.213deg)',
+                opacity: 1,
+                zIndex: 0,
+                transition: scrollProgress > 0 ? 'left 2.5s ease-in-out, bottom 2.5s ease-in-out' : 'none'
               }}
             />
             {/* Lower right circle */}
             <div
-              className="hidden lg:block absolute w-[668.371px] h-[668.371px] rounded-full bg-circle-gradient -z-10 flex-shrink-0 opacity-0 animate-fade-in-slow-1"
+              className="hidden lg:block absolute w-[668.371px] h-[668.371px] rounded-full bg-circle-gradient flex-shrink-0 animate-wobble-2"
               style={{
-                left: '1550px',
-                bottom: '320.87px',
-                transform: 'rotate(134.213deg)'
+                left: `${700 + (1550 - 700) * scrollProgress}px`,
+                bottom: `${350 + (320.87 - 350) * scrollProgress}px`,
+                transform: 'rotate(134.213deg)',
+                opacity: 1,
+                zIndex: 0,
+                transition: scrollProgress > 0 ? 'left 2.5s ease-in-out, bottom 2.5s ease-in-out' : 'none'
               }}
             />
 
             {/* Decorative circles on the left - hidden on mobile */}
             {/* Top left circle - largest */}
             <div
-              className="hidden lg:block absolute w-[862.444px] h-[862.444px] rounded-full bg-circle-gradient-reverse -z-10 flex-shrink-0 opacity-0 animate-fade-in-slow-2"
+              className="hidden lg:block absolute w-[862.444px] h-[862.444px] rounded-full bg-circle-gradient-reverse flex-shrink-0 animate-wobble-3"
               style={{
-                top: '200px',
-                right: '1550px',
-                transform: 'rotate(134.213deg)'
+                top: `${350 + (200 - 350) * scrollProgress}px`,
+                right: `${600 + (1550 - 600) * scrollProgress}px`,
+                transform: 'rotate(134.213deg)',
+                opacity: 1,
+                zIndex: 0,
+                transition: scrollProgress > 0 ? 'top 2.5s ease-in-out, right 2.5s ease-in-out' : 'none'
               }}
             />
             {/* Middle left circle - smallest */}
             <div
-              className="hidden lg:block absolute w-[619.355px] h-[619.355px] rounded-full bg-circle-gradient-reverse -z-10 flex-shrink-0 opacity-0 animate-fade-in-slow-3"
+              className="hidden lg:block absolute w-[619.355px] h-[619.355px] rounded-full bg-circle-gradient-reverse flex-shrink-0 animate-wobble-4"
               style={{
-                top: '500px',
-                right: '1350px',
-                transform: 'rotate(134.213deg)'
+                top: `${450 + (500 - 450) * scrollProgress}px`,
+                right: `${500 + (1350 - 500) * scrollProgress}px`,
+                transform: 'rotate(134.213deg)',
+                opacity: 1,
+                zIndex: 0,
+                transition: scrollProgress > 0 ? 'top 2.5s ease-in-out, right 2.5s ease-in-out' : 'none'
               }}
             />
             {/* Lower left circle - medium */}
             <div
-              className="hidden lg:block absolute w-[668.371px] h-[668.371px] rounded-full bg-circle-gradient-reverse -z-10 flex-shrink-0 opacity-0 animate-fade-in-slow-4"
+              className="hidden lg:block absolute w-[668.371px] h-[668.371px] rounded-full bg-circle-gradient-reverse flex-shrink-0 animate-wobble-5"
               style={{
-                top: '700px',
-                right: '1150px',
-                transform: 'rotate(134.213deg)'
+                top: `${550 + (700 - 550) * scrollProgress}px`,
+                right: `${400 + (1150 - 400) * scrollProgress}px`,
+                transform: 'rotate(134.213deg)',
+                opacity: 1,
+                zIndex: 0,
+                transition: scrollProgress > 0 ? 'top 2.5s ease-in-out, right 2.5s ease-in-out' : 'none'
               }}
             />
 
             {/* SVG gradient dashed ellipse border - responsive */}
+            {showContent && (
             <svg
               className="hidden lg:block absolute flex-shrink-0"
               width="1327"
@@ -94,7 +262,8 @@ export default function Home() {
               style={{
                 left: '112px',
                 top: '399px',
-                overflow: 'visible'
+                overflow: 'visible',
+                zIndex: 10
               }}
             >
               <defs>
@@ -118,7 +287,7 @@ export default function Home() {
                     className="animate-draw-ellipse"
                     style={{
                       strokeDasharray: '2500',
-                      strokeDashoffset: 2500
+                      strokeDashoffset: '2500'
                     }}
                   />
                 </mask>
@@ -135,22 +304,27 @@ export default function Home() {
                 mask="url(#ellipseMask)"
               />
             </svg>
+            )}
 
             {/* Main headline - Responsive positioning */}
-            <h1 className="absolute left-4 right-4 sm:left-8 sm:right-8 lg:left-[209px] lg:right-auto lg:w-[1134px] top-32 sm:top-40 lg:top-[482px] text-center font-dm-sans text-3xl sm:text-4xl md:text-5xl lg:text-[64px] font-bold leading-[120%] text-[#454545] z-10 opacity-0 animate-fade-in-delay-3 px-4 lg:px-0">
+            {showContent && (
+            <h1 className="absolute left-4 right-4 sm:left-8 sm:right-8 lg:left-[209px] lg:right-auto lg:w-[1134px] top-32 sm:top-40 lg:top-[482px] text-center font-dm-sans text-3xl sm:text-4xl md:text-5xl lg:text-[64px] font-bold leading-[120%] text-[#454545] z-20 px-4 lg:px-0 opacity-0 animate-fade-in-delay-3">
               Discover{' '}
               <span className="bg-radial-1 bg-clip-text text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">
                 next-generation recruiting
               </span>{' '}
               technology.
             </h1>
+            )}
 
             {/* Description text - Responsive positioning */}
-            <div className="absolute left-4 right-4 sm:left-8 sm:right-8 lg:left-[448px] lg:right-auto top-[420px] sm:top-[500px] lg:top-[689px] z-10 flex justify-center lg:justify-start">
-              <p className="text-center font-poppins text-sm sm:text-base font-semibold leading-normal text-[#454545CC] overflow-hidden border-r-2 border-transparent animate-typewriter w-0 whitespace-nowrap max-w-full">
+            {showContent && (
+            <div className="absolute left-4 right-4 sm:left-8 sm:right-8 lg:left-[448px] lg:right-auto top-[420px] sm:top-[500px] lg:top-[689px] z-20 flex justify-center lg:justify-start">
+              <p className="text-center font-poppins text-sm sm:text-base font-semibold leading-normal text-[#454545CC] overflow-hidden border-r-2 border-transparent whitespace-nowrap max-w-full w-0 animate-typewriter">
                 Automated job search for candidates, intelligent pre-screening for companies.
               </p>
             </div>
+            )}
 
           {/* Separator line at bottom of first screen */}
           <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#5323E5]/30 to-transparent" />
