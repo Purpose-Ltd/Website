@@ -341,31 +341,34 @@ export default function Home() {
           {/* Decorative circles on the right - continuing from hero */}
           {/* Upper right circle */}
           <div
-            className="hidden lg:block absolute w-[620px] h-[620px] rounded-full bg-circle-gradient -z-10 flex-shrink-0 opacity-0 animate-fade-in-slow"
+            className="hidden lg:block absolute w-[620px] h-[620px] rounded-full bg-circle-gradient flex-shrink-0 opacity-0 animate-fade-in-slow"
             style={{
               left: '1500px',
               top: '0px',
-              transform: 'rotate(134.213deg)'
+              transform: 'rotate(134.213deg)',
+              zIndex: 0
             }}
           />
           {/* Lower right circle */}
           <div
-            className="hidden lg:block absolute w-[550px] h-[550px] rounded-full bg-circle-gradient -z-10 flex-shrink-0 opacity-0 animate-fade-in-slow-1"
+            className="hidden lg:block absolute w-[550px] h-[550px] rounded-full bg-circle-gradient flex-shrink-0 opacity-0 animate-fade-in-slow-1"
             style={{
               left: '1600px',
               top: '300px',
-              transform: 'rotate(134.213deg)'
+              transform: 'rotate(134.213deg)',
+              zIndex: 0
             }}
           />
 
           {/* Decorative circles on the left - continuing from hero */}
           {/* Top left circle */}
           <div
-            className="hidden lg:block absolute w-[700px] h-[700px] rounded-full bg-circle-gradient-reverse -z-10 flex-shrink-0 opacity-0 animate-fade-in-slow-2"
+            className="hidden lg:block absolute w-[700px] h-[700px] rounded-full bg-circle-gradient-reverse flex-shrink-0 opacity-0 animate-fade-in-slow-2"
             style={{
               top: '450px',
               right: '1500px',
-              transform: 'rotate(134.213deg)'
+              transform: 'rotate(134.213deg)',
+              zIndex: 0
             }}
           />
           {/* Lower left circle */}
@@ -375,7 +378,7 @@ export default function Home() {
               top: '700px',
               right: '1300px',
               transform: 'rotate(134.213deg)',
-              zIndex: -5
+              zIndex: 0
             }}
           />
 
