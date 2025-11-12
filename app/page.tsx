@@ -139,7 +139,7 @@ export default function Home() {
   }, [scrollEnabled])
 
   return (
-    <div className="min-h-screen overflow-x-hidden" style={{ background: 'linear-gradient(180deg, #EEE9FC 0%, #D3E3FF 50%, #DDFCF6 100%)' }}>
+    <div className="min-h-screen overflow-x-hidden">
       {/* Scroll Progress Indicator */}
       {!circlesInPosition && scrollProgress > 0 && (
         <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 z-50 bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg">
@@ -183,7 +183,9 @@ export default function Home() {
         </button>
       )}
 
-      {/* Hero Section - First Screen */}
+      {/* Gradient wrapper spanning both Hero and Summary sections */}
+      <div style={{ background: 'linear-gradient(180deg, #EEE9FC 0%, #D3E3FF 50%, #DDFCF6 100%)', borderRadius: '12px' }}>
+        {/* Hero Section - First Screen */}
       <div className="relative w-full min-h-screen lg:h-[1054px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0">
         {/* Hero content container - Responsive */}
         <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:h-[1054px]">
@@ -617,6 +619,8 @@ export default function Home() {
 
         </div>
       </div>
+      </div>
+      {/* End gradient wrapper */}
 
       {/* Individuals Section */}
       <section id="individuals" className="relative w-full min-h-screen lg:h-[1370px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0">

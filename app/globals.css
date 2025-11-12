@@ -99,7 +99,7 @@
 
   body {
     @apply text-foreground;
-    background: linear-gradient(180deg, #EEE9FC 0%, #D3E3FF 50%, #DDFCF6 100%);
+    background: white;
   }
 
   /* Custom text selection color */
