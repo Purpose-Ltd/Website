@@ -179,20 +179,41 @@ export default function Home() {
       )}
 
       {/* Gradient wrapper spanning both Hero and Summary sections */}
-      <div style={{ background: 'linear-gradient(180deg, #EEE9FC 0%, #D3E3FF 50%, #DDFCF6 100%)', borderRadius: '12px' }}>
+      <div className="overflow-visible" style={{ background: 'linear-gradient(180deg, #EEE9FC 0%, #D3E3FF 50%, #DDFCF6 100%)' }}>
         {/* Hero Section - First Screen */}
-      <div className="relative w-full min-h-screen lg:min-h-[900px] xl:min-h-[1000px] 2xl:min-h-[1054px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0">
+      <div className="relative w-full min-h-screen lg:min-h-[900px] xl:min-h-[1000px] 2xl:min-h-[1054px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0 overflow-visible">
         {/* Hero content container - Responsive with clamped height */}
         <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:min-h-[900px] xl:min-h-[1000px] 2xl:min-h-[1054px]">
           {/* Header inside 1552px container */}
           <Header />
-            {/* Decorative circles on the right - hidden on mobile */}
+
+            {/* Mobile decorative circles - smaller and positioned to not overflow */}
+            <div
+              className="xl:hidden absolute w-[200px] sm:w-[280px] md:w-[350px] h-[200px] sm:h-[280px] md:h-[350px] rounded-full bg-circle-gradient flex-shrink-0 animate-wobble-1 opacity-60"
+              style={{
+                right: '-50px',
+                top: '15%',
+                transform: 'rotate(134.213deg)',
+                zIndex: 0
+              }}
+            />
+            <div
+              className="xl:hidden absolute w-[150px] sm:w-[200px] md:w-[280px] h-[150px] sm:h-[200px] md:h-[280px] rounded-full bg-circle-gradient-reverse flex-shrink-0 animate-wobble-3 opacity-60"
+              style={{
+                left: '-40px',
+                bottom: '20%',
+                transform: 'rotate(134.213deg)',
+                zIndex: 0
+              }}
+            />
+
+            {/* Decorative circles on the right - only visible on xl+ screens to prevent overflow */}
             {/* Upper right circle */}
             <div
-              className="hidden lg:block absolute w-[668.371px] h-[668.371px] rounded-full bg-circle-gradient flex-shrink-0 animate-wobble-1"
+              className="hidden xl:block absolute w-[500px] xl:w-[550px] 2xl:w-[668px] h-[500px] xl:h-[550px] 2xl:h-[668px] rounded-full bg-circle-gradient flex-shrink-0 animate-wobble-1"
               style={{
-                left: `${600 + (1400 - 600) * scrollProgress}px`,
-                bottom: `${400 + (654 - 400) * scrollProgress}px`,
+                left: `calc(40% + ${(60 - 40) * scrollProgress}%)`,
+                bottom: `calc(40% + ${(62 - 40) * scrollProgress}%)`,
                 transform: 'rotate(134.213deg)',
                 opacity: 1,
                 zIndex: 0,
@@ -201,10 +222,10 @@ export default function Home() {
             />
             {/* Lower right circle */}
             <div
-              className="hidden lg:block absolute w-[668.371px] h-[668.371px] rounded-full bg-circle-gradient flex-shrink-0 animate-wobble-2"
+              className="hidden xl:block absolute w-[500px] xl:w-[550px] 2xl:w-[668px] h-[500px] xl:h-[550px] 2xl:h-[668px] rounded-full bg-circle-gradient flex-shrink-0 animate-wobble-2"
               style={{
-                left: `${700 + (1550 - 700) * scrollProgress}px`,
-                bottom: `${350 + (320.87 - 350) * scrollProgress}px`,
+                left: `calc(45% + ${(75 - 45) * scrollProgress}%)`,
+                bottom: `calc(35% + ${(30 - 35) * scrollProgress}%)`,
                 transform: 'rotate(134.213deg)',
                 opacity: 1,
                 zIndex: 0,
@@ -212,13 +233,13 @@ export default function Home() {
               }}
             />
 
-            {/* Decorative circles on the left - hidden on mobile */}
+            {/* Decorative circles on the left - only visible on xl+ screens */}
             {/* Top left circle - largest */}
             <div
-              className="hidden lg:block absolute w-[862.444px] h-[862.444px] rounded-full bg-circle-gradient-reverse flex-shrink-0 animate-wobble-3"
+              className="hidden xl:block absolute w-[600px] xl:w-[700px] 2xl:w-[862px] h-[600px] xl:h-[700px] 2xl:h-[862px] rounded-full bg-circle-gradient-reverse flex-shrink-0 animate-wobble-3"
               style={{
-                top: `${350 + (200 - 350) * scrollProgress}px`,
-                right: `${600 + (1550 - 600) * scrollProgress}px`,
+                top: `calc(30% + ${(18 - 30) * scrollProgress}%)`,
+                right: `calc(40% + ${(75 - 40) * scrollProgress}%)`,
                 transform: 'rotate(134.213deg)',
                 opacity: 1,
                 zIndex: 0,
@@ -227,10 +248,10 @@ export default function Home() {
             />
             {/* Middle left circle - smallest */}
             <div
-              className="hidden lg:block absolute w-[619.355px] h-[619.355px] rounded-full bg-circle-gradient-reverse flex-shrink-0 animate-wobble-4"
+              className="hidden xl:block absolute w-[450px] xl:w-[520px] 2xl:w-[619px] h-[450px] xl:h-[520px] 2xl:h-[619px] rounded-full bg-circle-gradient-reverse flex-shrink-0 animate-wobble-4"
               style={{
-                top: `${450 + (500 - 450) * scrollProgress}px`,
-                right: `${500 + (1350 - 500) * scrollProgress}px`,
+                top: `calc(42% + ${(47 - 42) * scrollProgress}%)`,
+                right: `calc(35% + ${(65 - 35) * scrollProgress}%)`,
                 transform: 'rotate(134.213deg)',
                 opacity: 1,
                 zIndex: 0,
@@ -239,10 +260,10 @@ export default function Home() {
             />
             {/* Lower left circle - medium */}
             <div
-              className="hidden lg:block absolute w-[668.371px] h-[668.371px] rounded-full bg-circle-gradient-reverse flex-shrink-0 animate-wobble-5"
+              className="hidden xl:block absolute w-[500px] xl:w-[550px] 2xl:w-[668px] h-[500px] xl:h-[550px] 2xl:h-[668px] rounded-full bg-circle-gradient-reverse flex-shrink-0 animate-wobble-5"
               style={{
-                top: `${550 + (700 - 550) * scrollProgress}px`,
-                right: `${400 + (1150 - 400) * scrollProgress}px`,
+                top: `calc(52% + ${(66 - 52) * scrollProgress}%)`,
+                right: `calc(28% + ${(55 - 28) * scrollProgress}%)`,
                 transform: 'rotate(134.213deg)',
                 opacity: 1,
                 zIndex: 0,
@@ -250,15 +271,15 @@ export default function Home() {
               }}
             />
 
-            {/* SVG gradient dashed ellipse border - responsive */}
+            {/* SVG gradient dashed ellipse border - Desktop */}
             {showContent && (
             <svg
-              className="hidden lg:block absolute flex-shrink-0"
-              width="1327"
-              height="257"
+              className="hidden xl:block absolute flex-shrink-0 w-[80%] max-w-[1327px]"
+              viewBox="0 0 1327 257"
+              preserveAspectRatio="xMidYMid meet"
               style={{
-                left: '112px',
-                top: '399px',
+                left: '10%',
+                top: '38%',
                 overflow: 'visible',
                 zIndex: 10
               }}
@@ -303,9 +324,63 @@ export default function Home() {
             </svg>
             )}
 
-            {/* Main headline - Responsive positioning */}
+            {/* SVG gradient dashed ellipse border - Mobile/Tablet */}
             {showContent && (
-            <h1 className="absolute left-4 right-4 sm:left-8 sm:right-8 lg:left-[209px] lg:right-auto lg:w-[1134px] top-32 sm:top-40 lg:top-[482px] text-center font-dm-sans text-3xl sm:text-4xl md:text-5xl lg:text-[64px] font-bold leading-[120%] text-[#454545] z-20 px-4 lg:px-0 opacity-0 animate-fade-in-delay-3">
+            <svg
+              className="xl:hidden absolute flex-shrink-0 w-[110%] sm:w-[100%] md:w-[95%] lg:w-[90%]"
+              viewBox="0 0 400 120"
+              preserveAspectRatio="xMidYMid meet"
+              style={{
+                left: '50%',
+                transform: 'translateX(-50%)',
+                top: '15%',
+                overflow: 'visible',
+                zIndex: 10
+              }}
+            >
+              <defs>
+                <radialGradient id="borderGradientMobile" cx="17.79%" cy="0%" r="136.3%" fx="17.79%" fy="0%">
+                  <stop offset="0%" stopColor="#5323E5" />
+                  <stop offset="38.13%" stopColor="#5472FF" />
+                  <stop offset="81.27%" stopColor="#6DC9D8" />
+                  <stop offset="92.1%" stopColor="#72E0DA" />
+                  <stop offset="100%" stopColor="#6DECD3" />
+                </radialGradient>
+                <mask id="ellipseMaskMobile">
+                  <ellipse
+                    cx="200"
+                    cy="60"
+                    rx="195"
+                    ry="55"
+                    fill="none"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    pathLength="1000"
+                    className="animate-draw-ellipse"
+                    style={{
+                      strokeDasharray: '1000',
+                      strokeDashoffset: '1000'
+                    }}
+                  />
+                </mask>
+              </defs>
+              <ellipse
+                cx="200"
+                cy="60"
+                rx="195"
+                ry="55"
+                fill="none"
+                stroke="url(#borderGradientMobile)"
+                strokeWidth="1.5"
+                strokeDasharray="6 6"
+                mask="url(#ellipseMaskMobile)"
+              />
+            </svg>
+            )}
+
+            {/* Main headline - Responsive positioning with percentages */}
+            {showContent && (
+            <h1 className="absolute left-4 right-4 sm:left-8 sm:right-8 lg:left-[10%] xl:left-[13%] lg:right-[10%] xl:right-auto xl:w-[75%] 2xl:w-[1134px] top-32 sm:top-40 lg:top-[45%] xl:top-[46%] text-center font-dm-sans text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[56px] 2xl:text-[64px] font-bold leading-[120%] text-[#454545] z-20 px-4 lg:px-0 opacity-0 animate-fade-in-delay-3">
               Discover{' '}
               <span className="bg-radial-1 bg-clip-text text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">
                 next-generation recruiting
@@ -314,10 +389,10 @@ export default function Home() {
             </h1>
             )}
 
-            {/* Description text - Responsive positioning */}
+            {/* Description text - Responsive positioning with percentages */}
             {showContent && (
-            <div className="absolute left-4 right-4 sm:left-8 sm:right-8 lg:left-[448px] lg:right-auto top-[420px] sm:top-[500px] lg:top-[689px] z-20 flex justify-center lg:justify-start">
-              <p className="text-center font-poppins text-sm sm:text-base font-semibold leading-normal text-[#454545CC] overflow-hidden border-r-2 border-transparent whitespace-nowrap max-w-full w-0 animate-typewriter">
+            <div className="absolute left-4 right-4 sm:left-8 sm:right-8 lg:left-[15%] xl:left-[29%] lg:right-[15%] xl:right-auto top-64 sm:top-80 lg:top-[65%] xl:top-[66%] z-20 flex justify-center lg:justify-start">
+              <p className="text-center lg:text-left font-poppins text-xs sm:text-sm lg:text-base font-semibold leading-normal text-[#454545CC] overflow-hidden border-r-2 border-transparent whitespace-nowrap max-w-full w-0 animate-typewriter">
                 Automated job search for candidates, intelligent pre-screening for companies.
               </p>
             </div>
@@ -328,19 +403,16 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Separator line */}
-      <div className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-[#5323E5]/30 to-transparent" style={{ zIndex: 10 }} />
-
       {/* Summary Screen - Below Hero */}
-      <div className="relative w-full min-h-screen lg:h-[1054px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0">
+      <div className="relative w-full min-h-screen lg:min-h-[900px] xl:min-h-[1000px] 2xl:min-h-[1054px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0">
         {/* Summary content container - Same dimensions as hero */}
-        <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:h-[1054px]">
+        <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:min-h-[900px] xl:min-h-[1000px] 2xl:min-h-[1054px]">
           {/* Decorative circles on the right - continuing from hero */}
           {/* Upper right circle */}
           <div
-            className="hidden lg:block absolute w-[620px] h-[620px] rounded-full bg-circle-gradient flex-shrink-0 opacity-0 animate-fade-in-slow"
+            className="hidden xl:block absolute w-[450px] xl:w-[520px] 2xl:w-[620px] h-[450px] xl:h-[520px] 2xl:h-[620px] rounded-full bg-circle-gradient flex-shrink-0 opacity-0 animate-fade-in-slow"
             style={{
-              left: '1500px',
+              right: '-15%',
               top: '0px',
               transform: 'rotate(134.213deg)',
               zIndex: 0
@@ -348,10 +420,10 @@ export default function Home() {
           />
           {/* Lower right circle */}
           <div
-            className="hidden lg:block absolute w-[550px] h-[550px] rounded-full bg-circle-gradient flex-shrink-0 opacity-0 animate-fade-in-slow-1"
+            className="hidden xl:block absolute w-[400px] xl:w-[480px] 2xl:w-[550px] h-[400px] xl:h-[480px] 2xl:h-[550px] rounded-full bg-circle-gradient flex-shrink-0 opacity-0 animate-fade-in-slow-1"
             style={{
-              left: '1600px',
-              top: '300px',
+              right: '-20%',
+              top: '30%',
               transform: 'rotate(134.213deg)',
               zIndex: 0
             }}
@@ -360,31 +432,30 @@ export default function Home() {
           {/* Decorative circles on the left - continuing from hero */}
           {/* Top left circle */}
           <div
-            className="hidden lg:block absolute w-[700px] h-[700px] rounded-full bg-circle-gradient-reverse flex-shrink-0 opacity-0 animate-fade-in-slow-2"
+            className="hidden xl:block absolute w-[500px] xl:w-[600px] 2xl:w-[700px] h-[500px] xl:h-[600px] 2xl:h-[700px] rounded-full bg-circle-gradient-reverse flex-shrink-0 opacity-0 animate-fade-in-slow-2"
             style={{
-              top: '450px',
-              right: '1500px',
+              top: '45%',
+              left: '-25%',
               transform: 'rotate(134.213deg)',
               zIndex: 0
             }}
           />
           {/* Lower left circle */}
           <div
-            className="hidden lg:block absolute w-[580px] h-[580px] rounded-full bg-circle-gradient-reverse flex-shrink-0 opacity-0 animate-fade-in-slow-3"
+            className="hidden xl:block absolute w-[420px] xl:w-[500px] 2xl:w-[580px] h-[420px] xl:h-[500px] 2xl:h-[580px] rounded-full bg-circle-gradient-reverse flex-shrink-0 opacity-0 animate-fade-in-slow-3"
             style={{
-              top: '700px',
-              right: '1300px',
+              top: '70%',
+              left: '-18%',
               transform: 'rotate(134.213deg)',
               zIndex: 0
             }}
           />
 
-          {/* Heading text above boxes */}
+          {/* Heading text above boxes - Desktop */}
           <h2
-            className="hidden lg:block absolute w-[1018px] h-[56px] flex-shrink-0 text-center font-dm-sans text-[48px] font-bold leading-[120%] text-[#454545]"
+            className="hidden lg:block absolute w-full lg:max-w-[800px] xl:max-w-[900px] 2xl:max-w-[1018px] flex-shrink-0 text-center font-dm-sans text-3xl lg:text-4xl xl:text-[42px] 2xl:text-[48px] font-bold leading-[120%] text-[#454545] left-1/2 -translate-x-1/2"
             style={{
-              top: '180px',
-              left: 'calc(50% - 509px)'
+              top: '17%'
             }}
           >
             Powered by intelligent{' '}
@@ -393,7 +464,60 @@ export default function Home() {
             </span>.
           </h2>
 
-          {/* First rectangle */}
+          {/* Mobile layout - Summary/Automation section */}
+          <div className="lg:hidden flex flex-col items-center w-full px-4 py-8">
+            {/* Mobile heading */}
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-dm-sans font-bold text-center text-[#454545] mb-8">
+              Powered by intelligent{' '}
+              <span className="bg-radial-1 bg-clip-text text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">
+                automation
+              </span>.
+            </h2>
+
+            {/* Mobile feature cards */}
+            <div className="flex flex-col gap-4 w-full max-w-sm">
+              {/* Card 1: AI Matching Engine */}
+              <div
+                className="rounded-3xl p-6 text-center text-white"
+                style={{
+                  background: 'linear-gradient(180deg, #3783AC 0%, #1D0A6F 100%)'
+                }}
+              >
+                <div className="text-xl font-bold mb-3">AI Matching Engine</div>
+                <p className="text-sm opacity-80">
+                  Deep learning algorithms connect job seekers with relevant opportunities and employers with qualified candidates.
+                </p>
+              </div>
+
+              {/* Card 2: Automated System */}
+              <div
+                className="rounded-3xl p-6 text-center text-white"
+                style={{
+                  background: 'linear-gradient(180deg, #3783AC 0%, #1D0A6F 100%)'
+                }}
+              >
+                <div className="text-xl font-bold mb-3">Automated System</div>
+                <p className="text-sm opacity-80">
+                  Candidates apply to perfect-fit positions with one click. Employers receive pre-screened applications automatically.
+                </p>
+              </div>
+
+              {/* Card 3: CV Intelligence */}
+              <div
+                className="rounded-3xl p-6 text-center text-white"
+                style={{
+                  background: 'linear-gradient(180deg, #3783AC 0%, #1D0A6F 100%)'
+                }}
+              >
+                <div className="text-xl font-bold mb-3">CV Intelligence</div>
+                <p className="text-sm opacity-80">
+                  AI extracts and interprets all relevant information from resumes without manual form-filling.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* First rectangle - Desktop */}
           <div
             className="hidden lg:block absolute w-[450px] h-[530px] flex-shrink-0 transition-all duration-300 opacity-50 hover:opacity-100 hover:-translate-y-3"
             style={{
@@ -690,9 +814,9 @@ export default function Home() {
             Our CV interpretation and matching technology reduces the time needed to apply significantly and connects you to suitable positions instantly.
           </p>
 
-          {/* Clickable gradient box 1 */}
+          {/* Clickable gradient box 1 - Desktop */}
           <div
-            className="hidden lg:block absolute cursor-pointer flex-shrink-0 transition-transform duration-200 hover:scale-[1.02]"
+            className="hidden lg:flex absolute cursor-pointer flex-shrink-0 transition-transform duration-200 hover:scale-[1.02] items-center justify-center"
             style={{
               width: '620px',
               height: '61px',
@@ -701,9 +825,6 @@ export default function Home() {
               borderRadius: '30px',
               background: 'linear-gradient(137deg, #FFF 7.48%, rgba(255, 255, 255, 0.00) 94.06%)',
               padding: '2px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
               boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.50)'
             }}
             onClick={() => setOpenIndividualBox(openIndividualBox === 1 ? null : 1)}
@@ -763,9 +884,9 @@ export default function Home() {
             </p>
           )}
 
-          {/* Clickable gradient box 2 */}
+          {/* Clickable gradient box 2 - Desktop */}
           <div
-            className="hidden lg:block absolute cursor-pointer flex-shrink-0 transition-transform duration-200 hover:scale-[1.02]"
+            className="hidden lg:flex absolute cursor-pointer flex-shrink-0 transition-transform duration-200 hover:scale-[1.02] items-center justify-center"
             style={{
               width: '620px',
               height: '61px',
@@ -774,9 +895,6 @@ export default function Home() {
               borderRadius: '30px',
               background: 'linear-gradient(137deg, #FFF 7.48%, rgba(255, 255, 255, 0.00) 94.06%)',
               padding: '2px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
               boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.50)',
               transition: 'top 300ms'
             }}
@@ -837,9 +955,9 @@ export default function Home() {
             </p>
           )}
 
-          {/* Clickable gradient box 3 */}
+          {/* Clickable gradient box 3 - Desktop */}
           <div
-            className="hidden lg:block absolute cursor-pointer flex-shrink-0 transition-transform duration-200 hover:scale-[1.02]"
+            className="hidden lg:flex absolute cursor-pointer flex-shrink-0 transition-transform duration-200 hover:scale-[1.02] items-center justify-center"
             style={{
               width: '620px',
               height: '61px',
@@ -848,9 +966,6 @@ export default function Home() {
               borderRadius: '30px',
               background: 'linear-gradient(137deg, #FFF 7.48%, rgba(255, 255, 255, 0.00) 94.06%)',
               padding: '2px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
               boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.50)',
               transition: 'top 300ms'
             }}
@@ -912,11 +1027,147 @@ export default function Home() {
           )}
 
           {/* Mobile heading */}
-          <h2 className="lg:hidden text-4xl sm:text-5xl font-dm-sans font-bold text-center text-[#454545] mb-8">
+          <h2 className="lg:hidden text-3xl sm:text-4xl md:text-5xl font-dm-sans font-bold text-center text-[#454545] mb-6 px-4">
             Automated <span className="bg-radial-1 bg-clip-text text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">job search</span>, centralized.
           </h2>
 
-          {/* Animated phone mockup */}
+          {/* Mobile layout - Individuals section */}
+          <div className="lg:hidden flex flex-col items-center w-full px-4">
+            {/* Mobile description */}
+            <p className="text-center text-sm sm:text-base text-gray-500 mb-8 max-w-md">
+              Our CV interpretation and matching technology reduces the time needed to apply significantly and connects you to suitable positions instantly.
+            </p>
+
+            {/* Mobile phone mockup */}
+            <div className="relative mb-8">
+              <img
+                src={
+                  applyManageOpen
+                    ? "/matches.gif"
+                    : tweakPreferencesOpen
+                      ? "/preferences.gif"
+                      : uploadCVOpen
+                        ? "/Gif4.gif"
+                        : "/login.gif"
+                }
+                alt="Phone animation"
+                className="w-48 sm:w-56 md:w-64 h-auto transition-opacity duration-300"
+              />
+            </div>
+
+            {/* Mobile action buttons */}
+            <div className="flex flex-col gap-3 w-full max-w-sm mb-8">
+              {/* Button 1: Upload CV */}
+              <button
+                onClick={() => setOpenIndividualBox(openIndividualBox === 1 ? null : 1)}
+                className="w-full py-4 px-6 rounded-full font-dm-sans text-lg font-bold text-white transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                style={{
+                  background: 'linear-gradient(102deg, #373369 10.53%, #6D8CC1 81.23%)',
+                  boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)'
+                }}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="w-8">1</span>
+                  <span className="flex-1 text-center">Upload CV</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 25 25"
+                    fill="none"
+                    className={`transition-transform duration-300 ${uploadCVOpen ? 'rotate-180' : ''}`}
+                  >
+                    <path fillRule="evenodd" clipRule="evenodd" d="M3.4301 7.5968C3.83689 7.19001 4.49644 7.19001 4.90324 7.5968L12.5 15.1936L20.0968 7.5968C20.5036 7.19001 21.1631 7.19001 21.5699 7.5968C21.9767 8.0036 21.9767 8.66315 21.5699 9.06994L13.2366 17.4033C12.8298 17.8101 12.1702 17.8101 11.7634 17.4033L3.4301 9.06994C3.0233 8.66315 3.0233 8.0036 3.4301 7.5968Z" fill="#FFF"/>
+                  </svg>
+                </div>
+              </button>
+              {uploadCVOpen && (
+                <p className="text-center text-sm text-gray-500 px-4 py-2">
+                  Purpose analyses & interprets all the necessary information directly from your resume.
+                </p>
+              )}
+
+              {/* Button 2: Tweak Preferences */}
+              <button
+                onClick={() => setOpenIndividualBox(openIndividualBox === 2 ? null : 2)}
+                className="w-full py-4 px-6 rounded-full font-dm-sans text-lg font-bold text-white transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                style={{
+                  background: 'linear-gradient(102deg, #373369 10.53%, #6D8CC1 81.23%)',
+                  boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)'
+                }}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="w-8">2</span>
+                  <span className="flex-1 text-center">Tweak Preferences</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 25 25"
+                    fill="none"
+                    className={`transition-transform duration-300 ${tweakPreferencesOpen ? 'rotate-180' : ''}`}
+                  >
+                    <path fillRule="evenodd" clipRule="evenodd" d="M3.4301 7.5968C3.83689 7.19001 4.49644 7.19001 4.90324 7.5968L12.5 15.1936L20.0968 7.5968C20.5036 7.19001 21.1631 7.19001 21.5699 7.5968C21.9767 8.0036 21.9767 8.66315 21.5699 9.06994L13.2366 17.4033C12.8298 17.8101 12.1702 17.8101 11.7634 17.4033L3.4301 9.06994C3.0233 8.66315 3.0233 8.0036 3.4301 7.5968Z" fill="#FFF"/>
+                  </svg>
+                </div>
+              </button>
+              {tweakPreferencesOpen && (
+                <p className="text-center text-sm text-gray-500 px-4 py-2">
+                  Fine-tune your job preferences to ensure you only see relevant opportunities.
+                </p>
+              )}
+
+              {/* Button 3: Apply & Manage */}
+              <button
+                onClick={() => setOpenIndividualBox(openIndividualBox === 3 ? null : 3)}
+                className="w-full py-4 px-6 rounded-full font-dm-sans text-lg font-bold text-white transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+                style={{
+                  background: 'linear-gradient(102deg, #373369 10.53%, #6D8CC1 81.23%)',
+                  boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)'
+                }}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="w-8">3</span>
+                  <span className="flex-1 text-center">Apply & Manage</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 25 25"
+                    fill="none"
+                    className={`transition-transform duration-300 ${applyManageOpen ? 'rotate-180' : ''}`}
+                  >
+                    <path fillRule="evenodd" clipRule="evenodd" d="M3.4301 7.5968C3.83689 7.19001 4.49644 7.19001 4.90324 7.5968L12.5 15.1936L20.0968 7.5968C20.5036 7.19001 21.1631 7.19001 21.5699 7.5968C21.9767 8.0036 21.9767 8.66315 21.5699 9.06994L13.2366 17.4033C12.8298 17.8101 12.1702 17.8101 11.7634 17.4033L3.4301 9.06994C3.0233 8.66315 3.0233 8.0036 3.4301 7.5968Z" fill="#FFF"/>
+                  </svg>
+                </div>
+              </button>
+              {applyManageOpen && (
+                <p className="text-center text-sm text-gray-500 px-4 py-2">
+                  Apply with one click and manage all your applications in one place.
+                </p>
+              )}
+            </div>
+
+            {/* Mobile download buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 w-full max-w-sm">
+              <a
+                href="#"
+                className="flex items-center justify-center gap-3 py-3 px-6 rounded-full bg-black text-white transition-transform duration-200 hover:scale-[1.02]"
+              >
+                <img src="/playstore.svg" alt="Play Store" className="w-5 h-5" />
+                <span className="text-sm font-medium">Google Play</span>
+              </a>
+              <a
+                href="#"
+                className="flex items-center justify-center gap-3 py-3 px-6 rounded-full bg-black text-white transition-transform duration-200 hover:scale-[1.02]"
+              >
+                <img src="/Apple.svg" alt="App Store" className="w-5 h-5" />
+                <span className="text-sm font-medium">App Store</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Desktop: Animated phone mockup */}
           <img
             src={
               applyManageOpen
@@ -951,14 +1202,11 @@ export default function Home() {
             Download here
           </p>
 
-          {/* Google Play Button */}
+          {/* Google Play Button - Desktop */}
           <div
-            className="hidden lg:block absolute cursor-pointer transition-transform duration-200 hover:scale-[1.02]"
+            className="hidden lg:inline-flex absolute cursor-pointer transition-transform duration-200 hover:scale-[1.02] items-center gap-3"
             style={{
-              display: 'inline-flex',
               padding: '9px 31px 12px 20px',
-              alignItems: 'center',
-              gap: '13px',
               top: 'calc(63.5px + 859px)',
               left: 'calc(-104px + 183px)',
               borderRadius: '30px',
@@ -970,14 +1218,11 @@ export default function Home() {
             <img src="/path90.svg" alt="Google Play text" />
           </div>
 
-          {/* App Store Button */}
+          {/* App Store Button - Desktop */}
           <div
-            className="hidden lg:block absolute cursor-pointer transition-transform duration-200 hover:scale-[1.02]"
+            className="hidden lg:inline-flex absolute cursor-pointer transition-transform duration-200 hover:scale-[1.02] items-center gap-3"
             style={{
-              display: 'inline-flex',
               padding: '9px 31px 12px 20px',
-              alignItems: 'center',
-              gap: '13px',
               top: 'calc(63.5px + 859px)',
               left: 'calc(-104px + 183px + 160px + 34px)',
               borderRadius: '30px',
@@ -1024,7 +1269,7 @@ export default function Home() {
             }}
           />
 
-          {/* "Companies" text inside gradient box */}
+          {/* "Companies" text inside gradient box - Desktop */}
           <h3
             className="hidden lg:block absolute w-[173px] h-[29px] flex-shrink-0 font-dm-sans text-[30px] font-bold leading-[120%] text-[#454545]"
             style={{
@@ -1035,7 +1280,148 @@ export default function Home() {
             Companies
           </h3>
 
-          {/* "Unfiltered Applicants" text inside gradient box */}
+          {/* Mobile layout - Companies section */}
+          <div className="lg:hidden flex flex-col items-center w-full px-4">
+            {/* Mobile heading */}
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-dm-sans font-bold text-center text-[#454545] mb-6">
+              Intelligent <span className="bg-radial-1 bg-clip-text text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">pre-screening</span>, simplified.
+            </h2>
+
+            {/* Mobile description */}
+            <p className="text-center text-sm sm:text-base text-gray-500 mb-8 max-w-md">
+              Our dual-layer matching technology filters candidates automatically and connects you with the right talent instantly.
+            </p>
+
+            {/* Mobile gradient card */}
+            <div
+              className="w-full max-w-sm rounded-3xl p-6 mb-8"
+              style={{
+                background: 'linear-gradient(180deg, #EEE9FC 0%, #D3E3FF 50%, #DDFCF6 100%)'
+              }}
+            >
+              {/* Feature list */}
+              <div className="space-y-4">
+                {/* Feature 1: Unfiltered Applicants */}
+                <button
+                  onClick={() => setUnfilteredApplicantsOpen(!unfilteredApplicantsOpen)}
+                  className="w-full flex items-center justify-between py-3 border-b border-white/50"
+                >
+                  <span className="font-poppins font-bold text-[#454545]">Unfiltered Applicants</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 25 25"
+                    fill="none"
+                    className={`transition-transform duration-300 ${unfilteredApplicantsOpen ? 'rotate-180' : ''}`}
+                  >
+                    <path fillRule="evenodd" clipRule="evenodd" d="M3.4301 7.5968C3.83689 7.19001 4.49644 7.19001 4.90324 7.5968L12.5 15.1936L20.0968 7.5968C20.5036 7.19001 21.1631 7.19001 21.5699 7.5968C21.9767 8.0036 21.9767 8.66315 21.5699 9.06994L13.2366 17.4033C12.8298 17.8101 12.1702 17.8101 11.7634 17.4033L3.4301 9.06994C3.0233 8.66315 3.0233 8.0036 3.4301 7.5968Z" fill="#454545"/>
+                  </svg>
+                </button>
+                {unfilteredApplicantsOpen && (
+                  <p className="text-sm text-gray-600 pb-3">
+                    Purpose integrates with your existing ATS in just a few clicks.
+                  </p>
+                )}
+
+                {/* Feature 2: Dual-Layer Matching */}
+                <button
+                  onClick={() => setDualLayerMatchingOpen(!dualLayerMatchingOpen)}
+                  className="w-full flex items-center justify-between py-3 border-b border-white/50"
+                >
+                  <span className="font-poppins font-bold text-[#454545]">Dual-Layer Matching</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 25 25"
+                    fill="none"
+                    className={`transition-transform duration-300 ${dualLayerMatchingOpen ? 'rotate-180' : ''}`}
+                  >
+                    <path fillRule="evenodd" clipRule="evenodd" d="M3.4301 7.5968C3.83689 7.19001 4.49644 7.19001 4.90324 7.5968L12.5 15.1936L20.0968 7.5968C20.5036 7.19001 21.1631 7.19001 21.5699 7.5968C21.9767 8.0036 21.9767 8.66315 21.5699 9.06994L13.2366 17.4033C12.8298 17.8101 12.1702 17.8101 11.7634 17.4033L3.4301 9.06994C3.0233 8.66315 3.0233 8.0036 3.4301 7.5968Z" fill="#454545"/>
+                  </svg>
+                </button>
+                {dualLayerMatchingOpen && (
+                  <p className="text-sm text-gray-600 pb-3">
+                    Our AI matches candidates based on both skills and cultural fit.
+                  </p>
+                )}
+
+                {/* Feature 3: Filtered Candidates */}
+                <button
+                  onClick={() => setFilteredCandidatesOpen(!filteredCandidatesOpen)}
+                  className="w-full flex items-center justify-between py-3"
+                >
+                  <span className="font-poppins font-bold text-[#454545]">Filtered Candidates</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 25 25"
+                    fill="none"
+                    className={`transition-transform duration-300 ${filteredCandidatesOpen ? 'rotate-180' : ''}`}
+                  >
+                    <path fillRule="evenodd" clipRule="evenodd" d="M3.4301 7.5968C3.83689 7.19001 4.49644 7.19001 4.90324 7.5968L12.5 15.1936L20.0968 7.5968C20.5036 7.19001 21.1631 7.19001 21.5699 7.5968C21.9767 8.0036 21.9767 8.66315 21.5699 9.06994L13.2366 17.4033C12.8298 17.8101 12.1702 17.8101 11.7634 17.4033L3.4301 9.06994C3.0233 8.66315 3.0233 8.0036 3.4301 7.5968Z" fill="#454545"/>
+                  </svg>
+                </button>
+                {filteredCandidatesOpen && (
+                  <p className="text-sm text-gray-600 pb-3">
+                    Only receive pre-qualified candidates that match your requirements.
+                  </p>
+                )}
+              </div>
+            </div>
+
+            {/* Mobile CTA button */}
+            <a
+              href="/cta"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full font-dm-sans text-lg font-bold text-white transition-all duration-200 hover:scale-[1.02] mb-8"
+              style={{
+                background: 'var(--primary-button)',
+                boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)'
+              }}
+            >
+              Start hiring
+            </a>
+
+            {/* Mobile: Supported ATS Partners */}
+            <div className="w-full max-w-sm">
+              <p className="text-center text-sm text-gray-500 mb-4">Integrates with your existing ATS</p>
+              <div className="flex flex-col gap-3">
+                {/* SmartRecruiters */}
+                <div
+                  className="flex items-center justify-center py-3 px-4 rounded-2xl"
+                  style={{
+                    background: '#C0CDEE',
+                    border: '2px solid transparent',
+                    backgroundImage: 'linear-gradient(#C0CDEE, #C0CDEE), linear-gradient(to bottom, #5323E5, #63C1ED, #76F4DC)',
+                    backgroundOrigin: 'border-box',
+                    backgroundClip: 'padding-box, border-box'
+                  }}
+                >
+                  <span style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                    <span style={{ fontSize: '20px', fontWeight: 'bold', color: '#11314A' }}>Smart</span>
+                    <span style={{ fontSize: '20px', fontWeight: 'bold', color: '#37B971' }}>Recruiters</span>
+                  </span>
+                </div>
+                {/* Personio */}
+                <div
+                  className="flex items-center justify-center py-3 px-4 rounded-2xl"
+                  style={{
+                    background: '#C0CDEE',
+                    border: '2px solid transparent',
+                    backgroundImage: 'linear-gradient(#C0CDEE, #C0CDEE), linear-gradient(to bottom, #5323E5, #63C1ED, #76F4DC)',
+                    backgroundOrigin: 'border-box',
+                    backgroundClip: 'padding-box, border-box'
+                  }}
+                >
+                  <span style={{ fontSize: '24px', fontWeight: 'bold', color: '#11314A', fontFamily: 'DM Sans, sans-serif' }}>Personio</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* "Unfiltered Applicants" text inside gradient box - Desktop */}
           <p
             className="hidden lg:block absolute w-[232px] flex-shrink-0 font-poppins text-[16px] font-bold leading-normal text-[#454545]"
             style={{
@@ -1610,15 +1996,12 @@ export default function Home() {
 
           {/* Gradient border box with SmartRecruiters logo */}
           <div
-            className="hidden lg:block absolute flex-shrink-0"
+            className="hidden lg:flex absolute flex-shrink-0 justify-center items-center"
             style={{
               top: 'calc(63.5px + 485px)',
               left: 'calc(96px + 1360px - 38px - 289px)',
               width: '289px',
               height: '53px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
               padding: '8px 12px',
               borderRadius: '18px',
               border: '2px solid transparent',
@@ -1649,15 +2032,12 @@ export default function Home() {
 
           {/* New styled box with Personio logo - 38px from right, 295px from bottom of gradient box */}
           <div
-            className="hidden lg:block absolute flex-shrink-0"
+            className="hidden lg:flex absolute flex-shrink-0 justify-center items-center"
             style={{
               top: 'calc(63.5px + 927px - 295px - 53px)',
               left: 'calc(96px + 1360px - 38px - 289px)',
               width: '289px',
               height: '53px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
               borderRadius: '18px',
               border: '2px solid transparent',
               background: `linear-gradient(#C0CDEE, #C0CDEE) padding-box,
@@ -2362,23 +2742,116 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Mobile heading */}
-          <h2 className="lg:hidden text-4xl sm:text-5xl font-dm-sans font-bold text-center text-[#454545] mb-8">
-            <span className="bg-radial-1 bg-clip-text text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">Credentials</span>
-          </h2>
+          {/* Mobile credentials section wrapper */}
+          <div className="lg:hidden flex flex-col items-center w-full">
+            {/* Mobile heading */}
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-dm-sans font-bold text-center text-[#454545] mb-8 px-4">
+              Why <span className="bg-radial-1 bg-clip-text text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">Purpose</span> works.
+            </h2>
+
+            {/* Mobile credentials cards */}
+            <div className="flex flex-col gap-4 w-full px-4 max-w-sm mx-auto">
+            {/* Stat 1 */}
+            <div
+              className="rounded-3xl p-6 text-center text-white"
+              style={{
+                background: 'linear-gradient(90deg, #3783AC 45%, #1D0A6F 100%)'
+              }}
+            >
+              <div className="text-4xl sm:text-5xl font-bold mb-2">70+</div>
+              <div className="text-sm opacity-80">B2B beta customers already onboarded</div>
+            </div>
+
+            {/* Stat 2 */}
+            <div
+              className="rounded-3xl p-6 text-center text-white"
+              style={{
+                background: 'linear-gradient(90deg, #3783AC 45%, #1D0A6F 100%)'
+              }}
+            >
+              <div className="text-4xl sm:text-5xl font-bold mb-2">85%</div>
+              <div className="text-sm opacity-80">of job seekers would use Purpose to find fitting opportunities</div>
+            </div>
+
+            {/* Stat 3 */}
+            <div
+              className="rounded-3xl p-6 text-center text-white"
+              style={{
+                background: 'linear-gradient(90deg, #3783AC 45%, #1D0A6F 100%)'
+              }}
+            >
+              <div className="text-4xl sm:text-5xl font-bold mb-2">3x</div>
+              <div className="text-sm opacity-80">faster hiring process with intelligent matching</div>
+            </div>
+
+            {/* Stat 4 */}
+            <div
+              className="rounded-3xl p-6 text-center text-white"
+              style={{
+                background: 'linear-gradient(90deg, #3783AC 45%, #1D0A6F 100%)'
+              }}
+            >
+              <div className="text-4xl sm:text-5xl font-bold mb-2">90%</div>
+              <div className="text-sm opacity-80">candidate satisfaction rate</div>
+            </div>
+            </div>
+
+            {/* Mobile company logos carousel */}
+            <div className="w-full mt-12">
+              <p className="text-center text-sm sm:text-base font-bold text-[#454545] mb-6 px-4">
+                Endorsed by{' '}
+                <span className="bg-radial-1 bg-clip-text text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">
+                  innovative leaders
+                </span>{' '}
+                from
+              </p>
+              <div className="overflow-hidden">
+                <div
+                  className="flex items-center gap-8 pause-on-hover"
+                  style={{
+                    animation: 'scroll 20s linear infinite',
+                    width: 'fit-content'
+                  }}
+                >
+                {/* First set of logos */}
+                <img src="/logos/logo1.png" alt="Company logo" className="h-8 w-auto object-contain" />
+                <img src="/logos/logo2.png" alt="Company logo" className="h-10 w-auto object-contain" />
+                <img src="/logos/logo3.png" alt="Company logo" className="h-10 w-auto object-contain" />
+                <img src="/logos/logo4.png" alt="Company logo" className="h-8 w-auto object-contain" />
+                <img src="/logos/logo5.svg" alt="Company logo" className="h-6 w-auto object-contain" />
+                <img src="/logos/logo6.png" alt="Company logo" className="h-6 w-auto object-contain" />
+                <img src="/logos/logo7.png" alt="Company logo" className="h-6 w-auto object-contain" />
+                <img src="/logos/logo8.png" alt="Company logo" className="h-6 w-auto object-contain" />
+                <img src="/logos/logo9.png" alt="Company logo" className="h-10 w-auto object-contain" />
+                <img src="/logos/logo10.png" alt="Company logo" className="h-7 w-auto object-contain" />
+
+                {/* Duplicate set for seamless scroll */}
+                <img src="/logos/logo1.png" alt="Company logo" className="h-8 w-auto object-contain" />
+                <img src="/logos/logo2.png" alt="Company logo" className="h-10 w-auto object-contain" />
+                <img src="/logos/logo3.png" alt="Company logo" className="h-10 w-auto object-contain" />
+                <img src="/logos/logo4.png" alt="Company logo" className="h-8 w-auto object-contain" />
+                <img src="/logos/logo5.svg" alt="Company logo" className="h-6 w-auto object-contain" />
+                <img src="/logos/logo6.png" alt="Company logo" className="h-6 w-auto object-contain" />
+                <img src="/logos/logo7.png" alt="Company logo" className="h-6 w-auto object-contain" />
+                <img src="/logos/logo8.png" alt="Company logo" className="h-6 w-auto object-contain" />
+                <img src="/logos/logo9.png" alt="Company logo" className="h-10 w-auto object-contain" />
+                <img src="/logos/logo10.png" alt="Company logo" className="h-7 w-auto object-contain" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Imprint Section */}
       <section id="imprint" className="relative w-full flex items-center justify-center px-4 sm:px-8 py-20 bg-[#F5F5F7]">
         <div className="relative w-full max-w-[1552px] flex justify-center">
-          {/* Imprint Box */}
+          {/* Imprint Box - Responsive */}
           <div
-            className="flex-shrink-0 flex items-center justify-between px-12 py-8"
+            className="w-full lg:w-[1760px] flex flex-col lg:flex-row items-center lg:items-center justify-center lg:justify-between gap-8 lg:gap-0 px-6 sm:px-8 lg:px-12 py-8"
             style={{
-              width: '1760px',
-              height: '220px',
-              borderRadius: '50px',
+              minHeight: '220px',
+              borderRadius: '30px',
               border: '1px solid #FFF',
               background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.80) 0%, rgba(153, 153, 153, 0.80) 100%)',
               backdropFilter: 'blur(5px)',
@@ -2430,16 +2903,13 @@ export default function Home() {
 
               {/* Company address text */}
               <div
-                className="flex-shrink-0"
+                className="text-center lg:text-left"
                 style={{
-                  width: '240px',
-                  height: '96.975px',
                   color: '#454545',
                   fontFamily: 'Helvetica',
-                  fontSize: '16px',
-                  fontStyle: 'normal',
+                  fontSize: '14px',
                   fontWeight: 400,
-                  lineHeight: '120%'
+                  lineHeight: '150%'
                 }}
               >
                 Purpose UG (haftungsbeschränkt)<br />
@@ -2450,14 +2920,11 @@ export default function Home() {
 
               {/* Copyright text */}
               <div
-                className="flex-shrink-0"
+                className="text-center lg:text-left"
                 style={{
-                  width: '82.06px',
-                  height: '7.458px',
                   color: '#454545',
                   fontFamily: 'Helvetica',
                   fontSize: '10px',
-                  fontStyle: 'normal',
                   fontWeight: 400,
                   lineHeight: '120%'
                 }}
@@ -2468,20 +2935,16 @@ export default function Home() {
 
             {/* Middle - Registered Office */}
             <div
-              className="flex-shrink-0"
+              className="text-center"
               style={{
-                width: '239.644px',
-                height: '70.259px',
                 color: '#454545',
-                textAlign: 'center',
                 fontFamily: 'Helvetica',
-                fontSize: '16px',
-                fontStyle: 'normal',
-                lineHeight: '120%'
+                fontSize: '14px',
+                lineHeight: '150%'
               }}
             >
-              <div style={{ fontWeight: 700 }}>Registered Office</div>
-              <div style={{ fontWeight: 400, marginTop: '8px' }}>
+              <div style={{ fontWeight: 700, marginBottom: '8px' }}>Registered Office</div>
+              <div style={{ fontWeight: 400 }}>
                 Ismaning - HRB Munich 292052<br />
                 Tax number: 143/173/60143<br />
                 VAT ID No.: DE368116002
@@ -2489,13 +2952,10 @@ export default function Home() {
             </div>
 
             {/* Right - Legal */}
-            <div className="flex-shrink-0 flex flex-col" style={{ width: '240px' }}>
+            <div className="flex flex-col items-center lg:items-start">
               <h2
-                className="text-center font-bold mb-4"
+                className="text-center lg:text-left font-bold mb-4"
                 style={{
-                  width: '89.191px',
-                  height: '14.052px',
-                  flexShrink: 0,
                   color: '#454545',
                   fontFamily: 'Helvetica',
                   fontSize: '16px',

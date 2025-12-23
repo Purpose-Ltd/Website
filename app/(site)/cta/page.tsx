@@ -3,7 +3,7 @@ export default function CTAPage() {
     <div className="min-h-screen relative overflow-hidden">
       {/* Top left decorative circle - left one */}
       <div
-        className="absolute rounded-full opacity-0 animate-fade-in-slow-1"
+        className="hidden md:block absolute rounded-full opacity-0 animate-fade-in-slow-1"
         style={{
           width: '668.371px',
           height: '668.371px',
@@ -20,7 +20,7 @@ export default function CTAPage() {
 
       {/* Top left decorative circle - right one */}
       <div
-        className="absolute rounded-full opacity-0 animate-fade-in-slow"
+        className="hidden md:block absolute rounded-full opacity-0 animate-fade-in-slow"
         style={{
           width: '668.371px',
           height: '668.371px',
@@ -37,7 +37,7 @@ export default function CTAPage() {
 
       {/* Top right decorative circle - left one */}
       <div
-        className="absolute rounded-full opacity-0 animate-fade-in-slow-2"
+        className="hidden lg:block absolute rounded-full opacity-0 animate-fade-in-slow-2"
         style={{
           width: '668.371px',
           height: '668.371px',
@@ -54,7 +54,7 @@ export default function CTAPage() {
 
       {/* Top right decorative circle - right one (larger) */}
       <div
-        className="absolute rounded-full opacity-0 animate-fade-in-slow-3"
+        className="hidden lg:block absolute rounded-full opacity-0 animate-fade-in-slow-3"
         style={{
           width: '783.367px',
           height: '783.367px',
@@ -71,7 +71,7 @@ export default function CTAPage() {
 
       {/* Bottom left decorative circle */}
       <div
-        className="absolute rounded-full opacity-0 animate-fade-in-slow-4"
+        className="hidden md:block absolute rounded-full opacity-0 animate-fade-in-slow-4"
         style={{
           width: '668.371px',
           height: '668.371px',
@@ -86,612 +86,154 @@ export default function CTAPage() {
         }}
       />
 
-      <h1
-        className="font-dm-sans absolute"
-        style={{
-          top: '291px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: '1281px',
-          height: '206px',
-          flexShrink: 0,
-          textAlign: 'center',
-          fontSize: '96px',
-          fontStyle: 'normal',
-          fontWeight: 700,
-          lineHeight: '120%'
-        }}
-      >
-        <span style={{ color: '#454545' }}>Experience </span>
-        <span
-          style={{
-            background: 'var(--radial-1, radial-gradient(169.11% 136.3% at 17.79% 0%, #5323E5 0%, #5472FF 38.13%, #6DC9D8 81.27%, #72E0DA 92.1%, #6DECD3 100%))',
-            backgroundClip: 'text',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent'
-          }}
-        >
-          effortless recruiting
-        </span>
-        .
-      </h1>
-
+      {/* Mobile decorative circles */}
       <div
-        className="absolute transition-all duration-300 cursor-pointer hover:scale-[1.02] flex items-center gap-3"
+        className="md:hidden absolute rounded-full opacity-40"
         style={{
-          top: '550px',
-          left: 'calc(50% - 130px - 127.5px)',
-          width: '255px',
-          height: '53.115px',
-          flexShrink: 0,
-          borderRadius: '18px',
-          border: '1px solid var(--glass-stroke, #FFF)',
-          background: 'linear-gradient(90deg, #213D83 0%, #4F647D 100%)',
-          boxShadow: '0 6px 4px 0 rgba(0, 0, 0, 0.25)',
-          paddingLeft: '20px'
+          width: '300px',
+          height: '300px',
+          top: '-100px',
+          right: '-100px',
+          transform: 'rotate(134.213deg)',
+          background: 'linear-gradient(90deg, rgba(83, 35, 229, 0.60) 0%, rgba(83, 124, 255, 0.60) 49%, rgba(118, 244, 220, 0.60) 100%)',
+          filter: 'blur(2px)',
+          zIndex: -10
         }}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" style={{ flexShrink: 0 }}>
-          <path fillRule="evenodd" clipRule="evenodd" d="M7.8295 22.1705C8.26884 22.6098 8.98116 22.6098 9.4205 22.1705L20.25 11.341V19.875C20.25 20.4963 20.7537 21 21.375 21C21.9963 21 22.5 20.4963 22.5 19.875V8.625C22.5 8.00368 21.9963 7.5 21.375 7.5H10.125C9.50368 7.5 9 8.00368 9 8.625C9 9.24632 9.50368 9.75 10.125 9.75H18.659L7.8295 20.5795C7.39017 21.0188 7.39017 21.7312 7.8295 22.1705Z" fill="white"/>
-        </svg>
-        <span
-          className="font-poppins"
-          style={{
-            flexShrink: 0,
-            color: '#FFF',
-            fontSize: '24px',
-            fontStyle: 'normal',
-            fontWeight: 500,
-            lineHeight: 'normal'
-          }}
-        >
-          Get Demo
-        </span>
-      </div>
-
+      />
       <div
-        className="absolute transition-all duration-300 cursor-pointer hover:scale-[1.02] flex items-center gap-3"
+        className="md:hidden absolute rounded-full opacity-40"
         style={{
-          top: '550px',
-          left: 'calc(50% - 130px - 127.5px + 255px + 31px)',
-          width: '255px',
-          height: '53.115px',
-          flexShrink: 0,
-          borderRadius: '18px',
-          border: '1px solid var(--glass-stroke, #FFF)',
-          background: 'linear-gradient(90deg, #213D83 0%, #4F647D 100%)',
-          boxShadow: '0 6px 4px 0 rgba(0, 0, 0, 0.25)',
-          paddingLeft: '20px'
+          width: '250px',
+          height: '250px',
+          bottom: '-80px',
+          left: '-80px',
+          transform: 'rotate(134.213deg)',
+          background: 'linear-gradient(90deg, rgba(118, 244, 220, 0.60) 0%, rgba(83, 124, 255, 0.60) 51%, rgba(83, 35, 229, 0.60) 100%)',
+          filter: 'blur(2px)',
+          zIndex: -10
         }}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" style={{ flexShrink: 0 }}>
-          <path fillRule="evenodd" clipRule="evenodd" d="M7.8295 22.1705C8.26884 22.6098 8.98116 22.6098 9.4205 22.1705L20.25 11.341V19.875C20.25 20.4963 20.7537 21 21.375 21C21.9963 21 22.5 20.4963 22.5 19.875V8.625C22.5 8.00368 21.9963 7.5 21.375 7.5H10.125C9.50368 7.5 9 8.00368 9 8.625C9 9.24632 9.50368 9.75 10.125 9.75H18.659L7.8295 20.5795C7.39017 21.0188 7.39017 21.7312 7.8295 22.1705Z" fill="white"/>
-        </svg>
-        <span
-          className="font-poppins"
-          style={{
-            flexShrink: 0,
-            color: '#FFF',
-            fontSize: '24px',
-            fontStyle: 'normal',
-            fontWeight: 500,
-            lineHeight: 'normal'
-          }}
+      />
+
+      {/* Main content container */}
+      <div className="flex flex-col items-center px-4 sm:px-8 pt-32 sm:pt-40 lg:pt-48 pb-16 sm:pb-20 lg:pb-24">
+        {/* Heading */}
+        <h1
+          className="font-dm-sans text-center w-full max-w-[1281px] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[96px] font-bold leading-[120%]"
         >
-          Join Beta
-        </span>
+          <span style={{ color: '#454545' }}>Experience </span>
+          <span
+            style={{
+              background: 'var(--radial-1, radial-gradient(169.11% 136.3% at 17.79% 0%, #5323E5 0%, #5472FF 38.13%, #6DC9D8 81.27%, #72E0DA 92.1%, #6DECD3 100%))',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent'
+            }}
+          >
+            effortless recruiting
+          </span>
+          .
+        </h1>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 mt-12 sm:mt-16">
+          <div
+            className="transition-all duration-300 cursor-pointer hover:scale-[1.02] flex items-center gap-3 px-6 py-3 sm:px-8 sm:py-4 rounded-[18px] border border-white"
+            style={{
+              background: 'linear-gradient(90deg, #213D83 0%, #4F647D 100%)',
+              boxShadow: '0 6px 4px 0 rgba(0, 0, 0, 0.25)'
+            }}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" className="w-6 h-6 sm:w-[30px] sm:h-[30px]">
+              <path fillRule="evenodd" clipRule="evenodd" d="M7.8295 22.1705C8.26884 22.6098 8.98116 22.6098 9.4205 22.1705L20.25 11.341V19.875C20.25 20.4963 20.7537 21 21.375 21C21.9963 21 22.5 20.4963 22.5 19.875V8.625C22.5 8.00368 21.9963 7.5 21.375 7.5H10.125C9.50368 7.5 9 8.00368 9 8.625C9 9.24632 9.50368 9.75 10.125 9.75H18.659L7.8295 20.5795C7.39017 21.0188 7.39017 21.7312 7.8295 22.1705Z" fill="white"/>
+            </svg>
+            <span
+              className="font-poppins text-white text-lg sm:text-xl lg:text-2xl font-medium"
+            >
+              Get Demo
+            </span>
+          </div>
+
+          <div
+            className="transition-all duration-300 cursor-pointer hover:scale-[1.02] flex items-center gap-3 px-6 py-3 sm:px-8 sm:py-4 rounded-[18px] border border-white"
+            style={{
+              background: 'linear-gradient(90deg, #213D83 0%, #4F647D 100%)',
+              boxShadow: '0 6px 4px 0 rgba(0, 0, 0, 0.25)'
+            }}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none" className="w-6 h-6 sm:w-[30px] sm:h-[30px]">
+              <path fillRule="evenodd" clipRule="evenodd" d="M7.8295 22.1705C8.26884 22.6098 8.98116 22.6098 9.4205 22.1705L20.25 11.341V19.875C20.25 20.4963 20.7537 21 21.375 21C21.9963 21 22.5 20.4963 22.5 19.875V8.625C22.5 8.00368 21.9963 7.5 21.375 7.5H10.125C9.50368 7.5 9 8.00368 9 8.625C9 9.24632 9.50368 9.75 10.125 9.75H18.659L7.8295 20.5795C7.39017 21.0188 7.39017 21.7312 7.8295 22.1705Z" fill="white"/>
+            </svg>
+            <span
+              className="font-poppins text-white text-lg sm:text-xl lg:text-2xl font-medium"
+            >
+              Join Beta
+            </span>
+          </div>
+        </div>
       </div>
 
       {/* Testimonial cards container */}
       <div
-        className="absolute"
-        style={{
-          bottom: '30px',
-          left: '0',
-          width: '100%',
-          overflow: 'hidden'
-        }}
+        className="w-full overflow-hidden pb-8 sm:pb-12"
       >
         <div
+          className="flex gap-4 sm:gap-8 lg:gap-[47px] pl-4 sm:pl-[100px] pause-on-hover cursor-default"
           style={{
-            display: 'flex',
-            gap: '47px',
             animation: 'testimonialScroll 40s linear infinite',
-            paddingLeft: '100px',
             willChange: 'transform'
           }}
         >
-          {/* First set of cards */}
-          <div
-            style={{
-              display: 'flex',
-              width: '279px',
-              minWidth: '279px',
-              height: '267px',
-              padding: '23px 18px 15px 19px',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              borderRadius: '18px',
-              border: '1px solid #FFF',
-              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(153, 153, 153, 0.20) 100%)',
-              boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
-              backdropFilter: 'blur(5px)'
-            }}
-          >
-            <div style={{ width: '242px' }}>
-              &quot;We&apos;ve tried Purpose for entry positions and it works perfect. We were able to reduce manual screening as well as active sourcing. All transfered candidates fit our set criteria.&quot;
-            </div>
+          {/* Testimonial cards - first set */}
+          {[
+            { quote: "We've tried Purpose for entry positions and it works perfect. We were able to reduce manual screening as well as active sourcing. All transfered candidates fit our set criteria.", author: "HR Manager, IT-Consultancy" },
+            { quote: "With entry-mid level talent being scarce these days, Purpose really helped us get exactly what we search for in candidates without huge administration effort.", author: "Head of HR, Automotive Supplier" },
+            { quote: "The candidate transfer to our ATS really helps our recruiters to stay focused and skip juggling multiple platforms at once.", author: "Recruiter, Marketing Agency" },
+            { quote: "It's fair to say that in our opinion Purpose focuses on quality over quantity. We've managed to increase our hiring ration significantly.", author: "Recruiting Lead, Banking Sector" },
+            { quote: "Even though we primarily focus on senior level roles, this system helped us with our more mid-level vacancies.", author: "Junior Recruiter, Cybersecurity" },
+            { quote: "In times of uncertainty and doubt in the labor market platforms like Purpose leave job seekers as well as companies encouraged for the future.", author: "TA Specialist, Manufacturing" },
+            { quote: "Our requirements are generally quite high due to the field we operate in. The automated screening based on our criteria is a huge game-changer for our hiring performance.", author: "Recruiter, Healthcare & Pharma" },
+          ].map((testimonial, index) => (
             <div
-              className="font-poppins"
+              key={index}
+              className="flex-shrink-0 w-[240px] sm:w-[279px] min-w-[240px] sm:min-w-[279px] h-[220px] sm:h-[267px] p-4 sm:p-[23px_18px_15px_19px] flex flex-col justify-between rounded-[18px] border border-white"
               style={{
-                width: '242px',
-                color: '#454545',
-                fontSize: '14px',
-                fontStyle: 'normal',
-                fontWeight: 500,
-                lineHeight: 'normal'
+                background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(153, 153, 153, 0.20) 100%)',
+                boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
+                backdropFilter: 'blur(5px)'
               }}
             >
-              HR Manager, IT-Consultancy
+              <div className="text-sm sm:text-base">&quot;{testimonial.quote}&quot;</div>
+              <div className="font-poppins text-[#454545] text-xs sm:text-sm font-medium">
+                {testimonial.author}
+              </div>
             </div>
-          </div>
-
-          <div
-            style={{
-              display: 'flex',
-              width: '279px',
-              minWidth: '279px',
-              height: '267px',
-              padding: '23px 18px 15px 19px',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              borderRadius: '18px',
-              border: '1px solid #FFF',
-              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(153, 153, 153, 0.20) 100%)',
-              boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
-              backdropFilter: 'blur(5px)'
-            }}
-          >
-            <div style={{ width: '242px' }}>
-              &quot;With entry-mid level talent being scarce these days, Purpose really helped us get exactly what we search for in candidates without huge administration effort.&quot;
-            </div>
-            <div
-              className="font-poppins"
-              style={{
-                width: '242px',
-                color: '#454545',
-                fontSize: '14px',
-                fontStyle: 'normal',
-                fontWeight: 500,
-                lineHeight: 'normal'
-              }}
-            >
-              Head of HR, Automotive Supplier
-            </div>
-          </div>
-
-          <div
-            style={{
-              display: 'flex',
-              width: '279px',
-              minWidth: '279px',
-              height: '267px',
-              padding: '23px 18px 15px 19px',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              borderRadius: '18px',
-              border: '1px solid #FFF',
-              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(153, 153, 153, 0.20) 100%)',
-              boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
-              backdropFilter: 'blur(5px)'
-            }}
-          >
-            <div style={{ width: '242px' }}>
-              &quot;The candidate transfer to our ATS really helps our recruiters to stay focused and skip juggling multiple platforms at once.&quot;
-            </div>
-            <div
-              className="font-poppins"
-              style={{
-                width: '242px',
-                color: '#454545',
-                fontSize: '14px',
-                fontStyle: 'normal',
-                fontWeight: 500,
-                lineHeight: 'normal'
-              }}
-            >
-              Recruiter, Marketing Agency
-            </div>
-          </div>
-
-          <div
-            style={{
-              display: 'flex',
-              width: '279px',
-              minWidth: '279px',
-              height: '267px',
-              padding: '23px 18px 15px 19px',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              borderRadius: '18px',
-              border: '1px solid #FFF',
-              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(153, 153, 153, 0.20) 100%)',
-              boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
-              backdropFilter: 'blur(5px)'
-            }}
-          >
-            <div style={{ width: '242px' }}>
-              &quot;It&apos;s fair to say that in our opinion Purpose focuses on quality over quantity. We&apos;ve managed to increase our hiring ration significantly.&quot;
-            </div>
-            <div
-              className="font-poppins"
-              style={{
-                width: '242px',
-                color: '#454545',
-                fontSize: '14px',
-                fontStyle: 'normal',
-                fontWeight: 500,
-                lineHeight: 'normal'
-              }}
-            >
-              Recruiting Lead, Banking Sector
-            </div>
-          </div>
-
-          <div
-            style={{
-              display: 'flex',
-              width: '279px',
-              minWidth: '279px',
-              height: '267px',
-              padding: '23px 18px 15px 19px',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              borderRadius: '18px',
-              border: '1px solid #FFF',
-              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(153, 153, 153, 0.20) 100%)',
-              boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
-              backdropFilter: 'blur(5px)'
-            }}
-          >
-            <div style={{ width: '242px' }}>
-              &quot;Even though we primarily focus on senior level roles, this system helped us with our more mid-level vacancies.&quot;
-            </div>
-            <div
-              className="font-poppins"
-              style={{
-                width: '242px',
-                color: '#454545',
-                fontSize: '14px',
-                fontStyle: 'normal',
-                fontWeight: 500,
-                lineHeight: 'normal'
-              }}
-            >
-              Junior Recruiter, Cybersecurity
-            </div>
-          </div>
-
-          <div
-            style={{
-              display: 'flex',
-              width: '279px',
-              minWidth: '279px',
-              height: '267px',
-              padding: '23px 18px 15px 19px',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              borderRadius: '18px',
-              border: '1px solid #FFF',
-              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(153, 153, 153, 0.20) 100%)',
-              boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
-              backdropFilter: 'blur(5px)'
-            }}
-          >
-            <div style={{ width: '242px' }}>
-              &quot;In times of uncertainty and doubt in the labor market platforms like Purpose leave job seekers as well as companies encouraged for the future.&quot;
-            </div>
-            <div
-              className="font-poppins"
-              style={{
-                width: '242px',
-                color: '#454545',
-                fontSize: '14px',
-                fontStyle: 'normal',
-                fontWeight: 500,
-                lineHeight: 'normal'
-              }}
-            >
-              TA Specialist, Manufacturing
-            </div>
-          </div>
-
-          <div
-            style={{
-              display: 'flex',
-              width: '279px',
-              minWidth: '279px',
-              height: '267px',
-              padding: '23px 18px 15px 19px',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              borderRadius: '18px',
-              border: '1px solid #FFF',
-              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(153, 153, 153, 0.20) 100%)',
-              boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
-              backdropFilter: 'blur(5px)'
-            }}
-          >
-            <div style={{ width: '242px' }}>
-              &quot;Our requirements are generally quite high due to the field we operate in. The automated screening based on our criteria is a huge game-changer for our hiring performance.&quot;
-            </div>
-            <div
-              className="font-poppins"
-              style={{
-                width: '242px',
-                color: '#454545',
-                fontSize: '14px',
-                fontStyle: 'normal',
-                fontWeight: 500,
-                lineHeight: 'normal'
-              }}
-            >
-              Recruiter, Healthcare &amp; Pharma
-            </div>
-          </div>
+          ))}
 
           {/* Duplicate set for seamless infinite scroll */}
-          <div
-            style={{
-              display: 'flex',
-              width: '279px',
-              minWidth: '279px',
-              height: '267px',
-              padding: '23px 18px 15px 19px',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              borderRadius: '18px',
-              border: '1px solid #FFF',
-              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(153, 153, 153, 0.20) 100%)',
-              boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
-              backdropFilter: 'blur(5px)'
-            }}
-          >
-            <div style={{ width: '242px' }}>
-              &quot;We&apos;ve tried Purpose for entry positions and it works perfect. We were able to reduce manual screening as well as active sourcing. All transfered candidates fit our set criteria.&quot;
-            </div>
+          {[
+            { quote: "We've tried Purpose for entry positions and it works perfect. We were able to reduce manual screening as well as active sourcing. All transfered candidates fit our set criteria.", author: "HR Manager, IT-Consultancy" },
+            { quote: "With entry-mid level talent being scarce these days, Purpose really helped us get exactly what we search for in candidates without huge administration effort.", author: "Head of HR, Automotive Supplier" },
+            { quote: "The candidate transfer to our ATS really helps our recruiters to stay focused and skip juggling multiple platforms at once.", author: "Recruiter, Marketing Agency" },
+            { quote: "It's fair to say that in our opinion Purpose focuses on quality over quantity. We've managed to increase our hiring ration significantly.", author: "Recruiting Lead, Banking Sector" },
+            { quote: "Even though we primarily focus on senior level roles, this system helped us with our more mid-level vacancies.", author: "Junior Recruiter, Cybersecurity" },
+            { quote: "In times of uncertainty and doubt in the labor market platforms like Purpose leave job seekers as well as companies encouraged for the future.", author: "TA Specialist, Manufacturing" },
+            { quote: "Our requirements are generally quite high due to the field we operate in. The automated screening based on our criteria is a huge game-changer for our hiring performance.", author: "Recruiter, Healthcare & Pharma" },
+          ].map((testimonial, index) => (
             <div
-              className="font-poppins"
+              key={`dup-${index}`}
+              className="flex-shrink-0 w-[240px] sm:w-[279px] min-w-[240px] sm:min-w-[279px] h-[220px] sm:h-[267px] p-4 sm:p-[23px_18px_15px_19px] flex flex-col justify-between rounded-[18px] border border-white"
               style={{
-                width: '242px',
-                color: '#454545',
-                fontSize: '14px',
-                fontStyle: 'normal',
-                fontWeight: 500,
-                lineHeight: 'normal'
+                background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(153, 153, 153, 0.20) 100%)',
+                boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
+                backdropFilter: 'blur(5px)'
               }}
             >
-              HR Manager, IT-Consultancy
+              <div className="text-sm sm:text-base">&quot;{testimonial.quote}&quot;</div>
+              <div className="font-poppins text-[#454545] text-xs sm:text-sm font-medium">
+                {testimonial.author}
+              </div>
             </div>
-          </div>
-
-          <div
-            style={{
-              display: 'flex',
-              width: '279px',
-              minWidth: '279px',
-              height: '267px',
-              padding: '23px 18px 15px 19px',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              borderRadius: '18px',
-              border: '1px solid #FFF',
-              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(153, 153, 153, 0.20) 100%)',
-              boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
-              backdropFilter: 'blur(5px)'
-            }}
-          >
-            <div style={{ width: '242px' }}>
-              &quot;With entry-mid level talent being scarce these days, Purpose really helped us get exactly what we search for in candidates without huge administration effort.&quot;
-            </div>
-            <div
-              className="font-poppins"
-              style={{
-                width: '242px',
-                color: '#454545',
-                fontSize: '14px',
-                fontStyle: 'normal',
-                fontWeight: 500,
-                lineHeight: 'normal'
-              }}
-            >
-              Head of HR, Automotive Supplier
-            </div>
-          </div>
-
-          <div
-            style={{
-              display: 'flex',
-              width: '279px',
-              minWidth: '279px',
-              height: '267px',
-              padding: '23px 18px 15px 19px',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              borderRadius: '18px',
-              border: '1px solid #FFF',
-              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(153, 153, 153, 0.20) 100%)',
-              boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
-              backdropFilter: 'blur(5px)'
-            }}
-          >
-            <div style={{ width: '242px' }}>
-              &quot;The candidate transfer to our ATS really helps our recruiters to stay focused and skip juggling multiple platforms at once.&quot;
-            </div>
-            <div
-              className="font-poppins"
-              style={{
-                width: '242px',
-                color: '#454545',
-                fontSize: '14px',
-                fontStyle: 'normal',
-                fontWeight: 500,
-                lineHeight: 'normal'
-              }}
-            >
-              Recruiter, Marketing Agency
-            </div>
-          </div>
-
-          <div
-            style={{
-              display: 'flex',
-              width: '279px',
-              minWidth: '279px',
-              height: '267px',
-              padding: '23px 18px 15px 19px',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              borderRadius: '18px',
-              border: '1px solid #FFF',
-              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(153, 153, 153, 0.20) 100%)',
-              boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
-              backdropFilter: 'blur(5px)'
-            }}
-          >
-            <div style={{ width: '242px' }}>
-              &quot;It&apos;s fair to say that in our opinion Purpose focuses on quality over quantity. We&apos;ve managed to increase our hiring ration significantly.&quot;
-            </div>
-            <div
-              className="font-poppins"
-              style={{
-                width: '242px',
-                color: '#454545',
-                fontSize: '14px',
-                fontStyle: 'normal',
-                fontWeight: 500,
-                lineHeight: 'normal'
-              }}
-            >
-              Recruiting Lead, Banking Sector
-            </div>
-          </div>
-
-          <div
-            style={{
-              display: 'flex',
-              width: '279px',
-              minWidth: '279px',
-              height: '267px',
-              padding: '23px 18px 15px 19px',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              borderRadius: '18px',
-              border: '1px solid #FFF',
-              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(153, 153, 153, 0.20) 100%)',
-              boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
-              backdropFilter: 'blur(5px)'
-            }}
-          >
-            <div style={{ width: '242px' }}>
-              &quot;Even though we primarily focus on senior level roles, this system helped us with our more mid-level vacancies.&quot;
-            </div>
-            <div
-              className="font-poppins"
-              style={{
-                width: '242px',
-                color: '#454545',
-                fontSize: '14px',
-                fontStyle: 'normal',
-                fontWeight: 500,
-                lineHeight: 'normal'
-              }}
-            >
-              Junior Recruiter, Cybersecurity
-            </div>
-          </div>
-
-          <div
-            style={{
-              display: 'flex',
-              width: '279px',
-              minWidth: '279px',
-              height: '267px',
-              padding: '23px 18px 15px 19px',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              borderRadius: '18px',
-              border: '1px solid #FFF',
-              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(153, 153, 153, 0.20) 100%)',
-              boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
-              backdropFilter: 'blur(5px)'
-            }}
-          >
-            <div style={{ width: '242px' }}>
-              &quot;In times of uncertainty and doubt in the labor market platforms like Purpose leave job seekers as well as companies encouraged for the future.&quot;
-            </div>
-            <div
-              className="font-poppins"
-              style={{
-                width: '242px',
-                color: '#454545',
-                fontSize: '14px',
-                fontStyle: 'normal',
-                fontWeight: 500,
-                lineHeight: 'normal'
-              }}
-            >
-              TA Specialist, Manufacturing
-            </div>
-          </div>
-
-          <div
-            style={{
-              display: 'flex',
-              width: '279px',
-              minWidth: '279px',
-              height: '267px',
-              padding: '23px 18px 15px 19px',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              borderRadius: '18px',
-              border: '1px solid #FFF',
-              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(153, 153, 153, 0.20) 100%)',
-              boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
-              backdropFilter: 'blur(5px)'
-            }}
-          >
-            <div style={{ width: '242px' }}>
-              &quot;Our requirements are generally quite high due to the field we operate in. The automated screening based on our criteria is a huge game-changer for our hiring performance.&quot;
-            </div>
-            <div
-              className="font-poppins"
-              style={{
-                width: '242px',
-                color: '#454545',
-                fontSize: '14px',
-                fontStyle: 'normal',
-                fontWeight: 500,
-                lineHeight: 'normal'
-              }}
-            >
-              Recruiter, Healthcare &amp; Pharma
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

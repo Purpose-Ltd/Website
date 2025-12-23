@@ -95,9 +95,137 @@ export default function AboutPage() {
       {/* About Us Content Section */}
       <section className="relative w-full flex items-center justify-center px-4 sm:px-8 bg-white" style={{ paddingTop: '140px', paddingBottom: '40px' }}>
         <div className="relative w-full max-w-[1552px] flex justify-center">
-          {/* Content Box */}
+
+          {/* MOBILE Content Box - only shows on screens < 1024px */}
           <div
-            className="flex-shrink-0 flex flex-col items-center px-12"
+            className="lg:hidden w-full flex flex-col items-center px-4 sm:px-8 py-12 rounded-[30px] border border-white overflow-hidden"
+            style={{
+              background: 'linear-gradient(180deg, #EEE9FC 0%, #D3E3FF 50%, #DDFCF6 100%)',
+              backdropFilter: 'blur(5px)'
+            }}
+          >
+            {/* Mobile Title */}
+            <h1
+              className="text-center font-poppins text-2xl sm:text-3xl md:text-4xl font-bold leading-[120%] text-[#454545] px-4"
+            >
+              <span
+                style={{
+                  background: 'linear-gradient(180deg, #574AFF 0%, #508FFF 100%)',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent'
+                }}
+              >
+                Beyond
+              </span>
+              {' outdated hiring, '}
+              <span
+                style={{
+                  background: 'linear-gradient(180deg, #574AFF 0%, #508FFF 100%)',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent'
+                }}
+              >
+                built
+              </span>
+              {' for '}
+              <span
+                style={{
+                  background: 'radial-gradient(169.11% 136.3% at 17.79% 0%, #5323E5 0%, #5472FF 38.13%, #6DC9D8 81.27%, #72E0DA 92.1%, #6DECD3 100%)',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent'
+                }}
+              >
+                intelligent recruiting
+              </span>
+              .
+            </h1>
+
+            {/* Mobile About us heading */}
+            <h2 className="font-poppins text-3xl sm:text-4xl font-bold text-[#454545] text-center mt-12">
+              About us
+            </h2>
+
+            {/* Mobile About us description */}
+            <p className="font-poppins text-base sm:text-lg md:text-xl font-medium text-[#454545] leading-normal text-center mt-6 px-4 max-w-2xl">
+              At Purpose, we&apos;re building the future of hiring.
+              Munich-based, globally minded - we&apos;re creating a world where talent discovery happens instantly, applications are effortless, and great careers begin with a single tap.
+            </p>
+
+            {/* Mobile Contact button */}
+            <div
+              className="hover:scale-[1.02] transition-transform duration-300 cursor-pointer flex items-center justify-center px-8 py-3 rounded-[18px] border border-white mt-8"
+              style={{
+                background: 'linear-gradient(90deg, #213D83 0%, #4F647D 100%)',
+                boxShadow: '0 6px 4px 0 rgba(0, 0, 0, 0.25)'
+              }}
+            >
+              <span className="font-poppins text-white text-xl sm:text-2xl font-medium">
+                Contact us
+              </span>
+            </div>
+
+            {/* Mobile Founding Team heading */}
+            <h2 className="font-poppins text-3xl sm:text-4xl font-bold text-[#454545] text-center mt-16">
+              Founding Team
+            </h2>
+
+            {/* Mobile Team members */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-12 mt-8">
+              {/* Gregor */}
+              <div className="flex flex-col items-center">
+                <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-[#D9D9D9] flex items-center justify-center">
+                  <img
+                    src="/gregorkobilarov.jpeg"
+                    alt="Gregor Kobilarov"
+                    className="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover"
+                  />
+                </div>
+                <div className="font-inter text-lg sm:text-xl font-bold text-[#454545] text-center mt-4">
+                  Gregor Kobilarov
+                </div>
+                <div className="font-inter text-sm sm:text-base font-medium text-[#454545] text-center mt-1">
+                  Chief Technology Officer
+                </div>
+              </div>
+
+              {/* Lukas */}
+              <div className="flex flex-col items-center">
+                <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-[#D9D9D9] flex items-center justify-center">
+                  <img
+                    src="/lukasfaber.jpeg"
+                    alt="Lukas Faber"
+                    className="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover"
+                  />
+                </div>
+                <div className="font-inter text-lg sm:text-xl font-bold text-[#454545] text-center mt-4">
+                  Lukas Faber
+                </div>
+                <div className="font-inter text-sm sm:text-base font-medium text-[#454545] text-center mt-1">
+                  Chief Executive Officer
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile Team description */}
+            <p
+              className="font-poppins text-sm sm:text-base md:text-lg font-medium text-center max-w-2xl mt-8 px-4 leading-normal"
+              style={{
+                background: 'linear-gradient(137deg, #11314A 7.48%, #9A76F4 94.06%)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent'
+              }}
+            >
+              Purpose is developed by a diverse team of machine learning engineers, backend and frontend developers, and designers from around the world. Based in Munich but bringing global perspectives, we&apos;re combining technical expertise with international insights to revolutionize recruiting technology for both candidates and employers.
+            </p>
+          </div>
+
+          {/* DESKTOP Content Box - only shows on screens >= 1024px (unchanged from original) */}
+          <div
+            className="hidden lg:flex flex-shrink-0 flex-col items-center px-12"
             style={{
               width: '1760px',
               minHeight: '2200px',
@@ -564,9 +692,53 @@ Munich-based, globally minded - we&apos;re creating a world where talent discove
       {/* Imprint Section */}
       <section id="imprint" className="relative w-full flex items-center justify-center px-4 sm:px-8 bg-white" style={{ paddingTop: '15px', paddingBottom: '80px' }}>
         <div className="relative w-full max-w-[1552px] flex justify-center">
-          {/* Imprint Box */}
+
+          {/* MOBILE Imprint Box - only shows on screens < 1024px */}
           <div
-            className="flex-shrink-0 flex items-center justify-between px-12 py-8"
+            className="lg:hidden w-full flex flex-col items-center gap-8 px-6 py-8 rounded-[30px] border border-white"
+            style={{
+              background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.80) 0%, rgba(153, 153, 153, 0.80) 100%)',
+              backdropFilter: 'blur(5px)',
+              color: '#454545'
+            }}
+          >
+            <div className="scale-90">
+              <PurposeLogo />
+            </div>
+            <div className="text-[#454545] font-helvetica text-sm leading-[120%] text-center">
+              Purpose UG (haftungsbeschränkt)<br />
+              Seidl-Kreuz-Weg 94<br />
+              85737 Ismaning<br />
+              Germany
+            </div>
+            <div className="text-[#454545] text-center font-helvetica text-sm leading-[120%]">
+              <div className="font-bold">Registered Office</div>
+              <div className="mt-2">
+                Ismaning - HRB Munich 292052<br />
+                Tax number: 143/173/60143<br />
+                VAT ID No.: DE368116002
+              </div>
+            </div>
+            <div className="flex flex-col items-center gap-2">
+              <div className="text-[#454545] font-helvetica text-base font-bold">Legal</div>
+              <a href="/terms-and-conditions" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
+                Terms & Conditions
+              </a>
+              <a href="/imprint" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
+                Imprint
+              </a>
+              <a href="/privacy-policy" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
+                Privacy Policy
+              </a>
+            </div>
+            <div className="text-[#454545] font-helvetica text-[10px]">
+              © Purpose, 2025
+            </div>
+          </div>
+
+          {/* DESKTOP Imprint Box - only shows on screens >= 1024px (unchanged from original) */}
+          <div
+            className="hidden lg:flex flex-shrink-0 items-center justify-between px-12 py-8"
             style={{
               width: '1760px',
               height: '220px',

@@ -6,6 +6,10 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .pause-on-hover:hover {
+    animation-play-state: paused !important;
+  }
 }
 
 @layer base {
@@ -110,6 +114,27 @@
   ::-moz-selection {
     background-color: #5E60FF;
     color: #FFFFFF;
+  }
+
+  /* Performance: GPU acceleration for animated elements */
+  [class*="animate-wobble"],
+  [class*="animate-float"],
+  [class*="animate-fade"],
+  [class*="animate-bounce"] {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /* Reduce animation on reduced-motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
