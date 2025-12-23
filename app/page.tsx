@@ -1039,7 +1039,7 @@ export default function Home() {
             </p>
 
             {/* Mobile phone mockup */}
-            <div className="relative mb-8">
+            <div className="relative mb-8 rounded-[40px] overflow-hidden">
               <img
                 src={
                   applyManageOpen
@@ -1168,25 +1168,30 @@ export default function Home() {
           </div>
 
           {/* Desktop: Animated phone mockup */}
-          <img
-            src={
-              applyManageOpen
-                ? "/matches.gif"
-                : tweakPreferencesOpen
-                  ? "/preferences.gif"
-                  : uploadCVOpen
-                    ? "/Gif4.gif"
-                    : "/login.gif"
-            }
-            alt="Phone animation"
-            className="hidden lg:block absolute flex-shrink-0 transition-opacity duration-300"
+          <div
+            className="hidden lg:block absolute flex-shrink-0 overflow-hidden"
             style={{
               top: 'calc(63.5px + 184px)',
               left: 'calc(-104px + 212.42px)',
               width: '294px',
-              height: '607px'
+              height: '607px',
+              borderRadius: '50px'
             }}
-          />
+          >
+            <img
+              src={
+                applyManageOpen
+                  ? "/matches.gif"
+                  : tweakPreferencesOpen
+                    ? "/preferences.gif"
+                    : uploadCVOpen
+                      ? "/Gif4.gif"
+                      : "/login.gif"
+              }
+              alt="Phone animation"
+              className="w-full h-full object-cover transition-opacity duration-300"
+            />
+          </div>
 
           {/* Download here text */}
           <p
