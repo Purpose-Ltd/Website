@@ -36,85 +36,76 @@ export default function Home() {
     }, 700)
   }
 
-  // Handle scroll-triggered animation with viewport locking
+  // Skip animation function - allows users to skip via click or keyboard
+  const skipAnimation = () => {
+    if (!circlesInPosition) {
+      setScrollProgress(1)
+      setCirclesInPosition(true)
+      setShowContent(true)
+      setTimeout(() => {
+        document.body.style.overflow = 'auto'
+        document.body.style.position = ''
+        document.body.style.width = ''
+        setScrollEnabled(true)
+      }, 100)
+    }
+  }
+
+  // Automatic loading animation - no scroll required
   useEffect(() => {
-    let animationComplete = false
-    let scrollAccumulator = 0
-    let lastScrollTime = Date.now()
+    // Lock body scroll during animation
+    document.body.style.overflow = 'hidden'
+    document.body.style.position = 'fixed'
+    document.body.style.width = '100%'
 
-    const handleWheel = (e: WheelEvent) => {
-      // Block ALL scrolling until animation is complete
-      if (!scrollEnabled) {
-        e.preventDefault()
+    // Automatic progress animation using requestAnimationFrame for smooth 60fps
+    const ANIMATION_DURATION = 2500 // 2.5 seconds total
+    const startTime = performance.now()
+    let animationFrame: number
 
-        // Only process downward scrolls for animation if circles aren't in position
-        if (!circlesInPosition && e.deltaY > 0) {
-          const currentTime = Date.now()
-          const timeDelta = currentTime - lastScrollTime
-          lastScrollTime = currentTime
+    const animate = (currentTime: number) => {
+      const elapsed = currentTime - startTime
+      const progress = Math.min(elapsed / ANIMATION_DURATION, 1)
 
-          // Calculate current progress before applying new scroll
-          const currentProgress = scrollAccumulator / 400
+      // Ease-out curve for natural deceleration
+      const easedProgress = 1 - Math.pow(1 - progress, 3)
+      setScrollProgress(easedProgress)
 
-          // Progressive speed limiting: slower near the end (after 85% progress)
-          let speedCap = 50 // Default: allow faster scrolling in the beginning
-          if (currentProgress > 0.85) {
-            // Drastically slow down in final 15% to prevent rushing through the end
-            speedCap = 12
-          } else if (currentProgress > 0.7) {
-            // Moderate slowdown after 70%
-            speedCap = 30
-          }
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate)
+      } else {
+        // Animation complete
+        setCirclesInPosition(true)
+        setShowContent(true)
 
-          const cappedDelta = Math.min(e.deltaY, speedCap)
-
-          // Only update if enough time has passed (throttle to 60fps max)
-          if (timeDelta >= 16) {
-            // Accumulate scroll amount with capped delta
-            scrollAccumulator += cappedDelta
-
-            // Calculate progress based on accumulated scroll
-            const progress = Math.min(scrollAccumulator / 400, 1) // 400px of scroll = full animation
-            setScrollProgress(progress)
-
-            // When animation completes
-            if (progress >= 1 && !animationComplete) {
-              animationComplete = true
-              setCirclesInPosition(true)
-
-              // Show content immediately
-              setShowContent(true)
-
-              // Enable scroll immediately after transition completes
-              setTimeout(() => {
-                document.body.style.overflow = 'auto'
-                document.body.style.position = ''
-                document.body.style.width = ''
-                setScrollEnabled(true)
-              }, 2600) // Just 100ms after transition completes
-            }
-          }
-        }
+        // Enable scroll after circle transition
+        setTimeout(() => {
+          document.body.style.overflow = 'auto'
+          document.body.style.position = ''
+          document.body.style.width = ''
+          setScrollEnabled(true)
+        }, 2600)
       }
     }
 
-    // Lock body scroll initially if animation hasn't completed
-    if (!circlesInPosition) {
-      document.body.style.overflow = 'hidden'
-      document.body.style.position = 'fixed'
-      document.body.style.width = '100%'
-    }
+    animationFrame = requestAnimationFrame(animate)
 
-    window.addEventListener('wheel', handleWheel, { passive: false })
+    // Allow keyboard skip (Enter or Space)
+    const handleKeydown = (e: KeyboardEvent) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        skipAnimation()
+      }
+    }
+    window.addEventListener('keydown', handleKeydown)
 
     return () => {
-      window.removeEventListener('wheel', handleWheel)
-      // Cleanup: ensure scroll is re-enabled
+      cancelAnimationFrame(animationFrame)
+      window.removeEventListener('keydown', handleKeydown)
       document.body.style.overflow = 'auto'
       document.body.style.position = ''
       document.body.style.width = ''
     }
-  }, [circlesInPosition, scrollEnabled])
+  }, [])
 
   // Track if user is on hero section
   useEffect(() => {
@@ -140,21 +131,25 @@ export default function Home() {
 
   return (
     <div className="min-h-screen overflow-x-hidden">
-      {/* Scroll Progress Indicator */}
-      {!circlesInPosition && scrollProgress > 0 && (
-        <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 z-50 bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg">
+      {/* Loading Progress Indicator - Clickable to skip */}
+      {!circlesInPosition && (
+        <button
+          onClick={skipAnimation}
+          className="fixed bottom-10 left-1/2 transform -translate-x-1/2 z-50 bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg cursor-pointer hover:bg-white transition-colors group"
+          aria-label="Click to skip animation"
+        >
           <div className="flex items-center gap-3">
-            <div className="w-32 h-1 bg-gray-200 rounded-full overflow-hidden">
+            <div className="w-32 sm:w-40 h-1.5 bg-gray-200 rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-[#5323E5] to-[#6DECD3] transition-all duration-300"
+                className="h-full bg-gradient-to-r from-[#5323E5] to-[#6DECD3]"
                 style={{ width: `${scrollProgress * 100}%` }}
               />
             </div>
-            <span className="text-sm font-medium text-gray-600">
-              {Math.round(scrollProgress * 100)}%
+            <span className="text-xs sm:text-sm font-medium text-gray-600 group-hover:text-gray-800 whitespace-nowrap">
+              {scrollProgress < 1 ? 'Click to skip' : 'Loading...'}
             </span>
           </div>
-        </div>
+        </button>
       )}
 
       {/* Scroll Available Indicator - Only visible on hero section */}
@@ -186,9 +181,9 @@ export default function Home() {
       {/* Gradient wrapper spanning both Hero and Summary sections */}
       <div style={{ background: 'linear-gradient(180deg, #EEE9FC 0%, #D3E3FF 50%, #DDFCF6 100%)', borderRadius: '12px' }}>
         {/* Hero Section - First Screen */}
-      <div className="relative w-full min-h-screen lg:h-[1054px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0">
-        {/* Hero content container - Responsive */}
-        <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:h-[1054px]">
+      <div className="relative w-full min-h-screen lg:min-h-[900px] xl:min-h-[1000px] 2xl:min-h-[1054px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0">
+        {/* Hero content container - Responsive with clamped height */}
+        <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:min-h-[900px] xl:min-h-[1000px] 2xl:min-h-[1054px]">
           {/* Header inside 1552px container */}
           <Header />
             {/* Decorative circles on the right - hidden on mobile */}

@@ -49,45 +49,31 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Desktop navigation - Absolute positioning */}
-          <a
-            href="#individuals"
-            className="hidden lg:block absolute text-xl xl:text-2xl font-bold leading-6 text-[#120C2B] hover:bg-radial-1 hover:bg-clip-text hover:text-transparent hover:[-webkit-background-clip:text] hover:[-webkit-text-fill-color:transparent] transition-all opacity-0 animate-fade-in-delay-1 cursor-pointer"
-            style={{
-              left: '187px',
-              top: '30px'
-            }}
-          >
-            Individuals
-          </a>
-          <a
-            href="#companies"
-            className="hidden lg:block absolute text-xl xl:text-2xl font-bold leading-6 text-[#120C2B] hover:bg-radial-1 hover:bg-clip-text hover:text-transparent hover:[-webkit-background-clip:text] hover:[-webkit-text-fill-color:transparent] transition-all opacity-0 animate-fade-in-delay-2 cursor-pointer"
-            style={{
-              left: '370.94px',
-              top: '30px'
-            }}
-          >
-            Companies
-          </a>
-          <Link
-            href="/about"
-            className="hidden lg:block absolute text-xl xl:text-2xl font-bold leading-6 text-[#120C2B] hover:bg-radial-1 hover:bg-clip-text hover:text-transparent hover:[-webkit-background-clip:text] hover:[-webkit-text-fill-color:transparent] transition-all opacity-0 animate-fade-in-delay-2 cursor-pointer"
-            style={{
-              left: '559.8px',
-              top: '30px'
-            }}
-          >
-            About us
-          </Link>
+          {/* Desktop navigation - Flexbox for responsive spacing */}
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 absolute left-[200px] xl:left-[220px] 2xl:left-[240px] top-[28px]">
+            <a
+              href="#individuals"
+              className="text-lg xl:text-xl 2xl:text-2xl font-bold leading-6 text-[#120C2B] hover:bg-radial-1 hover:bg-clip-text hover:text-transparent hover:[-webkit-background-clip:text] hover:[-webkit-text-fill-color:transparent] transition-all opacity-0 animate-fade-in-delay-1 cursor-pointer whitespace-nowrap"
+            >
+              Individuals
+            </a>
+            <a
+              href="#companies"
+              className="text-lg xl:text-xl 2xl:text-2xl font-bold leading-6 text-[#120C2B] hover:bg-radial-1 hover:bg-clip-text hover:text-transparent hover:[-webkit-background-clip:text] hover:[-webkit-text-fill-color:transparent] transition-all opacity-0 animate-fade-in-delay-2 cursor-pointer whitespace-nowrap"
+            >
+              Companies
+            </a>
+            <Link
+              href="/about"
+              className="text-lg xl:text-xl 2xl:text-2xl font-bold leading-6 text-[#120C2B] hover:bg-radial-1 hover:bg-clip-text hover:text-transparent hover:[-webkit-background-clip:text] hover:[-webkit-text-fill-color:transparent] transition-all opacity-0 animate-fade-in-delay-2 cursor-pointer whitespace-nowrap"
+            >
+              About us
+            </Link>
+          </nav>
 
-          {/* CTA Button - Absolute positioning */}
+          {/* CTA Button - Responsive positioning */}
           <div
-            className="hidden lg:block absolute opacity-0 animate-fade-in-delay-3"
-            style={{
-              top: '20px',
-              right: '-80px'
-            }}
+            className="hidden lg:block absolute opacity-0 animate-fade-in-delay-3 top-[20px] right-[-40px] xl:right-[-60px] 2xl:right-[-80px]"
           >
             <CTAButton href="/cta">Start hiring</CTAButton>
           </div>
