@@ -6,18 +6,35 @@ import { useState, useEffect } from 'react'
 import Header from '@/components/shared/Header'
 
 export default function Home() {
-  const [unfilteredApplicantsOpen, setUnfilteredApplicantsOpen] = useState(false)
-  const [dualLayerMatchingOpen, setDualLayerMatchingOpen] = useState(false)
-  const [filteredCandidatesOpen, setFilteredCandidatesOpen] = useState(false)
   const [openIndividualBox, setOpenIndividualBox] = useState<null | 1 | 2 | 3>(null)
   const [diskRotation, setDiskRotation] = useState(0)
   const [isExpanding, setIsExpanding] = useState(false)
+  const [companiesTab, setCompaniesTab] = useState<'process-flow' | 'platform-view'>('process-flow')
+  const [platformViewIndex, setPlatformViewIndex] = useState(0)
 
-  // Animation states
-  const [scrollProgress, setScrollProgress] = useState(0)
-  const [circlesInPosition, setCirclesInPosition] = useState(false)
-  const [showContent, setShowContent] = useState(false)
-  const [scrollEnabled, setScrollEnabled] = useState(false)
+  // Platform View screenshots data
+  const platformViews = [
+    {
+      image: '/platform-view-0.png',
+      title: 'Process Overview',
+      description: 'Pre-screened talent flows seamlessly from Purpose to your ATS, delivering ideal candidates directly.'
+    },
+    {
+      image: '/platform-view-1.png',
+      title: 'ATS Integration',
+      description: 'Purpose integrates with your existing systems in just a few clicks. Select positions and define criteria.'
+    },
+    {
+      image: '/platform-view-2.png',
+      title: 'Connect your ATS',
+      description: 'Choose your ATS platform and connect in seconds. SmartRecruiters and Personio supported.'
+    }
+  ]
+
+  // Animation states - content shows immediately (no loading animation)
+  const scrollProgress = 1
+  const showContent = true
+  const scrollEnabled = true
   const [isOnHeroSection, setIsOnHeroSection] = useState(true)
 
   // Derived state for compatibility
@@ -36,76 +53,6 @@ export default function Home() {
     }, 700)
   }
 
-  // Skip animation function - allows users to skip via click or keyboard
-  const skipAnimation = () => {
-    if (!circlesInPosition) {
-      setScrollProgress(1)
-      setCirclesInPosition(true)
-      setShowContent(true)
-      setTimeout(() => {
-        document.body.style.overflow = 'auto'
-        document.body.style.position = ''
-        document.body.style.width = ''
-        setScrollEnabled(true)
-      }, 100)
-    }
-  }
-
-  // Automatic loading animation - no scroll required
-  useEffect(() => {
-    // Lock body scroll during animation
-    document.body.style.overflow = 'hidden'
-    document.body.style.position = 'fixed'
-    document.body.style.width = '100%'
-
-    // Automatic progress animation using requestAnimationFrame for smooth 60fps
-    const ANIMATION_DURATION = 2500 // 2.5 seconds total
-    const startTime = performance.now()
-    let animationFrame: number
-
-    const animate = (currentTime: number) => {
-      const elapsed = currentTime - startTime
-      const progress = Math.min(elapsed / ANIMATION_DURATION, 1)
-
-      // Ease-out curve for natural deceleration
-      const easedProgress = 1 - Math.pow(1 - progress, 3)
-      setScrollProgress(easedProgress)
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate)
-      } else {
-        // Animation complete
-        setCirclesInPosition(true)
-        setShowContent(true)
-
-        // Enable scroll after circle transition
-        setTimeout(() => {
-          document.body.style.overflow = 'auto'
-          document.body.style.position = ''
-          document.body.style.width = ''
-          setScrollEnabled(true)
-        }, 2600)
-      }
-    }
-
-    animationFrame = requestAnimationFrame(animate)
-
-    // Allow keyboard skip (Enter or Space)
-    const handleKeydown = (e: KeyboardEvent) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        skipAnimation()
-      }
-    }
-    window.addEventListener('keydown', handleKeydown)
-
-    return () => {
-      cancelAnimationFrame(animationFrame)
-      window.removeEventListener('keydown', handleKeydown)
-      document.body.style.overflow = 'auto'
-      document.body.style.position = ''
-      document.body.style.width = ''
-    }
-  }, [])
 
   // Track if user is on hero section
   useEffect(() => {
@@ -131,27 +78,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen overflow-x-hidden">
-      {/* Loading Progress Indicator - Clickable to skip */}
-      {!circlesInPosition && (
-        <button
-          onClick={skipAnimation}
-          className="fixed bottom-10 left-1/2 transform -translate-x-1/2 z-50 bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg cursor-pointer hover:bg-white transition-colors group"
-          aria-label="Click to skip animation"
-        >
-          <div className="flex items-center gap-3">
-            <div className="w-32 sm:w-40 h-1.5 bg-gray-200 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-gradient-to-r from-[#5323E5] to-[#6DECD3]"
-                style={{ width: `${scrollProgress * 100}%` }}
-              />
-            </div>
-            <span className="text-xs sm:text-sm font-medium text-gray-600 group-hover:text-gray-800 whitespace-nowrap">
-              {scrollProgress < 1 ? 'Click to skip' : 'Loading...'}
-            </span>
-          </div>
-        </button>
-      )}
-
       {/* Scroll Available Indicator - Only visible on hero section */}
       {scrollEnabled && isOnHeroSection && (
         <button
@@ -187,22 +113,37 @@ export default function Home() {
           {/* Header inside 1552px container */}
           <Header />
 
-            {/* Mobile decorative circles - smaller and positioned to not overflow */}
+            {/* Mobile decorative circles - 3 overlapping circles at bottom like design */}
+            {/* Circle 1: Bottom-left - teal to purple gradient */}
             <div
-              className="xl:hidden absolute w-[200px] sm:w-[280px] md:w-[350px] h-[200px] sm:h-[280px] md:h-[350px] rounded-full bg-circle-gradient flex-shrink-0 animate-wobble-1 opacity-60"
+              className="xl:hidden absolute w-[340px] sm:w-[400px] md:w-[450px] h-[340px] sm:h-[400px] md:h-[450px] rounded-full flex-shrink-0 pointer-events-none"
               style={{
-                right: '-50px',
-                top: '15%',
+                left: '-200px',
+                bottom: '5%',
                 transform: 'rotate(134.213deg)',
+                background: 'linear-gradient(90deg, rgba(118, 244, 220, 0.6) 0%, rgba(83, 124, 255, 0.6) 51%, rgba(83, 35, 229, 0.6) 100%)',
                 zIndex: 0
               }}
             />
+            {/* Circle 2: Bottom-center - purple to teal gradient */}
             <div
-              className="xl:hidden absolute w-[150px] sm:w-[200px] md:w-[280px] h-[150px] sm:h-[200px] md:h-[280px] rounded-full bg-circle-gradient-reverse flex-shrink-0 animate-wobble-3 opacity-60"
+              className="xl:hidden absolute w-[340px] sm:w-[400px] md:w-[450px] h-[340px] sm:h-[400px] md:h-[450px] rounded-full flex-shrink-0 pointer-events-none"
               style={{
-                left: '-40px',
-                bottom: '20%',
+                left: '-60px',
+                bottom: '-10%',
                 transform: 'rotate(134.213deg)',
+                background: 'linear-gradient(180deg, rgba(83, 35, 229, 0.6) 0%, rgba(83, 124, 255, 0.6) 49%, rgba(118, 244, 220, 0.6) 100%)',
+                zIndex: 0
+              }}
+            />
+            {/* Circle 3: Upper-left - purple to teal gradient */}
+            <div
+              className="xl:hidden absolute w-[340px] sm:w-[400px] md:w-[450px] h-[340px] sm:h-[400px] md:h-[450px] rounded-full flex-shrink-0 pointer-events-none"
+              style={{
+                left: '-315px',
+                bottom: '22%',
+                transform: 'rotate(134.213deg)',
+                background: 'linear-gradient(180deg, rgba(83, 35, 229, 0.6) 0%, rgba(83, 124, 255, 0.6) 49%, rgba(118, 244, 220, 0.6) 100%)',
                 zIndex: 0
               }}
             />
@@ -404,7 +345,39 @@ export default function Home() {
       </div>
 
       {/* Summary Screen - Below Hero */}
-      <div className="relative w-full min-h-screen lg:min-h-[900px] xl:min-h-[1000px] 2xl:min-h-[1054px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0">
+      <div className="relative w-full min-h-screen lg:min-h-[900px] xl:min-h-[1000px] 2xl:min-h-[1054px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0 overflow-hidden">
+        {/* Mobile decorative circles - 3 overlapping circles */}
+        <div
+          className="xl:hidden absolute w-[340px] h-[340px] rounded-full pointer-events-none"
+          style={{
+            left: '-200px',
+            bottom: '5%',
+            transform: 'rotate(134.213deg)',
+            background: 'linear-gradient(90deg, rgba(118, 244, 220, 0.6) 0%, rgba(83, 124, 255, 0.6) 51%, rgba(83, 35, 229, 0.6) 100%)',
+            zIndex: 0
+          }}
+        />
+        <div
+          className="xl:hidden absolute w-[340px] h-[340px] rounded-full pointer-events-none"
+          style={{
+            left: '-60px',
+            bottom: '-10%',
+            transform: 'rotate(134.213deg)',
+            background: 'linear-gradient(180deg, rgba(83, 35, 229, 0.6) 0%, rgba(83, 124, 255, 0.6) 49%, rgba(118, 244, 220, 0.6) 100%)',
+            zIndex: 0
+          }}
+        />
+        <div
+          className="xl:hidden absolute w-[340px] h-[340px] rounded-full pointer-events-none"
+          style={{
+            left: '-315px',
+            bottom: '22%',
+            transform: 'rotate(134.213deg)',
+            background: 'linear-gradient(180deg, rgba(83, 35, 229, 0.6) 0%, rgba(83, 124, 255, 0.6) 49%, rgba(118, 244, 220, 0.6) 100%)',
+            zIndex: 0
+          }}
+        />
+
         {/* Summary content container - Same dimensions as hero */}
         <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:min-h-[900px] xl:min-h-[1000px] 2xl:min-h-[1054px]">
           {/* Decorative circles on the right - continuing from hero */}
@@ -453,24 +426,24 @@ export default function Home() {
 
           {/* Heading text above boxes - Desktop */}
           <h2
-            className="hidden lg:block absolute w-full lg:max-w-[800px] xl:max-w-[900px] 2xl:max-w-[1018px] flex-shrink-0 text-center font-dm-sans text-3xl lg:text-4xl xl:text-[42px] 2xl:text-[48px] font-bold leading-[120%] text-[#454545] left-1/2 -translate-x-1/2"
+            className="hidden lg:block absolute inset-x-0 mx-auto lg:max-w-[800px] xl:max-w-[900px] 2xl:max-w-[1018px] flex-shrink-0 text-center font-dm-sans text-3xl lg:text-4xl xl:text-[42px] 2xl:text-[48px] font-bold leading-[120%] text-[#454545] opacity-0 animate-fade-in-delay-3"
             style={{
-              top: '17%'
+              top: '10%'
             }}
           >
-            Powered by intelligent{' '}
+            Powered by{' '}
             <span className="bg-radial-1 bg-clip-text text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">
-              automation
+              intelligent automation
             </span>.
           </h2>
 
           {/* Mobile layout - Summary/Automation section */}
           <div className="lg:hidden flex flex-col items-center w-full px-4 py-8">
             {/* Mobile heading */}
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-dm-sans font-bold text-center text-[#454545] mb-8">
-              Powered by intelligent{' '}
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-dm-sans font-bold text-center text-[#454545] mb-8 opacity-0 animate-fade-in-delay-3">
+              Powered by{' '}
               <span className="bg-radial-1 bg-clip-text text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">
-                automation
+                intelligent automation
               </span>.
             </h2>
 
@@ -478,39 +451,124 @@ export default function Home() {
             <div className="flex flex-col gap-4 w-full max-w-sm">
               {/* Card 1: AI Matching Engine */}
               <div
-                className="rounded-3xl p-6 text-center text-white"
-                style={{
-                  background: 'linear-gradient(180deg, #3783AC 0%, #1D0A6F 100%)'
-                }}
+                className="group mobile-feature-card rounded-3xl p-6 text-center transition-all duration-300 hover:-translate-y-2 active:scale-[0.98] cursor-pointer border border-white/60 hover:border-white/80"
               >
-                <div className="text-xl font-bold mb-3">AI Matching Engine</div>
-                <p className="text-sm opacity-80">
+                {/* AI Matching Engine Icon */}
+                <div className="flex justify-center mb-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="48"
+                    height="48"
+                    viewBox="0 0 88 88"
+                    fill="none"
+                    className="transition-all duration-300"
+                  >
+                    <g filter="url(#filter0_d_mobile_1)">
+                      <path d="M9.31239 36.0015C2.29426 41.715 2.16445 50.9209 9.31239 57.7924C9.31239 65.8622 14.5121 71.0135 22.0588 71.0135C23.0849 76.7761 28.3571 80 32.9555 80C37.5539 80 44.0001 77.1601 44.0001 69.6722V61.8187H59.4914C60.3594 61.8187 61.1988 62.1292 61.8579 62.6941L67.7593 67.7522C67.6785 68.1862 67.6363 68.6337 67.6363 69.0911C67.6363 73.1076 70.8924 76.3636 74.9091 76.3636C78.9257 76.3636 82.1818 73.1076 82.1818 69.0911C82.1818 65.0747 78.9257 61.8187 74.9091 61.8187C74.0616 61.8187 73.2481 61.9636 72.4918 62.23L66.591 57.1724C64.6137 55.4777 62.0955 54.5462 59.4914 54.5462H44.0001V43.6375H70.4275C71.685 45.8112 74.0353 47.2737 76.7272 47.2737C80.7439 47.2737 84 44.0177 84 40.0013C84 35.9848 80.7439 32.7288 76.7272 32.7288C74.0353 32.7288 71.685 34.1913 70.4275 36.365H44.0001V25.4563H59.4914C62.0955 25.4563 64.6137 24.5248 66.591 22.8301L72.4918 17.7725C73.248 18.0389 74.0616 18.1838 74.9091 18.1838C78.9257 18.1838 82.1818 14.9278 82.1818 10.9114C82.1818 6.8949 78.9257 3.6389 74.9091 3.6389C70.8924 3.6389 67.6363 6.8949 67.6363 10.9114C67.6363 11.3688 67.6785 11.8163 67.7593 12.2503L61.8579 17.3084C61.1988 17.8733 60.3594 18.1838 59.4914 18.1838H44.0001V9.00038C44.0001 5.00021 39.9556 0 33.9552 0C27.9547 0 23.9542 5.00799 23.9543 9.00038C18.9717 10.5707 15.299 14.2298 15.299 19.9362C9.8792 22.6147 6.44597 29.1399 9.31239 36.0015Z" fill="url(#paint0_linear_mobile_1)"/>
+                    </g>
+                    <defs>
+                      <filter id="filter0_d_mobile_1" x="0" y="0" width="88" height="88" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                        <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                        <feOffset dy="4"/>
+                        <feGaussianBlur stdDeviation="2"/>
+                        <feComposite in2="hardAlpha" operator="out"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_mobile_1"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_mobile_1" result="shape"/>
+                      </filter>
+                      <linearGradient id="paint0_linear_mobile_1" x1="84" y1="40" x2="4" y2="40" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="white"/>
+                        <stop offset="1" stopColor="#1909FE"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <div className="text-lg font-bold mb-2 text-[#1E1B4B] group-hover:text-white transition-colors duration-300">AI Matching Engine</div>
+                <p className="text-sm text-[#4B5563] group-hover:text-white/80 transition-colors duration-300">
                   Deep learning algorithms connect job seekers with relevant opportunities and employers with qualified candidates.
                 </p>
               </div>
 
               {/* Card 2: Automated System */}
               <div
-                className="rounded-3xl p-6 text-center text-white"
-                style={{
-                  background: 'linear-gradient(180deg, #3783AC 0%, #1D0A6F 100%)'
-                }}
+                className="group mobile-feature-card rounded-3xl p-6 text-center transition-all duration-300 hover:-translate-y-2 active:scale-[0.98] cursor-pointer border border-white/60 hover:border-white/80"
               >
-                <div className="text-xl font-bold mb-3">Automated System</div>
-                <p className="text-sm opacity-80">
+                {/* Automated System Icon */}
+                <div className="flex justify-center mb-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="48"
+                    height="48"
+                    viewBox="0 0 80 80"
+                    fill="none"
+                  >
+                    <path d="M41.2597 5.34055C40.4813 4.88648 39.5187 4.88648 38.7403 5.34055L10 22.1057L40 39.6057L70 22.1057L41.2597 5.34055Z" fill="url(#paint0_linear_mobile_2)"/>
+                    <path d="M72.5 26.4359L42.5 43.9359V73.9359L71.2597 57.1594C72.0277 56.7114 72.5 55.8892 72.5 55V26.4359Z" fill="url(#paint1_linear_mobile_2)"/>
+                    <path d="M37.5 73.9359V43.9359L7.5 26.4359V55C7.5 55.8892 7.97228 56.7114 8.74032 57.1594L37.5 73.9359Z" fill="url(#paint2_linear_mobile_2)"/>
+                    <defs>
+                      <linearGradient id="paint0_linear_mobile_2" x1="7.5" y1="39.468" x2="72.5" y2="39.468" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#6366F1"/>
+                        <stop offset="1" stopColor="#8B5CF6"/>
+                      </linearGradient>
+                      <linearGradient id="paint1_linear_mobile_2" x1="7.5" y1="39.468" x2="72.5" y2="39.468" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#6366F1"/>
+                        <stop offset="1" stopColor="#8B5CF6"/>
+                      </linearGradient>
+                      <linearGradient id="paint2_linear_mobile_2" x1="7.5" y1="39.468" x2="72.5" y2="39.468" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#6366F1"/>
+                        <stop offset="1" stopColor="#8B5CF6"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <div className="text-lg font-bold mb-2 text-[#1E1B4B] group-hover:text-white transition-colors duration-300">Automated System</div>
+                <p className="text-sm text-[#4B5563] group-hover:text-white/80 transition-colors duration-300">
                   Candidates apply to perfect-fit positions with one click. Employers receive pre-screened applications automatically.
                 </p>
               </div>
 
               {/* Card 3: CV Intelligence */}
               <div
-                className="rounded-3xl p-6 text-center text-white"
-                style={{
-                  background: 'linear-gradient(180deg, #3783AC 0%, #1D0A6F 100%)'
-                }}
+                className="group mobile-feature-card rounded-3xl p-6 text-center transition-all duration-300 hover:-translate-y-2 active:scale-[0.98] cursor-pointer border border-white/60 hover:border-white/80"
               >
-                <div className="text-xl font-bold mb-3">CV Intelligence</div>
-                <p className="text-sm opacity-80">
+                {/* CV Intelligence Icon */}
+                <div className="flex justify-center mb-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="48"
+                    height="51"
+                    viewBox="0 0 80 85"
+                    fill="none"
+                  >
+                    <g filter="url(#filter0_d_mobile_3)">
+                      <path fillRule="evenodd" clipRule="evenodd" d="M41.6667 3.33337C42.5871 3.33337 43.3333 4.07957 43.3333 5.00004V20C43.3333 25.5229 47.8105 30 53.3333 30H68.3333C69.2538 30 70 30.7462 70 31.6667V63.3334C70 70.6972 64.0305 76.6667 56.6667 76.6667H23.3333C15.9695 76.6667 10 70.6972 10 63.3334V16.6667C10 9.30291 15.9695 3.33337 23.3333 3.33337H41.6667ZM35.6904 44.857C36.9921 43.5553 36.9921 41.4447 35.6904 40.143C34.3886 38.8412 32.2781 38.8413 30.9763 40.143L23.4763 47.643C22.1746 48.9448 22.1746 51.0553 23.4763 52.3571L30.9763 59.857C32.2781 61.1588 34.3886 61.1588 35.6904 59.857C36.9921 58.5553 36.9921 56.4447 35.6904 55.143L30.5474 50L35.6904 44.857ZM49.0237 40.143C47.7219 38.8413 45.6114 38.8413 44.3096 40.143C43.0079 41.4447 43.0079 43.5553 44.3096 44.857L49.4526 50L44.3096 55.143C43.0079 56.4447 43.0079 58.5553 44.3096 59.857C45.6114 61.1588 47.7219 61.1588 49.0237 59.857L56.5237 52.3571C57.1488 51.7319 57.5 50.8841 57.5 50C57.5 49.116 57.1488 48.2681 56.5237 47.643L49.0237 40.143Z" fill="url(#paint0_linear_mobile_3)"/>
+                      <path d="M65.2022 20.4882C66.2521 21.5381 65.5085 23.3334 64.0237 23.3334H53.3333C51.4924 23.3334 50 21.841 50 20V9.30969C50 7.82484 51.7952 7.08123 52.8452 8.13117L65.2022 20.4882Z" fill="url(#paint1_linear_mobile_3)"/>
+                    </g>
+                    <defs>
+                      <filter id="filter0_d_mobile_3" x="-4" y="0" width="88" height="88" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                        <feFlood floodOpacity="0" result="BackgroundImageFix"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                        <feOffset dy="4"/>
+                        <feGaussianBlur stdDeviation="2"/>
+                        <feComposite in2="hardAlpha" operator="out"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_mobile_3"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_mobile_3" result="shape"/>
+                      </filter>
+                      <linearGradient id="paint0_linear_mobile_3" x1="40" y1="3.33337" x2="40" y2="76.6667" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#6366F1"/>
+                        <stop offset="1" stopColor="#8B5CF6"/>
+                      </linearGradient>
+                      <linearGradient id="paint1_linear_mobile_3" x1="40" y1="3.33337" x2="40" y2="76.6667" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#6366F1"/>
+                        <stop offset="1" stopColor="#8B5CF6"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <div className="text-lg font-bold mb-2 text-[#1E1B4B] group-hover:text-white transition-colors duration-300">CV Intelligence</div>
+                <p className="text-sm text-[#4B5563] group-hover:text-white/80 transition-colors duration-300">
                   AI extracts and interprets all relevant information from resumes without manual form-filling.
                 </p>
               </div>
@@ -519,7 +577,7 @@ export default function Home() {
 
           {/* First rectangle - Desktop */}
           <div
-            className="hidden lg:block absolute w-[450px] h-[530px] flex-shrink-0 transition-all duration-300 opacity-50 hover:opacity-100 hover:-translate-y-3"
+            className="hidden lg:block absolute w-[450px] h-[380px] flex-shrink-0 transition-all duration-300 opacity-50 hover:opacity-100 hover:-translate-y-3"
             style={{
               top: '340px',
               left: '56px',
@@ -567,10 +625,10 @@ export default function Home() {
 
             {/* Title inside first box */}
             <h3
-              className="absolute text-center font-dm-sans text-[24px] font-bold leading-[120%] text-white"
+              className="absolute w-full text-center font-dm-sans text-[24px] font-bold leading-[120%] text-white px-6"
               style={{
-                top: '170px',
-                left: '66px'
+                top: '150px',
+                left: '0'
               }}
             >
               AI Matching Engine
@@ -578,10 +636,10 @@ export default function Home() {
 
             {/* Text inside first box */}
             <p
-              className="absolute w-[318px] text-center font-dm-sans text-[22px] font-medium leading-[120%]"
+              className="absolute w-full text-center font-dm-sans text-[22px] font-medium leading-[120%] px-12"
               style={{
-                bottom: '73.98px',
-                left: '20px',
+                top: '200px',
+                left: '0',
                 color: 'rgba(255, 255, 255, 0.80)'
               }}
             >
@@ -591,7 +649,7 @@ export default function Home() {
 
           {/* Second rectangle */}
           <div
-            className="hidden lg:block absolute w-[450px] h-[530px] flex-shrink-0 transition-all duration-300 opacity-50 hover:opacity-100 hover:-translate-y-3"
+            className="hidden lg:block absolute w-[450px] h-[380px] flex-shrink-0 transition-all duration-300 opacity-50 hover:opacity-100 hover:-translate-y-3"
             style={{
               top: '340px',
               left: '551px',
@@ -637,10 +695,10 @@ export default function Home() {
 
             {/* Title inside second box */}
             <h3
-              className="absolute text-center font-dm-sans text-[24px] font-bold leading-[120%] text-white"
+              className="absolute w-full text-center font-dm-sans text-[24px] font-bold leading-[120%] text-white px-6"
               style={{
-                top: '170px',
-                left: '66px'
+                top: '150px',
+                left: '0'
               }}
             >
               Automated System
@@ -648,10 +706,10 @@ export default function Home() {
 
             {/* Text inside second box */}
             <p
-              className="absolute w-[309px] text-center font-dm-sans text-[22px] font-medium leading-[120%]"
+              className="absolute w-full text-center font-dm-sans text-[22px] font-medium leading-[120%] px-12"
               style={{
-                bottom: '73.99px',
-                left: '24.5px',
+                top: '200px',
+                left: '0',
                 color: 'rgba(255, 255, 255, 0.80)'
               }}
             >
@@ -661,7 +719,7 @@ export default function Home() {
 
           {/* Third rectangle */}
           <div
-            className="hidden lg:block absolute w-[450px] h-[530px] flex-shrink-0 transition-all duration-300 opacity-50 hover:opacity-100 hover:-translate-y-3"
+            className="hidden lg:block absolute w-[450px] h-[380px] flex-shrink-0 transition-all duration-300 opacity-50 hover:opacity-100 hover:-translate-y-3"
             style={{
               top: '340px',
               left: '1046px',
@@ -714,10 +772,10 @@ export default function Home() {
 
             {/* Title inside third box */}
             <h3
-              className="absolute text-center font-dm-sans text-[24px] font-bold leading-[120%] text-white"
+              className="absolute w-full text-center font-dm-sans text-[24px] font-bold leading-[120%] text-white px-6"
               style={{
-                top: '170px',
-                left: '66px'
+                top: '150px',
+                left: '0'
               }}
             >
               CV Intelligence
@@ -725,10 +783,10 @@ export default function Home() {
 
             {/* Text inside third box */}
             <p
-              className="absolute w-[309px] text-center font-dm-sans text-[22px] font-medium leading-[120%]"
+              className="absolute w-full text-center font-dm-sans text-[22px] font-medium leading-[120%] px-12"
               style={{
-                bottom: '73.99px',
-                left: '24.5px',
+                top: '200px',
+                left: '0',
                 color: 'rgba(255, 255, 255, 0.80)'
               }}
             >
@@ -742,12 +800,51 @@ export default function Home() {
       {/* End gradient wrapper */}
 
       {/* Individuals Section */}
-      <section id="individuals" className="relative w-full min-h-screen lg:h-[1370px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0">
+      <section id="individuals" className="relative w-full min-h-screen lg:h-[1370px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0 overflow-hidden">
         {/* Transition gradient at boundary */}
-        <div className="absolute w-full h-[200px] bg-gradient-to-b from-transparent to-white" style={{ top: '-100px', left: 0, right: 0, zIndex: -8 }} />
+        <div className="absolute w-full h-[200px] bg-gradient-to-b from-transparent to-white lg:block hidden" style={{ top: '-100px', left: 0, right: 0, zIndex: -8 }} />
 
-        {/* White background layer */}
-        <div className="absolute inset-0 bg-white" style={{ zIndex: -10 }} />
+        {/* Background layer - gradient on mobile, white on desktop */}
+        <div className="hidden lg:block absolute inset-0 bg-white" style={{ zIndex: -10 }} />
+        <div
+          className="lg:hidden absolute inset-0"
+          style={{
+            background: 'linear-gradient(180deg, #EEE9FC 0%, #D3E3FF 50%, #DDFCF6 100%)',
+            zIndex: -10
+          }}
+        />
+
+        {/* Mobile decorative circles - 3 overlapping circles */}
+        <div
+          className="xl:hidden absolute w-[340px] h-[340px] rounded-full pointer-events-none"
+          style={{
+            left: '-200px',
+            bottom: '5%',
+            transform: 'rotate(134.213deg)',
+            background: 'linear-gradient(90deg, rgba(118, 244, 220, 0.6) 0%, rgba(83, 124, 255, 0.6) 51%, rgba(83, 35, 229, 0.6) 100%)',
+            zIndex: 0
+          }}
+        />
+        <div
+          className="xl:hidden absolute w-[340px] h-[340px] rounded-full pointer-events-none"
+          style={{
+            left: '-60px',
+            bottom: '-10%',
+            transform: 'rotate(134.213deg)',
+            background: 'linear-gradient(180deg, rgba(83, 35, 229, 0.6) 0%, rgba(83, 124, 255, 0.6) 49%, rgba(118, 244, 220, 0.6) 100%)',
+            zIndex: 0
+          }}
+        />
+        <div
+          className="xl:hidden absolute w-[340px] h-[340px] rounded-full pointer-events-none"
+          style={{
+            left: '-315px',
+            bottom: '22%',
+            transform: 'rotate(134.213deg)',
+            background: 'linear-gradient(180deg, rgba(83, 35, 229, 0.6) 0%, rgba(83, 124, 255, 0.6) 49%, rgba(118, 244, 220, 0.6) 100%)',
+            zIndex: 0
+          }}
+        />
 
         {/* Individuals content container - Same dimensions as Companies */}
         <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:h-[1370px]">
@@ -1253,16 +1350,51 @@ export default function Home() {
       </section>
 
       {/* Companies Section */}
-      <section id="companies" className="relative w-full min-h-screen lg:h-[1054px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0">
-        {/* Background gradient layer */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white to-[#F5F5F7]" style={{ zIndex: -10 }} />
+      <section id="companies" className="relative w-full min-h-screen lg:h-[1054px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0 overflow-hidden lg:-mt-[200px]">
+        {/* Background layer - gradient on mobile, subtle gradient on desktop */}
+        <div className="hidden lg:block absolute inset-0 bg-gradient-to-b from-white to-[#F5F5F7]" style={{ zIndex: -10 }} />
+        <div
+          className="lg:hidden absolute inset-0"
+          style={{
+            background: 'linear-gradient(180deg, #EEE9FC 0%, #D3E3FF 50%, #DDFCF6 100%)',
+            zIndex: -10
+          }}
+        />
+
+        {/* Mobile decorative circles - 3 overlapping circles */}
+        <div
+          className="xl:hidden absolute w-[340px] h-[340px] rounded-full pointer-events-none"
+          style={{
+            left: '-200px',
+            bottom: '5%',
+            transform: 'rotate(134.213deg)',
+            background: 'linear-gradient(90deg, rgba(118, 244, 220, 0.6) 0%, rgba(83, 124, 255, 0.6) 51%, rgba(83, 35, 229, 0.6) 100%)',
+            zIndex: 0
+          }}
+        />
+        <div
+          className="xl:hidden absolute w-[340px] h-[340px] rounded-full pointer-events-none"
+          style={{
+            left: '-60px',
+            bottom: '-10%',
+            transform: 'rotate(134.213deg)',
+            background: 'linear-gradient(180deg, rgba(83, 35, 229, 0.6) 0%, rgba(83, 124, 255, 0.6) 49%, rgba(118, 244, 220, 0.6) 100%)',
+            zIndex: 0
+          }}
+        />
+        <div
+          className="xl:hidden absolute w-[340px] h-[340px] rounded-full pointer-events-none"
+          style={{
+            left: '-315px',
+            bottom: '22%',
+            transform: 'rotate(134.213deg)',
+            background: 'linear-gradient(180deg, rgba(83, 35, 229, 0.6) 0%, rgba(83, 124, 255, 0.6) 49%, rgba(118, 244, 220, 0.6) 100%)',
+            zIndex: 0
+          }}
+        />
 
         {/* Companies content container - Same dimensions as hero */}
         <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:h-[1054px]">
-          {/* Screen boundary markers - horizontal */}
-          <div className="hidden lg:block absolute left-0 right-0 top-0 h-[2px] bg-red-500" style={{ zIndex: 100 }} />
-          <div className="hidden lg:block absolute left-0 right-0 bottom-0 h-[2px] bg-red-500" style={{ zIndex: 100 }} />
-
           {/* Central gradient box */}
           <div
             className="hidden lg:block absolute w-[1760px] h-[927px] flex-shrink-0"
@@ -1287,273 +1419,112 @@ export default function Home() {
 
           {/* Mobile layout - Companies section */}
           <div className="lg:hidden flex flex-col items-center w-full px-4">
-            {/* Mobile heading */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-dm-sans font-bold text-center text-[#454545] mb-6">
-              Intelligent <span className="bg-radial-1 bg-clip-text text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">pre-screening</span>, simplified.
+            {/* Mobile heading - Pre-Screened talent, seamlessly integrated */}
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-dm-sans font-bold text-center text-[#454545] mb-8 leading-tight">
+              <span className="bg-radial-1 bg-clip-text text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">Pre-Screened</span> talent,<br />
+              <span className="bg-radial-1 bg-clip-text text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">seamlessly</span> integrated.
             </h2>
 
-            {/* Mobile description */}
-            <p className="text-center text-sm sm:text-base text-gray-500 mb-8 max-w-md">
-              Our dual-layer matching technology filters candidates automatically and connects you with the right talent instantly.
-            </p>
+            {/* Stacked Cards with Platform Screenshots */}
+            <div className="relative w-full max-w-[300px] sm:max-w-[340px] mb-6">
+              {/* Navigation dots above */}
+              <div className="flex items-center justify-center gap-1.5 mb-4">
+                {platformViews.map((_, i) => (
+                  <div
+                    key={i}
+                    className={`rounded-full transition-colors ${i === platformViewIndex ? 'w-2.5 h-2.5 bg-[#1A1A2E]' : 'w-2 h-2 bg-gray-300'}`}
+                  />
+                ))}
+              </div>
 
-            {/* Mobile gradient card */}
-            <div
-              className="w-full max-w-sm rounded-3xl p-6 mb-8"
-              style={{
-                background: 'linear-gradient(180deg, #EEE9FC 0%, #D3E3FF 50%, #DDFCF6 100%)'
-              }}
-            >
-              {/* Feature list */}
-              <div className="space-y-4">
-                {/* Feature 1: Unfiltered Applicants */}
-                <button
-                  onClick={() => setUnfilteredApplicantsOpen(!unfilteredApplicantsOpen)}
-                  className="w-full flex items-center justify-between py-3 border-b border-white/50"
-                >
-                  <span className="font-poppins font-bold text-[#454545]">Unfiltered Applicants</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 25 25"
-                    fill="none"
-                    className={`transition-transform duration-300 ${unfilteredApplicantsOpen ? 'rotate-180' : ''}`}
+              {/* Stacked cards container */}
+              <div className="relative w-full flex items-center justify-center">
+                <div className="relative" style={{ marginRight: '35px' }}>
+                  {/* Back card 2 (furthest back) */}
+                  <div
+                    className="absolute rounded-[16px]"
+                    style={{
+                      top: '12px',
+                      left: '12px',
+                      right: '-12px',
+                      bottom: '-12px',
+                      background: 'rgba(180, 210, 230, 0.4)',
+                      zIndex: 1
+                    }}
+                  />
+                  {/* Back card 1 */}
+                  <div
+                    className="absolute rounded-[16px]"
+                    style={{
+                      top: '6px',
+                      left: '6px',
+                      right: '-6px',
+                      bottom: '-6px',
+                      background: 'rgba(160, 200, 225, 0.5)',
+                      zIndex: 2
+                    }}
+                  />
+
+                  {/* Main card (front) with teal border */}
+                  <div
+                    className="relative rounded-[16px] p-[6px] sm:p-[8px]"
+                    style={{
+                      background: 'linear-gradient(180deg, #6DD8DC 0%, #4BBCC4 50%, #7BE5DD 100%)',
+                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+                      zIndex: 3
+                    }}
                   >
-                    <path fillRule="evenodd" clipRule="evenodd" d="M3.4301 7.5968C3.83689 7.19001 4.49644 7.19001 4.90324 7.5968L12.5 15.1936L20.0968 7.5968C20.5036 7.19001 21.1631 7.19001 21.5699 7.5968C21.9767 8.0036 21.9767 8.66315 21.5699 9.06994L13.2366 17.4033C12.8298 17.8101 12.1702 17.8101 11.7634 17.4033L3.4301 9.06994C3.0233 8.66315 3.0233 8.0036 3.4301 7.5968Z" fill="#454545"/>
+                    {/* Screenshot */}
+                    <div className="rounded-[10px] overflow-hidden bg-white">
+                      <img
+                        src={platformViews[platformViewIndex].image}
+                        alt={platformViews[platformViewIndex].title}
+                        className="w-full h-auto block"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Next arrow on right side */}
+                <button
+                  onClick={() => setPlatformViewIndex((platformViewIndex + 1) % platformViews.length)}
+                  className="absolute top-1/2 -translate-y-1/2 text-[#4BBCC4] hover:text-[#3AABB3] transition-colors"
+                  style={{ right: '0px', zIndex: 10 }}
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 6l6 6-6 6" />
+                    <path d="M13 6l6 6-6 6" />
                   </svg>
                 </button>
-                {unfilteredApplicantsOpen && (
-                  <p className="text-sm text-gray-600 pb-3">
-                    Purpose integrates with your existing ATS in just a few clicks.
-                  </p>
-                )}
-
-                {/* Feature 2: Dual-Layer Matching */}
-                <button
-                  onClick={() => setDualLayerMatchingOpen(!dualLayerMatchingOpen)}
-                  className="w-full flex items-center justify-between py-3 border-b border-white/50"
-                >
-                  <span className="font-poppins font-bold text-[#454545]">Dual-Layer Matching</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 25 25"
-                    fill="none"
-                    className={`transition-transform duration-300 ${dualLayerMatchingOpen ? 'rotate-180' : ''}`}
-                  >
-                    <path fillRule="evenodd" clipRule="evenodd" d="M3.4301 7.5968C3.83689 7.19001 4.49644 7.19001 4.90324 7.5968L12.5 15.1936L20.0968 7.5968C20.5036 7.19001 21.1631 7.19001 21.5699 7.5968C21.9767 8.0036 21.9767 8.66315 21.5699 9.06994L13.2366 17.4033C12.8298 17.8101 12.1702 17.8101 11.7634 17.4033L3.4301 9.06994C3.0233 8.66315 3.0233 8.0036 3.4301 7.5968Z" fill="#454545"/>
-                  </svg>
-                </button>
-                {dualLayerMatchingOpen && (
-                  <p className="text-sm text-gray-600 pb-3">
-                    Our AI matches candidates based on both skills and cultural fit.
-                  </p>
-                )}
-
-                {/* Feature 3: Filtered Candidates */}
-                <button
-                  onClick={() => setFilteredCandidatesOpen(!filteredCandidatesOpen)}
-                  className="w-full flex items-center justify-between py-3"
-                >
-                  <span className="font-poppins font-bold text-[#454545]">Filtered Candidates</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 25 25"
-                    fill="none"
-                    className={`transition-transform duration-300 ${filteredCandidatesOpen ? 'rotate-180' : ''}`}
-                  >
-                    <path fillRule="evenodd" clipRule="evenodd" d="M3.4301 7.5968C3.83689 7.19001 4.49644 7.19001 4.90324 7.5968L12.5 15.1936L20.0968 7.5968C20.5036 7.19001 21.1631 7.19001 21.5699 7.5968C21.9767 8.0036 21.9767 8.66315 21.5699 9.06994L13.2366 17.4033C12.8298 17.8101 12.1702 17.8101 11.7634 17.4033L3.4301 9.06994C3.0233 8.66315 3.0233 8.0036 3.4301 7.5968Z" fill="#454545"/>
-                  </svg>
-                </button>
-                {filteredCandidatesOpen && (
-                  <p className="text-sm text-gray-600 pb-3">
-                    Only receive pre-qualified candidates that match your requirements.
-                  </p>
-                )}
               </div>
             </div>
 
-            {/* Mobile CTA button */}
-            <a
-              href="/cta"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full font-dm-sans text-lg font-bold text-white transition-all duration-200 hover:scale-[1.02] mb-8"
-              style={{
-                background: 'var(--primary-button)',
-                boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)'
-              }}
-            >
-              Start hiring
-            </a>
+            {/* Dynamic section title and description based on current view */}
+            <div className="text-center mb-8">
+              <h3 className="text-lg sm:text-xl font-dm-sans font-bold mb-3">
+                <span className="bg-radial-1 bg-clip-text text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">{platformViews[platformViewIndex].title}</span>
+              </h3>
+              <p className="text-sm sm:text-base text-gray-600 max-w-xs mx-auto leading-relaxed">
+                {platformViews[platformViewIndex].description}
+              </p>
+            </div>
 
-            {/* Mobile: Supported ATS Partners */}
-            <div className="w-full max-w-sm">
-              <p className="text-center text-sm text-gray-500 mb-4">Integrates with your existing ATS</p>
-              <div className="flex flex-col gap-3">
-                {/* SmartRecruiters */}
-                <div
-                  className="flex items-center justify-center py-3 px-4 rounded-2xl"
-                  style={{
-                    background: '#C0CDEE',
-                    border: '2px solid transparent',
-                    backgroundImage: 'linear-gradient(#C0CDEE, #C0CDEE), linear-gradient(to bottom, #5323E5, #63C1ED, #76F4DC)',
-                    backgroundOrigin: 'border-box',
-                    backgroundClip: 'padding-box, border-box'
-                  }}
-                >
-                  <span style={{ fontFamily: 'DM Sans, sans-serif' }}>
-                    <span style={{ fontSize: '20px', fontWeight: 'bold', color: '#11314A' }}>Smart</span>
-                    <span style={{ fontSize: '20px', fontWeight: 'bold', color: '#37B971' }}>Recruiters</span>
-                  </span>
-                </div>
-                {/* Personio */}
-                <div
-                  className="flex items-center justify-center py-3 px-4 rounded-2xl"
-                  style={{
-                    background: '#C0CDEE',
-                    border: '2px solid transparent',
-                    backgroundImage: 'linear-gradient(#C0CDEE, #C0CDEE), linear-gradient(to bottom, #5323E5, #63C1ED, #76F4DC)',
-                    backgroundOrigin: 'border-box',
-                    backgroundClip: 'padding-box, border-box'
-                  }}
-                >
-                  <span style={{ fontSize: '24px', fontWeight: 'bold', color: '#11314A', fontFamily: 'DM Sans, sans-serif' }}>Personio</span>
-                </div>
+            {/* Official Partner of SmartRecruiters */}
+            <div className="text-center">
+              <p className="text-xs text-gray-400 mb-2">Official Partner of</p>
+              <div className="flex items-center justify-center">
+                <span style={{ fontFamily: 'DM Sans, sans-serif' }}>
+                  <span className="text-lg font-bold text-[#11314A]">Smart</span>
+                  <span className="text-lg font-bold text-[#37B971]">Recruiters</span>
+                </span>
               </div>
+              <p className="text-[10px] text-gray-400 mt-1">An SAP company</p>
             </div>
           </div>
 
-          {/* "Unfiltered Applicants" text inside gradient box - Desktop */}
-          <p
-            className="hidden lg:block absolute w-[232px] flex-shrink-0 font-poppins text-[16px] font-bold leading-normal text-[#454545]"
-            style={{
-              top: 'calc(63.5px + 283px)',
-              left: 'calc(96px + 95px)'
-            }}
-          >
-            Unfiltered Applicants
-          </p>
-
-          {/* Arrow next to "Unfiltered Applicants" */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="25"
-            height="25"
-            viewBox="0 0 25 25"
-            fill="none"
-            className="hidden lg:block absolute flex-shrink-0 cursor-pointer hover:opacity-70 transition-all duration-300"
-            style={{
-              top: 'calc(63.5px + 283px)',
-              left: 'calc(96px + 95px + 232px - 8px)',
-              transform: unfilteredApplicantsOpen ? 'rotate(180deg)' : 'rotate(0deg)'
-            }}
-            onClick={() => setUnfilteredApplicantsOpen(!unfilteredApplicantsOpen)}
-          >
-            <path fillRule="evenodd" clipRule="evenodd" d="M3.4301 7.5968C3.83689 7.19001 4.49644 7.19001 4.90324 7.5968L12.5 15.1936L20.0968 7.5968C20.5036 7.19001 21.1631 7.19001 21.5699 7.5968C21.9767 8.0036 21.9767 8.66315 21.5699 9.06994L13.2366 17.4033C12.8298 17.8101 12.1702 17.8101 11.7634 17.4033L3.4301 9.06994C3.0233 8.66315 3.0233 8.0036 3.4301 7.5968Z" fill="#454545"/>
-          </svg>
-
-          {/* Dropdown box for "Unfiltered Applicants" */}
-          {unfilteredApplicantsOpen && (
-            <div
-              className="hidden lg:flex absolute flex-shrink-0"
-              style={{
-                top: 'calc(63.5px + 283px + 16px + 20px)',
-                left: 'calc(96px + 95px)',
-                width: '306px',
-                height: '72px',
-                padding: '12px 7px',
-                justifyContent: 'center',
-                alignItems: 'center',
-                borderRadius: '18px',
-                border: '1px solid #FFF',
-                background: 'linear-gradient(90deg, rgba(42, 23, 92, 0.50) 0%, rgba(4, 23, 72, 0.50) 100%)',
-                boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
-                zIndex: 30
-              }}
-            >
-              <p
-                className="font-poppins"
-                style={{
-                  color: '#FFF',
-                  textAlign: 'center',
-                  fontSize: '16px',
-                  fontStyle: 'normal',
-                  fontWeight: 500,
-                  lineHeight: 'normal'
-                }}
-              >
-                Purpose integrates with your existing ATS in just a few clicks.
-              </p>
-            </div>
-          )}
-
-          {/* "Dual-layer Matching & Automated Screening" text - same level as Unfiltered Applicants */}
-          <p
-            className="hidden lg:block absolute w-[232px] flex-shrink-0 font-poppins text-[16px] font-bold leading-normal text-[#454545] whitespace-nowrap"
-            style={{
-              top: 'calc(63.5px + 283px)',
-              left: 'calc(96px + 470px)'
-            }}
-          >
-            Dual-layer Matching & Automated Screening
-          </p>
-
-          {/* Arrow next to "Dual-layer Matching & Automated Screening" */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="25"
-            height="25"
-            viewBox="0 0 25 25"
-            fill="none"
-            className="hidden lg:block absolute flex-shrink-0 cursor-pointer hover:opacity-70 transition-all duration-300"
-            style={{
-              top: 'calc(63.5px + 283px)',
-              left: 'calc(96px + 470px + 370px + 8px)',
-              transform: dualLayerMatchingOpen ? 'rotate(180deg)' : 'rotate(0deg)'
-            }}
-            onClick={() => setDualLayerMatchingOpen(!dualLayerMatchingOpen)}
-          >
-            <path fillRule="evenodd" clipRule="evenodd" d="M3.4301 7.5968C3.83689 7.19001 4.49644 7.19001 4.90324 7.5968L12.5 15.1936L20.0968 7.5968C20.5036 7.19001 21.1631 7.19001 21.5699 7.5968C21.9767 8.0036 21.9767 8.66315 21.5699 9.06994L13.2366 17.4033C12.8298 17.8101 12.1702 17.8101 11.7634 17.4033L3.4301 9.06994C3.0233 8.66315 3.0233 8.0036 3.4301 7.5968Z" fill="#454545"/>
-          </svg>
-
-          {/* Dropdown box for "Dual-layer Matching & Automated Screening" */}
-          {dualLayerMatchingOpen && (
-            <div
-              className="hidden lg:flex absolute flex-shrink-0"
-              style={{
-                top: 'calc(63.5px + 283px + 16px + 20px)',
-                left: 'calc(96px + 470px)',
-                width: '306px',
-                height: '72px',
-                padding: '12px 7px',
-                justifyContent: 'center',
-                alignItems: 'center',
-                borderRadius: '18px',
-                border: '1px solid #FFF',
-                background: 'linear-gradient(90deg, rgba(42, 23, 92, 0.50) 0%, rgba(4, 23, 72, 0.50) 100%)',
-                boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
-                zIndex: 30
-              }}
-            >
-              <p
-                className="font-poppins"
-                style={{
-                  color: '#FFF',
-                  textAlign: 'center',
-                  fontSize: '16px',
-                  fontStyle: 'normal',
-                  fontWeight: 500,
-                  lineHeight: 'normal'
-                }}
-              >
-                Select which positions to publish & define ideal candidate criteria.
-              </p>
-            </div>
-          )}
-
+          {/* Process Flow Content - Desktop (flow elements) */}
+          {companiesTab === 'process-flow' && (
+            <>
           {/* Central logo in circle */}
           <img
             src="/logo.png"
@@ -2053,68 +2024,7 @@ export default function Home() {
             <span style={{ fontSize: '32px', fontWeight: 'bold', color: '#11314A', fontFamily: 'DM Sans, sans-serif' }}>Personio</span>
           </div>
 
-          {/* "Automated Transfer to ATS" text - same level, 67px from right of box */}
-          <p
-            className="hidden lg:block absolute w-[232px] flex-shrink-0 font-poppins text-[16px] font-bold leading-normal text-[#454545]"
-            style={{
-              top: 'calc(63.5px + 283px)',
-              right: 'calc(96px + 67px)'
-            }}
-          >
-            Automated Transfer to ATS
-          </p>
-
-          {/* Arrow next to "Automated Transfer to ATS" */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="25"
-            height="25"
-            viewBox="0 0 25 25"
-            fill="none"
-            className="hidden lg:block absolute flex-shrink-0 cursor-pointer hover:opacity-70 transition-all duration-300"
-            style={{
-              top: 'calc(63.5px + 283px)',
-              right: 'calc(96px + 67px - 25px - 4px)',
-              transform: filteredCandidatesOpen ? 'rotate(180deg)' : 'rotate(0deg)'
-            }}
-            onClick={() => setFilteredCandidatesOpen(!filteredCandidatesOpen)}
-          >
-            <path fillRule="evenodd" clipRule="evenodd" d="M3.4301 7.5968C3.83689 7.19001 4.49644 7.19001 4.90324 7.5968L12.5 15.1936L20.0968 7.5968C20.5036 7.19001 21.1631 7.19001 21.5699 7.5968C21.9767 8.0036 21.9767 8.66315 21.5699 9.06994L13.2366 17.4033C12.8298 17.8101 12.1702 17.8101 11.7634 17.4033L3.4301 9.06994C3.0233 8.66315 3.0233 8.0036 3.4301 7.5968Z" fill="#454545"/>
-          </svg>
-
-          {/* Dropdown box for "Automated Transfer to ATS" */}
-          {filteredCandidatesOpen && (
-            <div
-              className="hidden lg:flex absolute flex-shrink-0"
-              style={{
-                top: 'calc(63.5px + 283px + 16px + 20px)',
-                right: 'calc(96px + 67px)',
-                width: '306px',
-                height: '72px',
-                padding: '12px 7px',
-                justifyContent: 'center',
-                alignItems: 'center',
-                borderRadius: '18px',
-                border: '1px solid #FFF',
-                background: 'linear-gradient(90deg, rgba(42, 23, 92, 0.50) 0%, rgba(4, 23, 72, 0.50) 100%)',
-                boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)',
-                zIndex: 30
-              }}
-            >
-              <p
-                className="font-poppins"
-                style={{
-                  color: '#FFF',
-                  textAlign: 'center',
-                  fontSize: '16px',
-                  fontStyle: 'normal',
-                  fontWeight: 500,
-                  lineHeight: 'normal'
-                }}
-              >
-                Purpose delivers pre-screened candidates directly to your ATS.
-              </p>
-            </div>
+            </>
           )}
 
           {/* Heading inside gradient box */}
@@ -2137,6 +2047,42 @@ export default function Home() {
             </span>
           </h2>
 
+          {/* Tab Switcher - Desktop */}
+          <div
+            className="hidden lg:flex absolute items-center justify-center gap-0"
+            style={{
+              top: 'calc(63.5px + 280px)',
+              left: '50%',
+              transform: 'translateX(-50%)'
+            }}
+          >
+            <button
+              onClick={() => setCompaniesTab('process-flow')}
+              className="px-6 py-2 font-dm-sans text-sm font-semibold rounded-l-full transition-all duration-200"
+              style={{
+                backgroundColor: companiesTab === 'process-flow' ? '#5E60FF' : 'rgba(255, 255, 255, 0.6)',
+                color: companiesTab === 'process-flow' ? '#fff' : '#454545',
+                border: '1px solid rgba(255, 255, 255, 0.3)'
+              }}
+            >
+              Process Flow
+            </button>
+            <button
+              onClick={() => setCompaniesTab('platform-view')}
+              className="px-6 py-2 font-dm-sans text-sm font-semibold rounded-r-full transition-all duration-200"
+              style={{
+                backgroundColor: companiesTab === 'platform-view' ? '#5E60FF' : 'rgba(255, 255, 255, 0.6)',
+                color: companiesTab === 'platform-view' ? '#fff' : '#454545',
+                border: '1px solid rgba(255, 255, 255, 0.3)'
+              }}
+            >
+              Platform View
+            </button>
+          </div>
+
+          {/* Process Flow Content - Desktop */}
+          {companiesTab === 'process-flow' && (
+            <>
           {/* Circle inside gradient box */}
           <div
             className="hidden lg:block absolute w-[259px] h-[259px] flex-shrink-0 rounded-full"
@@ -2150,7 +2096,120 @@ export default function Home() {
             }}
           />
 
-          {/* Text above circle */}
+            </>
+          )}
+
+          {/* Platform View Content - Desktop */}
+          {companiesTab === 'platform-view' && (
+            <div
+              className="hidden lg:flex absolute flex-col items-center"
+              style={{
+                top: 'calc(63.5px + 330px)',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '580px'
+              }}
+            >
+              {/* Stacked cards container with chevron */}
+              <div className="relative" style={{ width: '100%' }}>
+                {/* Back card (furthest) */}
+                <div
+                  className="absolute rounded-[32px]"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    top: '16px',
+                    left: '16px',
+                    background: 'linear-gradient(180deg, rgba(83, 35, 229, 0.3) 0%, rgba(99, 193, 237, 0.3) 50%, rgba(118, 244, 220, 0.3) 100%)',
+                    border: '2px solid rgba(255, 255, 255, 0.4)'
+                  }}
+                />
+                {/* Middle card */}
+                <div
+                  className="absolute rounded-[32px]"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    top: '8px',
+                    left: '8px',
+                    background: 'linear-gradient(180deg, rgba(83, 35, 229, 0.5) 0%, rgba(99, 193, 237, 0.5) 50%, rgba(118, 244, 220, 0.5) 100%)',
+                    border: '2px solid rgba(255, 255, 255, 0.6)'
+                  }}
+                />
+                {/* Main screenshot with gradient border */}
+                <div
+                  className="relative rounded-[32px] overflow-hidden"
+                  style={{
+                    padding: '3px',
+                    background: 'linear-gradient(180deg, #5323E5 0%, #63C1ED 50%, #76F4DC 100%)'
+                  }}
+                >
+                  <div
+                    className="rounded-[29px] overflow-hidden"
+                    style={{ background: 'white' }}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={platformViews[platformViewIndex].image}
+                      alt={platformViews[platformViewIndex].title}
+                      className="w-full h-auto block"
+                    />
+                  </div>
+                </div>
+
+                {/* Double chevron navigation button - positioned over stacked cards */}
+                <button
+                  onClick={() => setPlatformViewIndex((prev) => (prev + 1) % platformViews.length)}
+                  className="absolute cursor-pointer transition-all hover:scale-110"
+                  style={{
+                    top: '50%',
+                    right: '-60px',
+                    transform: 'translateY(-50%)'
+                  }}
+                >
+                  <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <path d="M12 10L22 20L12 30" stroke="url(#chevronGradient)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M22 10L32 20L22 30" stroke="url(#chevronGradient)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                    <defs>
+                      <linearGradient id="chevronGradient" x1="12" y1="10" x2="32" y2="30" gradientUnits="userSpaceOnUse">
+                        <stop stopColor="#5323E5"/>
+                        <stop offset="0.5" stopColor="#63C1ED"/>
+                        <stop offset="1" stopColor="#76F4DC"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </button>
+              </div>
+
+              {/* Title, Next and Description - flows below screenshot */}
+              <div className="flex items-center justify-center gap-8 mt-8">
+                <span
+                  className="text-xl font-bold"
+                  style={{
+                    background: 'linear-gradient(90deg, #5323E5 0%, #5472FF 40%, #6DC9D8 70%, #6DECD3 100%)',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent'
+                  }}
+                >
+                  {platformViews[platformViewIndex].title}
+                </span>
+                <button
+                  onClick={() => setPlatformViewIndex((prev) => (prev + 1) % platformViews.length)}
+                  className="text-[#454545] font-medium cursor-pointer hover:opacity-70 transition-opacity flex items-center gap-1"
+                >
+                  Next <span className="ml-1">→</span>
+                </button>
+              </div>
+              <p className="text-center text-[#454545] text-base mt-4 max-w-lg">
+                {platformViews[platformViewIndex].description}
+              </p>
+            </div>
+          )}
+
+          {/* Partner logo at bottom - only for Process Flow */}
+          {companiesTab === 'process-flow' && (
+            <>
           <p
             className="hidden lg:block absolute w-[233px] h-[43px] flex-shrink-0 text-[#454545] leading-[120%]"
             style={{
@@ -2163,8 +2222,6 @@ export default function Home() {
           >
             Official Partner of
           </p>
-
-          {/* Logo SVG at bottom */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="233"
@@ -2194,15 +2251,56 @@ export default function Home() {
             <path d="M87.7477 21.3278C86.9867 21.7166 85.2742 22.1952 83.6567 22.1952C80.1051 22.1952 77.5046 20.4304 77.5046 16.781V10.948H74.3017V7.05941H77.5046V2.57251H81.8493V7.05941H86.638V10.948H81.8493V15.9734C81.8493 17.7981 82.6736 18.4861 84.2595 18.4861C85.1155 18.4861 85.9719 18.2168 86.4476 17.9775L87.7477 21.3278Z" fill="#11314A"/>
             <path d="M0.176331 38.9523L4.94155 28.6578H6.50944L11.2747 38.9523H9.39932L8.1542 36.2554H3.26603L2.0363 38.9523H0.176331ZM5.71011 30.9487L3.95775 34.7475H7.46251L5.71011 30.9487ZM12.0965 38.9523V31.7026H13.7874V32.4711C14.3101 31.8621 15.0633 31.5576 16.0471 31.5576C16.9591 31.5576 17.6867 31.8379 18.2298 32.3986C18.7832 32.9496 19.0599 33.689 19.0599 34.617V38.9523H17.369V34.8779C17.369 34.2883 17.2204 33.8292 16.9232 33.5005C16.6363 33.1719 16.2213 33.0076 15.6782 33.0076C14.7763 33.0076 14.1461 33.3894 13.7874 34.153V38.9523H12.0965ZM27.316 39.1263C26.445 39.1263 25.6559 38.9571 24.9488 38.6188C24.252 38.2805 23.7396 37.831 23.4116 37.2703L24.8258 36.2119C25.4304 37.0915 26.2759 37.5313 27.3621 37.5313C27.8848 37.5313 28.3101 37.4153 28.638 37.1833C28.9659 36.9514 29.1299 36.6421 29.1299 36.2554C29.1299 35.5691 28.6124 35.0471 27.5774 34.6895L26.3783 34.2835C25.5073 33.9838 24.8617 33.602 24.4415 33.138C24.0214 32.6644 23.8113 32.0796 23.8113 31.3836C23.8113 30.504 24.1392 29.8032 24.7951 29.2812C25.4612 28.7496 26.3117 28.4838 27.3468 28.4838C28.7302 28.4838 29.8319 28.9526 30.6517 29.8902L29.4066 31.0357C28.8532 30.3977 28.1666 30.0787 27.3468 30.0787C26.8651 30.0787 26.4552 30.185 26.1171 30.3977C25.7891 30.6103 25.6252 30.9003 25.6252 31.2676C25.6252 31.6253 25.7481 31.9104 25.9941 32.1231C26.2503 32.3357 26.6807 32.5436 27.2853 32.7466L28.3921 33.138C30.1034 33.747 30.9591 34.7523 30.9591 36.1539C30.9591 37.0432 30.6209 37.7633 29.9446 38.3143C29.2682 38.8556 28.3921 39.1263 27.316 39.1263ZM31.0187 38.9523L35.7839 28.6578H37.3518L42.117 38.9523H40.2417L38.9966 36.2554H34.1084L32.8786 38.9523H31.0187ZM36.5525 30.9487L34.8001 34.7475H38.3048L36.5525 30.9487ZM49.3335 29.6292C50.0406 30.2672 50.3943 31.0646 50.3943 32.0216C50.3943 32.9785 50.0406 33.7808 49.3335 34.4285C48.6265 35.0665 47.7194 35.3854 46.6127 35.3854H44.9373V38.9523H43.1388V28.6578H46.6127C47.7194 28.6578 48.6265 28.9816 49.3335 29.6292ZM48.0731 33.2975C48.4421 32.9592 48.6265 32.5339 48.6265 32.0216C48.6265 31.5093 48.4421 31.0888 48.0731 30.7601C47.7144 30.4218 47.2226 30.2527 46.5975 30.2527H44.9373V33.7905H46.5975C47.2226 33.7905 47.7144 33.6262 48.0731 33.2975ZM57.8494 39.0973C56.6912 39.0973 55.7229 38.7396 54.9441 38.0243C54.1755 37.2994 53.7913 36.4004 53.7913 35.3275C53.7913 34.2545 54.1755 33.3604 54.9441 32.6451C55.7229 31.9201 56.6912 31.5576 57.8494 31.5576C58.6383 31.5576 59.3454 31.7364 59.9705 32.0941C60.6058 32.4518 61.0929 32.9399 61.431 33.5585L59.9553 34.3125C59.7603 33.9259 59.4787 33.6165 59.1098 33.3845C58.7409 33.1525 58.3205 33.0366 57.8494 33.0366C57.1728 33.0366 56.6144 33.2589 56.1737 33.7035C55.733 34.1385 55.5127 34.6798 55.5127 35.3275C55.5127 35.9751 55.733 36.5212 56.1737 36.9659C56.6144 37.4009 57.1728 37.6183 57.8494 37.6183C58.3205 37.6183 58.7409 37.5023 59.1098 37.2703C59.4787 37.0384 59.7603 36.7291 59.9553 36.3424L61.431 37.0963C61.0929 37.715 60.6058 38.2032 59.9705 38.5608C59.3454 38.9184 58.6383 39.0973 57.8494 39.0973ZM68.9249 38.0098C68.1563 38.7348 67.2032 39.0973 66.0656 39.0973C64.9281 39.0973 63.9699 38.7348 63.1911 38.0098C62.4225 37.2752 62.0384 36.3811 62.0384 35.3275C62.0384 34.2738 62.4225 33.3845 63.1911 32.6596C63.9699 31.9249 64.9281 31.5576 66.0656 31.5576C67.2032 31.5576 68.1563 31.9249 68.9249 32.6596C69.7037 33.3845 70.0933 34.2738 70.0933 35.3275C70.0933 36.3811 69.7037 37.2752 68.9249 38.0098ZM66.0656 37.6183C66.7317 37.6183 67.28 37.4009 67.7106 36.9659C68.1512 36.5212 68.3716 35.9751 68.3716 35.3275C68.3716 34.6798 68.1512 34.1385 67.7106 33.7035C67.28 33.2589 66.7317 33.0366 66.0656 33.0366C65.3894 33.0366 64.831 33.2589 64.3903 33.7035C63.9598 34.1385 63.7445 34.6798 63.7445 35.3275C63.7445 35.9751 63.9598 36.5212 64.3903 36.9659C64.831 37.4009 65.3894 37.6183 66.0656 37.6183ZM81.2013 38.9523V34.907C81.2013 34.3173 81.073 33.8582 80.8168 33.5295C80.5606 33.1912 80.1765 33.0221 79.6641 33.0221C79.2745 33.0221 78.9313 33.1284 78.6341 33.341C78.337 33.544 78.1116 33.8195 77.9579 34.1675C77.9883 34.3222 78.0039 34.4768 78.0039 34.6315V38.9523H76.313V34.907C76.313 34.3173 76.1796 33.8582 75.9133 33.5295C75.657 33.1912 75.2729 33.0221 74.7605 33.0221C74.3916 33.0221 74.0585 33.1139 73.7614 33.2975C73.4642 33.4812 73.2439 33.7325 73.1004 34.0515V38.9523H71.4094V31.7026H73.1004V32.3841C73.5613 31.8331 74.243 31.5576 75.1446 31.5576C76.0876 31.5576 76.8254 31.9152 77.3581 32.6306C77.9115 31.9152 78.757 31.5576 79.8945 31.5576C80.8476 31.5576 81.5855 31.8428 82.108 32.4131C82.6306 32.9737 82.8919 33.7132 82.8919 34.6315V38.9523H81.2013ZM84.6706 41.765V31.7026H86.3615V32.3696C86.9149 31.8283 87.6629 31.5576 88.6054 31.5576C89.7227 31.5576 90.64 31.9249 91.3571 32.6596C92.0848 33.3942 92.4487 34.2835 92.4487 35.3275C92.4487 36.3714 92.0848 37.2607 91.3571 37.9953C90.64 38.7299 89.7227 39.0973 88.6054 39.0973C87.6629 39.0973 86.9149 38.8218 86.3615 38.2708V41.765H84.6706ZM88.421 37.6473C89.0875 37.6473 89.6354 37.425 90.0659 36.9804C90.4964 36.526 90.7117 35.9751 90.7117 35.3275C90.7117 34.6798 90.4964 34.1336 90.0659 33.689C89.6354 33.2347 89.0875 33.0076 88.421 33.0076C87.54 33.0076 86.8533 33.341 86.3615 34.008V36.6324C86.8432 37.309 87.5295 37.6473 88.421 37.6473ZM97.093 39.0973C95.9757 39.0973 95.0589 38.7299 94.3414 37.9953C93.6242 37.2607 93.2654 36.3714 93.2654 35.3275C93.2654 34.2835 93.6242 33.3942 94.3414 32.6596C95.0589 31.9249 95.9757 31.5576 97.093 31.5576C98.0356 31.5576 98.784 31.8283 99.3374 32.3696V31.7026H101.028V38.9523H99.3374V38.2708C98.784 38.8218 98.0356 39.0973 97.093 39.0973ZM97.2927 37.6473C98.174 37.6473 98.8557 37.309 99.3374 36.6324V34.008C98.8452 33.341 98.1639 33.0076 97.2927 33.0076C96.6266 33.0076 96.0783 33.2347 95.6482 33.689C95.2177 34.1336 95.0024 34.6798 95.0024 35.3275C95.0024 35.9751 95.2177 36.526 95.6482 36.9804C96.0783 37.425 96.6266 37.6473 97.2927 37.6473ZM102.936 38.9523V31.7026H104.627V32.4711C105.15 31.8621 105.903 31.5576 106.887 31.5576C107.799 31.5576 108.527 31.8379 109.07 32.3986C109.623 32.9496 109.9 33.689 109.9 34.617V38.9523H108.209V34.8779C108.209 34.2883 108.06 33.8292 107.763 33.5005C107.476 33.1719 107.061 33.0076 106.518 33.0076C105.616 33.0076 104.986 33.3894 104.627 34.153V38.9523H102.936ZM114.051 41.765H112.191L113.728 38.5608L110.423 31.7026H112.283L114.635 36.8354L117.002 31.7026H118.878L114.051 41.765Z" fill="#11314A"/>
           </svg>
+            </>
+          )}
 
         </div>
       </section>
 
-      {/* Separator line */}
-      <div className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-[#5323E5]/30 to-transparent" style={{ zIndex: 10 }} />
-
       {/* Credentials Section */}
-      <section id="credentials" className="relative w-full min-h-screen lg:h-[1800px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0 bg-[#F5F5F7]">
+      <section id="credentials" className="relative w-full min-h-screen lg:h-[1800px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0 overflow-hidden">
+        {/* Background layer - gradient on mobile, gray on desktop */}
+        <div className="hidden lg:block absolute inset-0 bg-[#F5F5F7]" style={{ zIndex: -10 }} />
+        <div
+          className="lg:hidden absolute inset-0"
+          style={{
+            background: 'linear-gradient(180deg, #EEE9FC 0%, #D3E3FF 50%, #DDFCF6 100%)',
+            zIndex: -10
+          }}
+        />
+
+        {/* Mobile decorative circles - 3 overlapping circles */}
+        <div
+          className="xl:hidden absolute w-[340px] h-[340px] rounded-full pointer-events-none"
+          style={{
+            left: '-200px',
+            bottom: '5%',
+            transform: 'rotate(134.213deg)',
+            background: 'linear-gradient(90deg, rgba(118, 244, 220, 0.6) 0%, rgba(83, 124, 255, 0.6) 51%, rgba(83, 35, 229, 0.6) 100%)',
+            zIndex: 0
+          }}
+        />
+        <div
+          className="xl:hidden absolute w-[340px] h-[340px] rounded-full pointer-events-none"
+          style={{
+            left: '-60px',
+            bottom: '-10%',
+            transform: 'rotate(134.213deg)',
+            background: 'linear-gradient(180deg, rgba(83, 35, 229, 0.6) 0%, rgba(83, 124, 255, 0.6) 49%, rgba(118, 244, 220, 0.6) 100%)',
+            zIndex: 0
+          }}
+        />
+        <div
+          className="xl:hidden absolute w-[340px] h-[340px] rounded-full pointer-events-none"
+          style={{
+            left: '-315px',
+            bottom: '22%',
+            transform: 'rotate(134.213deg)',
+            background: 'linear-gradient(180deg, rgba(83, 35, 229, 0.6) 0%, rgba(83, 124, 255, 0.6) 49%, rgba(118, 244, 220, 0.6) 100%)',
+            zIndex: 0
+          }}
+        />
+
         {/* Credentials content container */}
         <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:h-[1800px]">
           {/* Central gradient box */}
@@ -2754,51 +2852,104 @@ export default function Home() {
               Why <span className="bg-radial-1 bg-clip-text text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">Purpose</span> works.
             </h2>
 
-            {/* Mobile credentials cards */}
-            <div className="flex flex-col gap-4 w-full px-4 max-w-sm mx-auto">
-            {/* Stat 1 */}
-            <div
-              className="rounded-3xl p-6 text-center text-white"
-              style={{
-                background: 'linear-gradient(90deg, #3783AC 45%, #1D0A6F 100%)'
-              }}
-            >
-              <div className="text-4xl sm:text-5xl font-bold mb-2">70+</div>
-              <div className="text-sm opacity-80">B2B beta customers already onboarded</div>
-            </div>
+            {/* Mobile credentials disks - circular overlapping layout with swapping animation */}
+            <div className="relative w-full h-[400px] sm:h-[450px] mx-auto max-w-[350px] sm:max-w-[400px]">
+              {/* Disk 1 - 10x (starts at left) */}
+              <div
+                onClick={handleDiskRotation}
+                className="absolute rounded-full flex flex-col items-center justify-center text-white cursor-pointer transition-all duration-300 border-2 border-white/30"
+                style={{
+                  width: '160px',
+                  height: '160px',
+                  background: 'linear-gradient(90deg, #3783AC 45%, #1D0A6F 100%)',
+                  boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)',
+                  left: isExpanding
+                    ? (diskRotation === 0 ? '15%' : diskRotation === 1 ? '50%' : diskRotation === 2 ? '85%' : '50%')
+                    : (diskRotation === 0 ? '25%' : diskRotation === 1 ? '50%' : diskRotation === 2 ? '75%' : '50%'),
+                  top: isExpanding
+                    ? (diskRotation === 0 ? '30%' : diskRotation === 1 ? '-5%' : diskRotation === 2 ? '30%' : '70%')
+                    : (diskRotation === 0 ? '28%' : diskRotation === 1 ? '2%' : diskRotation === 2 ? '28%' : '52%'),
+                  transform: 'translateX(-50%)',
+                  zIndex: diskRotation === 0 ? 2 : diskRotation === 1 ? 1 : diskRotation === 2 ? 2 : 4
+                }}
+              >
+                <div className="text-3xl sm:text-4xl font-bold mb-1" style={{ color: 'rgba(255,255,255,0.9)', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>10x</div>
+                <div className="text-[10px] sm:text-xs text-center px-3 opacity-80 leading-tight">faster than current application process</div>
+              </div>
 
-            {/* Stat 2 */}
-            <div
-              className="rounded-3xl p-6 text-center text-white"
-              style={{
-                background: 'linear-gradient(90deg, #3783AC 45%, #1D0A6F 100%)'
-              }}
-            >
-              <div className="text-4xl sm:text-5xl font-bold mb-2">85%</div>
-              <div className="text-sm opacity-80">of job seekers would use Purpose to find fitting opportunities</div>
-            </div>
+              {/* Disk 2 - >20 (starts at top) */}
+              <div
+                onClick={handleDiskRotation}
+                className="absolute rounded-full flex flex-col items-center justify-center text-white cursor-pointer transition-all duration-300 border-2 border-white/30"
+                style={{
+                  width: '160px',
+                  height: '160px',
+                  background: 'linear-gradient(90deg, #3783AC 45%, #1D0A6F 100%)',
+                  boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)',
+                  left: isExpanding
+                    ? (diskRotation === 0 ? '50%' : diskRotation === 1 ? '85%' : diskRotation === 2 ? '50%' : '15%')
+                    : (diskRotation === 0 ? '50%' : diskRotation === 1 ? '75%' : diskRotation === 2 ? '50%' : '25%'),
+                  top: isExpanding
+                    ? (diskRotation === 0 ? '-5%' : diskRotation === 1 ? '30%' : diskRotation === 2 ? '70%' : '30%')
+                    : (diskRotation === 0 ? '2%' : diskRotation === 1 ? '28%' : diskRotation === 2 ? '52%' : '28%'),
+                  transform: 'translateX(-50%)',
+                  zIndex: diskRotation === 0 ? 1 : diskRotation === 1 ? 2 : diskRotation === 2 ? 4 : 2
+                }}
+              >
+                <div className="text-3xl sm:text-4xl font-bold mb-1" style={{ color: 'rgba(255,255,255,0.9)', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>&gt;20</div>
+                <div className="text-[10px] sm:text-xs text-center px-3 opacity-80 leading-tight">integrations with leading ATS platforms</div>
+              </div>
 
-            {/* Stat 3 */}
-            <div
-              className="rounded-3xl p-6 text-center text-white"
-              style={{
-                background: 'linear-gradient(90deg, #3783AC 45%, #1D0A6F 100%)'
-              }}
-            >
-              <div className="text-4xl sm:text-5xl font-bold mb-2">3x</div>
-              <div className="text-sm opacity-80">faster hiring process with intelligent matching</div>
-            </div>
+              {/* Disk 3 - >90% (starts at right) */}
+              <div
+                onClick={handleDiskRotation}
+                className="absolute rounded-full flex flex-col items-center justify-center text-white cursor-pointer transition-all duration-300 border-2 border-white/30"
+                style={{
+                  width: '160px',
+                  height: '160px',
+                  background: 'linear-gradient(90deg, #3783AC 45%, #1D0A6F 100%)',
+                  boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)',
+                  left: isExpanding
+                    ? (diskRotation === 0 ? '85%' : diskRotation === 1 ? '50%' : diskRotation === 2 ? '15%' : '50%')
+                    : (diskRotation === 0 ? '75%' : diskRotation === 1 ? '50%' : diskRotation === 2 ? '25%' : '50%'),
+                  top: isExpanding
+                    ? (diskRotation === 0 ? '30%' : diskRotation === 1 ? '70%' : diskRotation === 2 ? '30%' : '-5%')
+                    : (diskRotation === 0 ? '28%' : diskRotation === 1 ? '52%' : diskRotation === 2 ? '28%' : '2%'),
+                  transform: 'translateX(-50%)',
+                  zIndex: diskRotation === 0 ? 2 : diskRotation === 1 ? 4 : diskRotation === 2 ? 2 : 1
+                }}
+              >
+                <div className="text-3xl sm:text-4xl font-bold mb-1" style={{ color: 'rgba(255,255,255,0.9)', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>&gt;90%</div>
+                <div className="text-[10px] sm:text-xs text-center px-3 opacity-80 leading-tight">job seekers would use Purpose to find opportunities</div>
+              </div>
 
-            {/* Stat 4 */}
-            <div
-              className="rounded-3xl p-6 text-center text-white"
-              style={{
-                background: 'linear-gradient(90deg, #3783AC 45%, #1D0A6F 100%)'
-              }}
-            >
-              <div className="text-4xl sm:text-5xl font-bold mb-2">90%</div>
-              <div className="text-sm opacity-80">candidate satisfaction rate</div>
-            </div>
+              {/* Disk 4 - 5x (starts at bottom, front) */}
+              <div
+                onClick={handleDiskRotation}
+                className="absolute rounded-full flex flex-col items-center justify-center text-white cursor-pointer transition-all duration-300 border-2 border-white/30"
+                style={{
+                  width: '160px',
+                  height: '160px',
+                  background: 'linear-gradient(90deg, #3783AC 45%, #1D0A6F 100%)',
+                  boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3)',
+                  left: isExpanding
+                    ? (diskRotation === 0 ? '50%' : diskRotation === 1 ? '15%' : diskRotation === 2 ? '50%' : '85%')
+                    : (diskRotation === 0 ? '50%' : diskRotation === 1 ? '25%' : diskRotation === 2 ? '50%' : '75%'),
+                  top: isExpanding
+                    ? (diskRotation === 0 ? '70%' : diskRotation === 1 ? '30%' : diskRotation === 2 ? '-5%' : '30%')
+                    : (diskRotation === 0 ? '52%' : diskRotation === 1 ? '28%' : diskRotation === 2 ? '2%' : '28%'),
+                  transform: 'translateX(-50%)',
+                  zIndex: diskRotation === 0 ? 4 : diskRotation === 1 ? 2 : diskRotation === 2 ? 1 : 2
+                }}
+              >
+                <div className="text-3xl sm:text-4xl font-bold mb-1" style={{ color: 'rgba(255,255,255,0.9)', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}>5x</div>
+                <div className="text-[10px] sm:text-xs text-center px-3 opacity-80 leading-tight">better application-to-hire conversion</div>
+              </div>
+
+              {/* Tap indicator */}
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-xs text-gray-500 animate-pulse">
+                Tap to rotate
+              </div>
             </div>
 
             {/* Mobile company logos carousel */}
@@ -2858,7 +3009,7 @@ export default function Home() {
               minHeight: '220px',
               borderRadius: '30px',
               border: '1px solid #FFF',
-              background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.80) 0%, rgba(153, 153, 153, 0.80) 100%)',
+              background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.90) 0%, rgba(149, 186, 255, 0.90) 100%)',
               backdropFilter: 'blur(5px)',
               color: '#454545'
             }}

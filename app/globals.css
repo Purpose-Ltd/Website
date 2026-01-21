@@ -10,6 +10,17 @@
   .pause-on-hover:hover {
     animation-play-state: paused !important;
   }
+
+  /* Mobile feature card hover effect */
+  .mobile-feature-card {
+    background: linear-gradient(180deg, rgba(200, 210, 240, 0.8) 0%, rgba(180, 200, 230, 0.9) 100%);
+    transition: all 0.3s ease;
+  }
+
+  .mobile-feature-card:hover {
+    background: linear-gradient(180deg, #3783AC 0%, #1D0A6F 100%);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.50);
+  }
 }
 
 @layer base {

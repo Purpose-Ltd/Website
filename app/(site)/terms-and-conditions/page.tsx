@@ -84,94 +84,81 @@ export default function TermsAndConditionsPage() {
             </h1>
 
             {/* Content */}
-            <div className="w-full max-w-4xl mt-12 sm:mt-16 lg:mt-[198px] px-4 sm:px-8 lg:px-0 text-[#454545] font-helvetica text-base sm:text-lg lg:text-xl leading-normal">
-              <p className="font-bold mb-4">§ 1 Geltungsbereich</p>
-              <p className="mb-8">
-                Diese AGB gelten für die Website purpose.hr sowie alle über diese erbrachten Informations- und Buchungsleistungen (§ 305 BGB). <br />
-                Für weitere Services gelten separate Bedingungen. Abweichende Nutzerbedingungen werden nicht anerkannt (§ 305b BGB).
+            <div className="w-full max-w-4xl mt-12 sm:mt-16 lg:mt-[100px] px-4 sm:px-8 lg:px-0 text-[#454545] font-helvetica text-base sm:text-lg lg:text-xl leading-normal">
+              <p className="font-bold mb-2">§ 1 Geltungsbereich</p>
+              <p className="mb-6">
+                Diese AGB gelten für die Website purpose.hr sowie alle über diese erbrachten Informations- und Buchungsleistungen (§ 305 BGB). Für weitere Services gelten separate Bedingungen. Abweichende Nutzerbedingungen werden nicht anerkannt (§ 305b BGB).
               </p>
 
-              <p className="font-bold mb-4">§ 2 Anbieter</p>
-              <p className="mb-8">
+              <p className="font-bold mb-2">§ 2 Anbieter</p>
+              <p className="mb-6">
                 Purpose UG (haftungsbeschränkt), Seidl-Kreuz-Weg 94, 85737 Ismaning<br />
                 Vertreten durch: Lukas Faber<br />
                 HRB München 292052, USt-IdNr: DE368116002
               </p>
 
-              <p className="font-bold mb-4">§ 3 Vertragsschluss</p>
-              <p className="mb-8">
-                Die auf der Website dargestellten Inhalte stellen unverbindliche Angebote dar (§ 145 BGB). Demo-Termine sind ebenfalls unverbindlich.<br />
-                Ein verbindlicher Vertragsschluss erfolgt erst durch separate Vereinbarung (§ 126 BGB).
+              <p className="font-bold mb-2">§ 3 Vertragsschluss</p>
+              <p className="mb-6">
+                Die auf der Website dargestellten Inhalte stellen unverbindliche Angebote dar (§ 145 BGB). Demo-Termine sind ebenfalls unverbindlich. Ein verbindlicher Vertragsschluss erfolgt erst durch separate Vereinbarung (§ 126 BGB).
               </p>
 
-              <p className="font-bold mb-4">§ 4 Beta-Programm</p>
-              <p className="mb-8">
-                Services, die sich in der Beta-Phase befinden, werden unentgeltlich zur Verfügung gestellt (§ 516 BGB).<br />
-                Die Haftung ist auf Vorsatz und grobe Fahrlässigkeit beschränkt (§ 521 BGB). Das Beta-Programm kann jederzeit beendet werden (§ 627 BGB).
+              <p className="font-bold mb-2">§ 4 Beta-Programm</p>
+              <p className="mb-6">
+                Services, die sich in der Beta-Phase befinden, werden unentgeltlich zur Verfügung gestellt (§ 516 BGB). Die Haftung ist auf Vorsatz und grobe Fahrlässigkeit beschränkt (§ 521 BGB). Das Beta-Programm kann jederzeit beendet werden (§ 627 BGB).
               </p>
 
-              <p className="font-bold mb-4">§ 5 Nutzung</p>
-              <p className="mb-8">
+              <p className="font-bold mb-2">§ 5 Nutzung</p>
+              <p className="mb-6">
                 Erlaubt sind: Information, Kontaktaufnahme und Terminbuchung.<br />
                 Verboten sind: Scraping, Überlastung der Server sowie jegliche Form von Rechtsverletzungen (§ 1004 BGB, § 303a StGB).
               </p>
 
-              <p className="font-bold mb-4">§ 6 Urheberrecht</p>
-              <p className="mb-8">
-                Alle auf der Website veröffentlichten Inhalte sind urheberrechtlich geschützt (§§ 2, 15, 31 UrhG).<br />
-                Bei Verstößen gegen das Urheberrecht besteht Schadensersatzpflicht (§ 97 UrhG).
+              <p className="font-bold mb-2">§ 6 Urheberrecht</p>
+              <p className="mb-6">
+                Alle auf der Website veröffentlichten Inhalte sind urheberrechtlich geschützt (§§ 2, 15, 31 UrhG). Bei Verstößen gegen das Urheberrecht besteht Schadensersatzpflicht (§ 97 UrhG).
               </p>
 
-              <p className="font-bold mb-4">§ 7 Leistungsstörungen</p>
-              <p className="mb-8">
-                Für technische Störungen, die nicht zu vertreten sind, besteht keine Haftung (§ 276 BGB).<br />
-                Bei unentgeltlichen Leistungen entfällt die Gewährleistung (§ 521 BGB).
+              <p className="font-bold mb-2">§ 7 Leistungsstörungen</p>
+              <p className="mb-6">
+                Für technische Störungen, die nicht zu vertreten sind, besteht keine Haftung (§ 276 BGB). Bei unentgeltlichen Leistungen entfällt die Gewährleistung (§ 521 BGB).
               </p>
 
-              <p className="font-bold mb-4">§ 8 Haftung</p>
-              <p className="mb-8">
-                Unbeschränkte Haftung besteht bei Personenschäden sowie bei Vorsatz und grober Fahrlässigkeit (§ 276 BGB).<br />
-                Bei leichter Fahrlässigkeit haftet der Anbieter nur bei Verletzung wesentlicher Vertragspflichten (Kardinalpflichten) (§ 280 BGB).<br />
-                Ausgeschlossen ist die Haftung für mittelbare und unvorhersehbare Schäden (§ 309 Nr. 7 BGB) sowie für externe Links (TMG § 7).
+              <p className="font-bold mb-2">§ 8 Haftung</p>
+              <p className="mb-6">
+                Unbeschränkte Haftung besteht bei Personenschäden sowie bei Vorsatz und grober Fahrlässigkeit (§ 276 BGB). Bei leichter Fahrlässigkeit haftet der Anbieter nur bei Verletzung wesentlicher Vertragspflichten (Kardinalpflichten) (§ 280 BGB). Ausgeschlossen ist die Haftung für mittelbare und unvorhersehbare Schäden (§ 309 Nr. 7 BGB) sowie für externe Links (TMG § 7).
               </p>
 
-              <p className="font-bold mb-4">§ 9 Datenschutz</p>
-              <p className="mb-8">
-                Die Datenverarbeitung erfolgt nach den Vorgaben der DSGVO und des BDSG.<br />
-                Detaillierte Informationen finden Sie in der separaten Datenschutzerklärung (Art. 13 DSGVO).
+              <p className="font-bold mb-2">§ 9 Datenschutz</p>
+              <p className="mb-6">
+                Die Datenverarbeitung erfolgt nach den Vorgaben der DSGVO und des BDSG. Detaillierte Informationen finden Sie in der separaten Datenschutzerklärung (Art. 13 DSGVO).
               </p>
 
-              <p className="font-bold mb-4">§ 10 Widerrufsrecht</p>
-              <p className="mb-8">
-                Nutzer haben ein 14-tägiges Widerrufsrecht ohne Angabe von Gründen (§ 355 BGB).<br />
-                Bei unentgeltlichen Leistungen ist das Widerrufsrecht ausgeschlossen (§ 312g BGB) – dies gilt für das Beta-Programm.
+              <p className="font-bold mb-2">§ 10 Widerrufsrecht</p>
+              <p className="mb-6">
+                Nutzer haben ein 14-tägiges Widerrufsrecht ohne Angabe von Gründen (§ 355 BGB). Bei unentgeltlichen Leistungen ist das Widerrufsrecht ausgeschlossen (§ 312g BGB) – dies gilt für das Beta-Programm.
               </p>
 
-              <p className="font-bold mb-4">§ 11 AGB-Änderungen</p>
-              <p className="mb-8">
-                Änderungen dieser AGB werden in Textform mitgeteilt. Nutzer haben eine Widerspruchsfrist von 14 Tagen (§ 305 BGB).<br />
-                Schweigen gilt als Zustimmung.
+              <p className="font-bold mb-2">§ 11 AGB-Änderungen</p>
+              <p className="mb-6">
+                Änderungen dieser AGB werden in Textform mitgeteilt. Nutzer haben eine Widerspruchsfrist von 14 Tagen (§ 305 BGB). Schweigen gilt als Zustimmung.
               </p>
 
-              <p className="font-bold mb-4">§ 12 Streitbeilegung</p>
-              <p className="mb-8">
-                Eine Teilnahme an Verbraucherschlichtungsverfahren erfolgt nicht (§ 36 VSBG).<br />
-                Vor Klageerhebung wird eine Mediation empfohlen (§ 15a EGZPO).
+              <p className="font-bold mb-2">§ 12 Streitbeilegung</p>
+              <p className="mb-6">
+                Eine Teilnahme an Verbraucherschlichtungsverfahren erfolgt nicht (§ 36 VSBG). Vor Klageerhebung wird eine Mediation empfohlen (§ 15a EGZPO).
               </p>
 
-              <p className="font-bold mb-4">§ 13 Verjährung</p>
-              <p className="mb-8">
+              <p className="font-bold mb-2">§ 13 Verjährung</p>
+              <p className="mb-6">
                 Die Verjährungsfrist beträgt drei Jahre (§ 195 BGB) und beginnt mit dem Ende des Jahres, in dem der Anspruch entstanden ist (§ 199 Abs. 1 BGB).
               </p>
 
-              <p className="font-bold mb-4">§ 14 Schlussbestimmungen</p>
-              <p className="mb-8">
-                Es gilt deutsches Recht unter Ausschluss des UN-Kaufrechts. Gerichtsstand ist München (§ 17, 38 ZPO), für Verbraucher gilt § 29c ZPO.<br />
-                Sollten einzelne Bestimmungen unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt (§ 306 BGB).<br />
-                Vertragssprache ist Deutsch.
+              <p className="font-bold mb-2">§ 14 Schlussbestimmungen</p>
+              <p className="mb-6">
+                Es gilt deutsches Recht unter Ausschluss des UN-Kaufrechts. Gerichtsstand ist München (§ 17, 38 ZPO), für Verbraucher gilt § 29c ZPO. Sollten einzelne Bestimmungen unwirksam sein, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt (§ 306 BGB). Vertragssprache ist Deutsch.
               </p>
 
-              <p className="mt-12">
+              <p className="mt-8">
                 Stand: 20.10.2025 | Version: 1.0
               </p>
             </div>
@@ -186,7 +173,7 @@ export default function TermsAndConditionsPage() {
           <div
             className="hidden lg:flex w-full max-w-[1760px] items-center justify-between px-8 xl:px-12 py-8 rounded-[50px] border border-white"
             style={{
-              background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.80) 0%, rgba(153, 153, 153, 0.80) 100%)',
+              background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.90) 0%, rgba(149, 186, 255, 0.90) 100%)',
               backdropFilter: 'blur(5px)',
               color: '#454545'
             }}
@@ -238,7 +225,7 @@ export default function TermsAndConditionsPage() {
           <div
             className="lg:hidden w-full flex flex-col items-center gap-8 px-6 py-8 rounded-[30px] border border-white"
             style={{
-              background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.80) 0%, rgba(153, 153, 153, 0.80) 100%)',
+              background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.90) 0%, rgba(149, 186, 255, 0.90) 100%)',
               backdropFilter: 'blur(5px)',
               color: '#454545'
             }}

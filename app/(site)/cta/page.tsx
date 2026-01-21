@@ -1,6 +1,31 @@
+import Link from 'next/link'
+
 export default function CTAPage() {
   return (
     <div className="min-h-screen relative overflow-hidden">
+      {/* Back to homepage link */}
+      <Link
+        href="/"
+        className="absolute top-6 left-6 z-50 flex items-center gap-2 text-[#454545] hover:text-[#5323E5] transition-colors duration-200 font-medium"
+      >
+        <svg
+          width="8"
+          height="14"
+          viewBox="0 0 8 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7 1L1 7L7 13"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+        Back to homepage
+      </Link>
+
       {/* Top left decorative circle - left one */}
       <div
         className="hidden md:block absolute rounded-full opacity-0 animate-fade-in-slow-1"

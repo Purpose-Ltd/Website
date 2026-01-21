@@ -155,8 +155,9 @@ export default function AboutPage() {
             </p>
 
             {/* Mobile Contact button */}
-            <div
-              className="hover:scale-[1.02] transition-transform duration-300 cursor-pointer flex items-center justify-center px-8 py-3 rounded-[18px] border border-white mt-8"
+            <a
+              href="mailto:hello@purpose.hr"
+              className="hover:scale-[1.02] transition-transform duration-300 cursor-pointer flex items-center justify-center px-8 py-3 rounded-[18px] border border-white mt-8 no-underline"
               style={{
                 background: 'linear-gradient(90deg, #213D83 0%, #4F647D 100%)',
                 boxShadow: '0 6px 4px 0 rgba(0, 0, 0, 0.25)'
@@ -165,62 +166,70 @@ export default function AboutPage() {
               <span className="font-poppins text-white text-xl sm:text-2xl font-medium">
                 Contact us
               </span>
-            </div>
+            </a>
 
             {/* Mobile Founding Team heading */}
             <h2 className="font-poppins text-3xl sm:text-4xl font-bold text-[#454545] text-center mt-16">
               Founding Team
             </h2>
 
-            {/* Mobile Team members */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-12 mt-8">
-              {/* Gregor */}
-              <div className="flex flex-col items-center">
-                <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-[#D9D9D9] flex items-center justify-center">
-                  <img
-                    src="/gregorkobilarov.jpeg"
-                    alt="Gregor Kobilarov"
-                    className="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover"
-                  />
+            {/* Mobile Team members - Lukas at top */}
+            <div className="flex flex-col items-center mt-8">
+              {/* Lukas - Top center */}
+              <div className="flex flex-col items-center mb-8">
+                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-[#D9D9D9] overflow-hidden">
+                  <img src="/images/team/lf.jpeg" alt="Lukas Faber" className="w-full h-full object-cover" />
                 </div>
-                <div className="font-inter text-lg sm:text-xl font-bold text-[#454545] text-center mt-4">
-                  Gregor Kobilarov
-                </div>
-                <div className="font-inter text-sm sm:text-base font-medium text-[#454545] text-center mt-1">
-                  Chief Technology Officer
-                </div>
-              </div>
-
-              {/* Lukas */}
-              <div className="flex flex-col items-center">
-                <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-[#D9D9D9] flex items-center justify-center">
-                  <img
-                    src="/lukasfaber.jpeg"
-                    alt="Lukas Faber"
-                    className="w-24 h-24 sm:w-32 sm:h-32 rounded-full object-cover"
-                  />
-                </div>
-                <div className="font-inter text-lg sm:text-xl font-bold text-[#454545] text-center mt-4">
+                <div className="font-inter text-lg sm:text-xl font-bold text-[#454545] text-center mt-3">
                   Lukas Faber
                 </div>
                 <div className="font-inter text-sm sm:text-base font-medium text-[#454545] text-center mt-1">
-                  Chief Executive Officer
+                  Founder & CEO
+                </div>
+              </div>
+
+              {/* Bottom row - 3 team members */}
+              <div className="flex flex-row items-start justify-center gap-6 sm:gap-10">
+                {/* Wael */}
+                <div className="flex flex-col items-center">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#D9D9D9] overflow-hidden">
+                    <img src="/images/team/wf.jpeg" alt="Wael Feriz" className="w-full h-full object-cover" />
+                  </div>
+                  <div className="font-inter text-base sm:text-lg font-bold text-[#454545] text-center mt-3">
+                    Wael Feriz
+                  </div>
+                  <div className="font-inter text-xs sm:text-sm font-medium text-[#454545] text-center mt-1">
+                    ML & AI Engineer
+                  </div>
+                </div>
+
+                {/* Polina */}
+                <div className="flex flex-col items-center">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#D9D9D9] overflow-hidden">
+                    <img src="/images/team/ps.jpeg" alt="Polina Shnaider" className="w-full h-full object-cover" />
+                  </div>
+                  <div className="font-inter text-base sm:text-lg font-bold text-[#454545] text-center mt-3">
+                    Polina Shnaider
+                  </div>
+                  <div className="font-inter text-xs sm:text-sm font-medium text-[#454545] text-center mt-1">
+                    Web & Frontend Dev
+                  </div>
+                </div>
+
+                {/* Mieszko */}
+                <div className="flex flex-col items-center">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#D9D9D9] overflow-hidden">
+                    <img src="/images/team/mc.jpeg" alt="Mieszko Chowaniec" className="w-full h-full object-cover" />
+                  </div>
+                  <div className="font-inter text-base sm:text-lg font-bold text-[#454545] text-center mt-3">
+                    Mieszko Chowaniec
+                  </div>
+                  <div className="font-inter text-xs sm:text-sm font-medium text-[#454545] text-center mt-1">
+                    Backend Developer
+                  </div>
                 </div>
               </div>
             </div>
-
-            {/* Mobile Team description */}
-            <p
-              className="font-poppins text-sm sm:text-base md:text-lg font-medium text-center max-w-2xl mt-8 px-4 leading-normal"
-              style={{
-                background: 'linear-gradient(137deg, #11314A 7.48%, #9A76F4 94.06%)',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent'
-              }}
-            >
-              Purpose is developed by a diverse team of machine learning engineers, backend and frontend developers, and designers from around the world. Based in Munich but bringing global perspectives, we&apos;re combining technical expertise with international insights to revolutionize recruiting technology for both candidates and employers.
-            </p>
           </div>
 
           {/* DESKTOP Content Box - only shows on screens >= 1024px (unchanged from original) */}
@@ -228,7 +237,7 @@ export default function AboutPage() {
             className="hidden lg:flex flex-shrink-0 flex-col items-center px-12"
             style={{
               width: '1760px',
-              minHeight: '2200px',
+              minHeight: '1750px',
               borderRadius: '50px',
               border: '1px solid #FFF',
               background: 'linear-gradient(180deg, #EEE9FC 0%, #D3E3FF 50%, #DDFCF6 100%)',
@@ -394,8 +403,9 @@ Munich-based, globally minded - we&apos;re creating a world where talent discove
             </p>
 
             {/* Button/CTA element */}
-            <div
-              className="hover:scale-[1.02] transition-transform duration-300 cursor-pointer"
+            <a
+              href="mailto:hello@purpose.hr"
+              className="hover:scale-[1.02] transition-transform duration-300 cursor-pointer no-underline"
               style={{
                 position: 'absolute',
                 left: '77px',
@@ -429,19 +439,19 @@ Munich-based, globally minded - we&apos;re creating a world where talent discove
               >
                 Contact us
               </span>
-            </div>
+            </a>
 
-            {/* Text below Contact us button */}
+            {/* Founding Team Title */}
             <div
               className="font-poppins"
               style={{
                 position: 'absolute',
-                left: '77px',
-                top: '1058px',
-                alignSelf: 'stretch',
+                left: '0',
+                right: '0',
+                top: '1000px',
                 color: '#454545',
                 textAlign: 'center',
-                fontSize: '64px',
+                fontSize: '48px',
                 fontStyle: 'normal',
                 fontWeight: 700,
                 lineHeight: 'normal'
@@ -456,13 +466,13 @@ Munich-based, globally minded - we&apos;re creating a world where talent discove
               style={{
                 position: 'absolute',
                 left: '-450px',
-                top: '1250px',
-                width: '668.371px',
-                height: '668.371px',
+                top: '1100px',
+                width: '568.371px',
+                height: '568.371px',
                 transform: 'rotate(134.213deg)',
                 flexShrink: 0,
-                borderRadius: '668.371px',
-                border: '30px solid transparent',
+                borderRadius: '568.371px',
+                border: '25px solid transparent',
                 background: 'linear-gradient(90deg, #5323E5 0%, #537CFF 49%, #76F4DC 100%) border-box',
                 WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
                 WebkitMaskComposite: 'xor',
@@ -477,13 +487,13 @@ Munich-based, globally minded - we&apos;re creating a world where talent discove
               style={{
                 position: 'absolute',
                 left: '-360px',
-                top: '1340px',
-                width: '488.371px',
-                height: '488.371px',
+                top: '1180px',
+                width: '408.371px',
+                height: '408.371px',
                 transform: 'rotate(134.213deg)',
                 flexShrink: 0,
-                borderRadius: '488.371px',
-                border: '30px solid transparent',
+                borderRadius: '408.371px',
+                border: '25px solid transparent',
                 background: 'linear-gradient(90deg, #5323E5 0%, #537CFF 49%, #76F4DC 100%) border-box',
                 WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
                 WebkitMaskComposite: 'xor',
@@ -498,13 +508,13 @@ Munich-based, globally minded - we&apos;re creating a world where talent discove
               style={{
                 position: 'absolute',
                 left: '-270px',
-                top: '1430px',
-                width: '308.371px',
-                height: '308.371px',
+                top: '1260px',
+                width: '248.371px',
+                height: '248.371px',
                 transform: 'rotate(134.213deg)',
                 flexShrink: 0,
-                borderRadius: '308.371px',
-                border: '30px solid transparent',
+                borderRadius: '248.371px',
+                border: '25px solid transparent',
                 background: 'linear-gradient(90deg, #5323E5 0%, #537CFF 49%, #76F4DC 100%) border-box',
                 WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
                 WebkitMaskComposite: 'xor',
@@ -513,162 +523,210 @@ Munich-based, globally minded - we&apos;re creating a world where talent discove
               }}
             />
 
-            {/* Team member circle 1 - Gregor */}
+            {/* Team member - Lukas (Top Center) */}
             <div
               style={{
                 position: 'absolute',
-                left: '400px',
-                top: '1250px',
-                width: '222px',
-                height: '222px',
-                flexShrink: 0,
-                borderRadius: '50%',
-                background: '#D9D9D9',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                top: '1100px',
+                width: '180px',
                 display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
+                flexDirection: 'column',
+                alignItems: 'center'
               }}
             >
-              <img
-                src="/gregorkobilarov.jpeg"
-                alt="Gregor Kobilarov"
+              <div
                 style={{
-                  width: '170px',
-                  height: '170px',
+                  width: '110px',
+                  height: '110px',
                   borderRadius: '50%',
-                  objectFit: 'cover'
+                  background: '#D9D9D9',
+                  overflow: 'hidden'
                 }}
-              />
+              >
+                <img src="/images/team/lf.jpeg" alt="Lukas Faber" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+              <div
+                className="font-inter"
+                style={{
+                  color: '#454545',
+                  textAlign: 'center',
+                  fontSize: '20px',
+                  fontWeight: 700,
+                  lineHeight: '24px',
+                  marginTop: '12px'
+                }}
+              >
+                Lukas Faber
+              </div>
+              <div
+                className="font-inter"
+                style={{
+                  color: '#454545',
+                  textAlign: 'center',
+                  fontSize: '14px',
+                  fontWeight: 500,
+                  lineHeight: '24px',
+                  marginTop: '2px'
+                }}
+              >
+                Founder & CEO
+              </div>
             </div>
 
-            {/* Name for team member 1 */}
-            <div
-              className="font-inter"
-              style={{
-                position: 'absolute',
-                left: '400px',
-                top: '1505px',
-                width: '222px',
-                color: '#454545',
-                textAlign: 'center',
-                fontSize: '23px',
-                fontStyle: 'normal',
-                fontWeight: 700,
-                lineHeight: '24px'
-              }}
-            >
-              Gregor Kobilarov
-            </div>
-
-            {/* Title for team member 1 */}
-            <div
-              className="font-inter"
-              style={{
-                position: 'absolute',
-                left: '400px',
-                top: '1539px',
-                width: '222px',
-                alignSelf: 'stretch',
-                color: '#454545',
-                textAlign: 'center',
-                fontSize: '16px',
-                fontStyle: 'normal',
-                fontWeight: 500,
-                lineHeight: '24px'
-              }}
-            >
-              Chief Technology Officer
-            </div>
-
-            {/* Team member circle 2 - Lukas */}
+            {/* Team member - Wael (Bottom Left) */}
             <div
               style={{
                 position: 'absolute',
-                left: '950px',
-                top: '1250px',
-                width: '222px',
-                height: '222px',
-                flexShrink: 0,
-                borderRadius: '50%',
-                background: '#D9D9D9',
+                left: '420px',
+                top: '1300px',
+                width: '180px',
                 display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
+                flexDirection: 'column',
+                alignItems: 'center'
               }}
             >
-              <img
-                src="/lukasfaber.jpeg"
-                alt="Lukas Faber"
+              <div
                 style={{
-                  width: '170px',
-                  height: '170px',
+                  width: '100px',
+                  height: '100px',
                   borderRadius: '50%',
-                  objectFit: 'cover'
+                  background: '#D9D9D9',
+                  overflow: 'hidden'
                 }}
-              />
+              >
+                <img src="/images/team/wf.jpeg" alt="Wael Feriz" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+              <div
+                className="font-inter"
+                style={{
+                  color: '#454545',
+                  textAlign: 'center',
+                  fontSize: '18px',
+                  fontWeight: 700,
+                  lineHeight: '24px',
+                  marginTop: '12px'
+                }}
+              >
+                Wael Feriz
+              </div>
+              <div
+                className="font-inter"
+                style={{
+                  color: '#454545',
+                  textAlign: 'center',
+                  fontSize: '13px',
+                  fontWeight: 500,
+                  lineHeight: '24px',
+                  marginTop: '2px'
+                }}
+              >
+                ML & AI Engineer
+              </div>
             </div>
 
-            {/* Name for team member 2 */}
+            {/* Team member - Polina (Bottom Center) */}
             <div
-              className="font-inter"
               style={{
                 position: 'absolute',
-                left: '950px',
-                top: '1505px',
-                width: '222px',
-                color: '#454545',
-                textAlign: 'center',
-                fontSize: '23px',
-                fontStyle: 'normal',
-                fontWeight: 700,
-                lineHeight: '24px'
+                left: '50%',
+                transform: 'translateX(-50%)',
+                top: '1300px',
+                width: '180px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center'
               }}
             >
-              Lukas Faber
+              <div
+                style={{
+                  width: '100px',
+                  height: '100px',
+                  borderRadius: '50%',
+                  background: '#D9D9D9',
+                  overflow: 'hidden'
+                }}
+              >
+                <img src="/images/team/ps.jpeg" alt="Polina Shnaider" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+              <div
+                className="font-inter"
+                style={{
+                  color: '#454545',
+                  textAlign: 'center',
+                  fontSize: '18px',
+                  fontWeight: 700,
+                  lineHeight: '24px',
+                  marginTop: '12px'
+                }}
+              >
+                Polina Shnaider
+              </div>
+              <div
+                className="font-inter"
+                style={{
+                  color: '#454545',
+                  textAlign: 'center',
+                  fontSize: '13px',
+                  fontWeight: 500,
+                  lineHeight: '24px',
+                  marginTop: '2px'
+                }}
+              >
+                Web & Frontend Dev
+              </div>
             </div>
 
-            {/* Title for team member 2 */}
+            {/* Team member - Mieszko (Bottom Right) */}
             <div
-              className="font-inter"
               style={{
                 position: 'absolute',
-                left: '950px',
-                top: '1539px',
-                width: '222px',
-                alignSelf: 'stretch',
-                color: '#454545',
-                textAlign: 'center',
-                fontSize: '16px',
-                fontStyle: 'normal',
-                fontWeight: 500,
-                lineHeight: '24px'
+                right: '420px',
+                top: '1300px',
+                width: '180px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center'
               }}
             >
-              Chief Executive Officer
-            </div>
-
-            {/* Team description with gradient text */}
-            <div
-              className="font-poppins"
-              style={{
-                position: 'absolute',
-                left: '365px',
-                top: '1750px',
-                width: '1031px',
-                height: '287px',
-                flexShrink: 0,
-                textAlign: 'center',
-                fontSize: '32px',
-                fontStyle: 'normal',
-                fontWeight: 500,
-                lineHeight: 'normal',
-                background: 'linear-gradient(137deg, #11314A 7.48%, #9A76F4 94.06%)',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent'
-              }}
-            >
-              Purpose is developed by a diverse team of machine learning engineers, backend and frontend developers, and designers from around the world. Based in Munich but bringing global perspectives, we&apos;re combining technical expertise with international insights to revolutionize recruiting technology for both candidates and employers.
+              <div
+                style={{
+                  width: '100px',
+                  height: '100px',
+                  borderRadius: '50%',
+                  background: '#D9D9D9',
+                  overflow: 'hidden'
+                }}
+              >
+                <img src="/images/team/mc.jpeg" alt="Mieszko Chowaniec" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+              <div
+                className="font-inter"
+                style={{
+                  color: '#454545',
+                  textAlign: 'center',
+                  fontSize: '18px',
+                  fontWeight: 700,
+                  lineHeight: '24px',
+                  marginTop: '12px'
+                }}
+              >
+                Mieszko Chowaniec
+              </div>
+              <div
+                className="font-inter"
+                style={{
+                  color: '#454545',
+                  textAlign: 'center',
+                  fontSize: '13px',
+                  fontWeight: 500,
+                  lineHeight: '24px',
+                  marginTop: '2px'
+                }}
+              >
+                Backend Developer
+              </div>
             </div>
 
             {/* Content Box */}
@@ -697,7 +755,7 @@ Munich-based, globally minded - we&apos;re creating a world where talent discove
           <div
             className="lg:hidden w-full flex flex-col items-center gap-8 px-6 py-8 rounded-[30px] border border-white"
             style={{
-              background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.80) 0%, rgba(153, 153, 153, 0.80) 100%)',
+              background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.90) 0%, rgba(149, 186, 255, 0.90) 100%)',
               backdropFilter: 'blur(5px)',
               color: '#454545'
             }}
@@ -744,7 +802,7 @@ Munich-based, globally minded - we&apos;re creating a world where talent discove
               height: '220px',
               borderRadius: '50px',
               border: '1px solid #FFF',
-              background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.80) 0%, rgba(153, 153, 153, 0.80) 100%)',
+              background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.90) 0%, rgba(149, 186, 255, 0.90) 100%)',
               backdropFilter: 'blur(5px)',
               color: '#454545'
             }}

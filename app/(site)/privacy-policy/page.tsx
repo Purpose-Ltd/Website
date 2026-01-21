@@ -80,54 +80,45 @@ export default function PrivacyPolicyPage() {
           >
             {/* Title */}
             <h1 className="text-center font-bold text-[#454545] text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[64px] leading-[120%] px-4">
-              Privacy Policy / Datenschutzerklärung
+              Privacy Policy
             </h1>
 
             {/* Content */}
-            <div className="w-full max-w-4xl mt-12 sm:mt-16 lg:mt-[198px] px-4 sm:px-8 lg:px-0 text-[#454545] font-helvetica text-base sm:text-lg lg:text-xl leading-normal">
-              <p className="mb-8">
-                Der Schutz Ihrer persönlichen Daten ist uns wichtig. Nachfolgend informieren wir Sie über die Erhebung, Verarbeitung und Nutzung Ihrer personenbezogenen Daten im Rahmen Ihrer Nutzung unserer Website.
-              </p>
-
-              <p className="text-xl sm:text-2xl lg:text-[32px] font-bold mb-4">I. Verantwortliche Stelle</p>
-              <p className="mb-8">
+            <div className="w-full max-w-4xl mt-12 sm:mt-16 lg:mt-[100px] px-4 sm:px-8 lg:px-0 text-[#454545] font-helvetica text-base sm:text-lg lg:text-xl leading-normal">
+              <p className="text-xl sm:text-2xl lg:text-[28px] font-bold mb-4">I. Verantwortlicher</p>
+              <p className="mb-2">
                 Purpose UG (haftungsbeschränkt)<br />
                 Seidl-Kreuz-Weg 94<br />
                 85737 Ismaning<br />
-                E-Mail: l.faber@purpose.hr
+                Deutschland
+              </p>
+              <p className="mb-6">
+                Telefon: +49 1522 77 32 940<br />
+                E-Mail: hello@purpose.hr<br />
+                Vertreten durch: Lukas Faber
               </p>
 
-              <p className="mb-4">Erhebung und Speicherung personenbezogener Daten</p>
-              <p className="mb-8">
-                Bei Besuch unserer Website werden durch den auf Ihrem Endgerät zum Einsatz kommenden Browser automatisch Informationen an den Server unserer Website gesendet. Diese Informationen werden temporär in einem sog. Logfile gespeichert.
-              </p>
+              <p className="text-xl sm:text-2xl lg:text-[28px] font-bold mb-4 mt-8">II. Datenverarbeitung auf dieser Website</p>
 
-              <p className="mb-4">Rechtsgrundlage der Datenverarbeitung</p>
-              <p className="mb-8">
-                Die Verarbeitung erfolgt gemäß Art. 6 Abs. 1 lit. f DSGVO auf Basis unseres berechtigten Interesses an der Verbesserung der Stabilität und Funktionalität unserer Website.
-              </p>
-
-              <p className="text-xl sm:text-2xl lg:text-[32px] font-bold mb-4 mt-12">II. Datenverarbeitung auf dieser Website</p>
-
-              <p className="mb-4">2.1 Technische Daten</p>
-              <p className="mb-4">
+              <p className="font-bold mb-2">2.1 Technische Daten</p>
+              <p className="mb-6">
                 Automatisch erfasst: IP-Adresse, Browser-Typ, Betriebssystem, besuchte Seiten, Zugriffszeitpunkt<br />
                 Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO<br />
                 Zweck: Website-Betrieb und Sicherheit<br />
                 Speicherdauer: 7 Tage
               </p>
 
-              <p className="mb-4 mt-8">2.2 Kontaktdaten</p>
-              <p className="mb-8">
+              <p className="font-bold mb-2">2.2 Kontaktdaten</p>
+              <p className="mb-6">
                 Bei Demo-Anfragen: Name, E-Mail, Unternehmen, Nachricht<br />
                 Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO<br />
                 Speicherdauer: 30 Tage nach Anfrage
               </p>
 
-              <p className="text-xl sm:text-2xl lg:text-[32px] font-bold mb-4 mt-12">III. Externe Tools</p>
+              <p className="text-xl sm:text-2xl lg:text-[28px] font-bold mb-4 mt-8">III. Externe Tools</p>
 
-              <p className="mb-4">3.1 Google Analytics</p>
-              <p className="mb-4">
+              <p className="font-bold mb-2">3.1 Google Analytics</p>
+              <p className="mb-6">
                 Zweck: Website-Analyse<br />
                 Daten: Anonymisierte IP, Nutzungsverhalten, Browser-Informationen<br />
                 Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)<br />
@@ -135,21 +126,21 @@ export default function PrivacyPolicyPage() {
                 Widerspruch: Cookie-Banner
               </p>
 
-              <p className="mb-4 mt-8">3.2 Calendly</p>
-              <p className="mb-8">
+              <p className="font-bold mb-2">3.2 Calendly</p>
+              <p className="mb-6">
                 Zweck: Demo-Terminbuchung<br />
                 Daten: Name, E-Mail, Terminpräferenzen<br />
                 Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO<br />
                 Datenübertragung: USA
               </p>
 
-              <p className="text-xl sm:text-2xl lg:text-[32px] font-bold mb-4 mt-12">IV. Cookies</p>
-              <p className="mb-8">
+              <p className="text-xl sm:text-2xl lg:text-[28px] font-bold mb-4 mt-8">IV. Cookies</p>
+              <p className="mb-6">
                 Wir verwenden technisch notwendige und Analyse-Cookies. Ihre Einwilligung können Sie über den Cookie-Banner verwalten.
               </p>
 
-              <p className="text-xl sm:text-2xl lg:text-[32px] font-bold mb-4 mt-12">V. Ihre Rechte (Art. 15-21 DSGVO)</p>
-              <p className="mb-4">
+              <p className="text-xl sm:text-2xl lg:text-[28px] font-bold mb-4 mt-8">V. Ihre Rechte (Art. 15-21 DSGVO)</p>
+              <p className="mb-6">
                 • Auskunft über gespeicherte Daten<br />
                 • Berichtigung unrichtiger Daten<br />
                 • Löschung unter bestimmten Voraussetzungen<br />
@@ -159,13 +150,13 @@ export default function PrivacyPolicyPage() {
                 • Widerruf erteilter Einwilligungen
               </p>
 
-              <p className="text-xl sm:text-2xl lg:text-[32px] font-bold mb-4 mt-12">VI. Beschwerderecht</p>
-              <p className="mb-8">
+              <p className="text-xl sm:text-2xl lg:text-[28px] font-bold mb-4 mt-8">VI. Beschwerderecht</p>
+              <p className="mb-6">
                 Bei Beschwerden wenden Sie sich an die zuständige Datenschutzaufsichtsbehörde Ihres Bundeslandes.
               </p>
 
-              <p className="mt-12">
-                Stand: 20.10.2025 | Version: 1.0
+              <p className="mt-8">
+                Stand: 20.10.2025
               </p>
             </div>
           </div>
@@ -179,7 +170,7 @@ export default function PrivacyPolicyPage() {
           <div
             className="hidden lg:flex w-full max-w-[1760px] items-center justify-between px-8 xl:px-12 py-8 rounded-[50px] border border-white"
             style={{
-              background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.80) 0%, rgba(153, 153, 153, 0.80) 100%)',
+              background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.90) 0%, rgba(149, 186, 255, 0.90) 100%)',
               backdropFilter: 'blur(5px)',
               color: '#454545'
             }}
@@ -231,7 +222,7 @@ export default function PrivacyPolicyPage() {
           <div
             className="lg:hidden w-full flex flex-col items-center gap-8 px-6 py-8 rounded-[30px] border border-white"
             style={{
-              background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.80) 0%, rgba(153, 153, 153, 0.80) 100%)',
+              background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.90) 0%, rgba(149, 186, 255, 0.90) 100%)',
               backdropFilter: 'blur(5px)',
               color: '#454545'
             }}

@@ -84,106 +84,54 @@ export default function ImprintPage() {
             </h1>
 
             {/* Content */}
-            <div className="w-full max-w-4xl mt-12 sm:mt-16 lg:mt-[198px] px-4 sm:px-8 lg:px-0 text-[#454545] font-helvetica text-base sm:text-lg lg:text-xl leading-normal">
+            <div className="w-full max-w-4xl mt-12 sm:mt-16 lg:mt-[100px] px-4 sm:px-8 lg:px-0 text-[#454545] font-helvetica text-base sm:text-lg lg:text-xl leading-normal">
               {/* Legal Title */}
-              <div className="text-2xl sm:text-[32px] font-bold mb-8 sm:mb-16">
+              <div className="text-2xl sm:text-[32px] font-bold mb-8">
                 Legal
               </div>
 
-              <p className="font-bold mb-4">Angaben gemäß § 5 TMG</p>
-              <p className="mb-8">
+              <p className="mb-12">
                 Purpose UG (haftungsbeschränkt)<br />
                 Seidl-Kreuz-Weg 94<br />
                 85737 Ismaning<br />
-                Germany
-              </p>
-
-              <p className="font-bold mb-4">Vertreten durch</p>
-              <p className="mb-8">
-                Geschäftsführer: Lukas Faber
-              </p>
-
-              <p className="font-bold mb-4">Kontakt</p>
-              <p className="mb-8">
-                E-Mail: l.faber@purpose.hr<br />
-              </p>
-
-              <p className="font-bold mb-4">Registereintrag</p>
-              <p className="mb-8">
-                Eintragung im Handelsregister<br />
-                Registergericht: Amtsgericht München<br />
-                Registernummer: HRB 292052
-              </p>
-
-              <p className="font-bold mb-4">Umsatzsteuer-ID</p>
-              <p className="mb-8">
-                Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:<br />
-                DE368116002
-              </p>
-
-              <p className="font-bold mb-4">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</p>
-              <p className="mb-8">
-                Lukas Faber<br />
-                Seidl-Kreuz-Weg 94<br />
-                85737 Ismaning
-              </p>
-
-              <p className="font-bold mb-4">EU-Streitschlichtung</p>
-              <p className="mb-8">
-                Die europäische Online-Streitbeilegungsplattform (ODR) wurde zum 20. Juli 2025 eingestellt.<br />
-                Informationen zu Verbraucherstreitbeilegungsstellen in den EU-Mitgliedstaaten finden Sie unter:<br />
-                https://consumer-redress.ec.europa.eu/dispute-resolution-bodies<br />
-                Unsere E-Mail-Adresse finden Sie oben im Impressum.
-              </p>
-
-              <p className="font-bold mb-4">Verbraucherstreitbeilegung/Universalschlichtungsstelle</p>
-              <p className="mb-8">
-                Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
-              </p>
-
-              <p className="mt-12">
-                Stand: 20.10.2025 | Version: 1.0
+                Deutschland
               </p>
 
               {/* Disclaimer Section */}
-              <div className="mt-12 sm:mt-16">
-                <h2 className="text-2xl sm:text-[32px] font-bold mb-8">
-                  Haftungsausschluss – Disclaimer
-                </h2>
+              <h2 className="text-2xl sm:text-[32px] font-bold mb-8">
+                Haftungsausschluss – Disclaimer
+              </h2>
 
-                <h3 className="font-bold mb-4">
-                  Haftung für Inhalte
-                </h3>
-                <p className="mb-4">
-                  Alle Inhalte unseres Internetauftritts wurden mit größter Sorgfalt und nach bestem Gewissen erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.
-                </p>
-                <p className="mb-8">
-                  Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntniserlangung einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von den o.g. Rechtsverletzungen werden wir diese Inhalte unverzüglich entfernen.
-                </p>
+              <h3 className="font-bold mb-4">
+                Haftung für Inhalte
+              </h3>
+              <p className="mb-8">
+                Alle Inhalte unseres Internetauftritts wurden mit größter Sorgfalt und nach bestem Gewissen erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.<br /><br />
+                Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntniserlangung einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von den o.g. Rechtsverletzungen werden wir diese Inhalte unverzüglich entfernen.
+              </p>
 
-                <h3 className="font-bold mb-4">
-                  Haftungsbeschränkung für externe Links
-                </h3>
-                <p className="mb-4">
-                  Unsere Webseite enthält Links auf externe Webseiten Dritter. Auf die Inhalte dieser direkt oder indirekt verlinkten Webseiten haben wir keinen Einfluss. Daher können wir für die &bdquo;externen Links&ldquo; auch keine Gewähr auf Richtigkeit der Inhalte übernehmen. Für die Inhalte der externen Links sind die jeweilige Anbieter oder Betreiber (Urheber) der Seiten verantwortlich.
-                </p>
-                <p className="mb-4">
-                  Die externen Links wurden zum Zeitpunkt der Linksetzung auf eventuelle Rechtsverstöße überprüft und waren im Zeitpunkt der Linksetzung frei von rechtswidrigen Inhalten. Eine ständige inhaltliche Überprüfung der externen Links ist ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht möglich. Bei direkten oder indirekten Verlinkungen auf die Webseiten Dritter, die außerhalb unseres Verantwortungsbereichs liegen, würde eine Haftungsverpflichtung ausschließlich in dem Fall nur bestehen, wenn wir von den Inhalten Kenntnis erlangen und es uns technisch möglich und zumutbar wäre, die Nutzung im Falle rechtswidriger Inhalte zu verhindern.
-                </p>
-                <p className="mb-4">
-                  Diese Haftungsausschlusserklärung gilt auch innerhalb des eigenen Internetauftrittes &bdquo;purpose.hr&ldquo; gesetzten Links und Verweise von Fragestellern. Für illegale, fehlerhafte oder unvollständige Inhalte und insbesondere für Schäden, die aus der Nutzung oder Nichtnutzung solcherart dargestellten Informationen entstehen, haftet allein der Diensteanbieter der Seite, auf welche verwiesen wurde, nicht derjenige, der über Links auf die jeweilige Veröffentlichung lediglich verweist.
-                </p>
-                <p className="mb-8">
-                  Werden uns Rechtsverletzungen bekannt, werden die externen Links durch uns unverzüglich entfernt.
-                </p>
+              <h3 className="font-bold mb-4">
+                Haftungsbeschränkung für externe Links
+              </h3>
+              <p className="mb-4">
+                Unsere Webseite enthält Links auf externe Webseiten Dritter. Auf die Inhalte dieser direkt oder indirekt verlinkten Webseiten haben wir keinen Einfluss. Daher können wir für die „externen Links" auch keine Gewähr auf Richtigkeit der Inhalte übernehmen. Für die Inhalte der externen Links sind die jeweilige Anbieter oder Betreiber (Urheber) der Seiten verantwortlich.
+              </p>
+              <p className="mb-4">
+                Die externen Links wurden zum Zeitpunkt der Linksetzung auf eventuelle Rechtsverstöße überprüft und waren im Zeitpunkt der Linksetzung frei von rechtswidrigen Inhalten. Eine ständige inhaltliche Überprüfung der externen Links ist ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht möglich. Bei direkten oder indirekten Verlinkungen auf die Webseiten Dritter, die außerhalb unseres Verantwortungsbereichs liegen, würde eine Haftungsverpflichtung ausschließlich in dem Fall nur bestehen, wenn wir von den Inhalten Kenntnis erlangen und es uns technisch möglich und zumutbar wäre, die Nutzung im Falle rechtswidriger Inhalte zu verhindern.
+              </p>
+              <p className="mb-4">
+                Diese Haftungsausschlusserklärung gilt auch innerhalb des eigenen Internetauftrittes „purpose.hr" gesetzten Links und Verweise von Fragestellern. Für illegale, fehlerhafte oder unvollständige Inhalte und insbesondere für Schäden, die aus der Nutzung oder Nichtnutzung solcherart dargestellten Informationen entstehen, haftet allein der Diensteanbieter der Seite, auf welche verwiesen wurde, nicht derjenige, der über Links auf die jeweilige Veröffentlichung lediglich verweist.
+              </p>
+              <p className="mb-8">
+                Werden uns Rechtsverletzungen bekannt, werden die externen Links durch uns unverzüglich entfernt.
+              </p>
 
-                <h3 className="font-bold mb-4">
-                  Urheberrecht
-                </h3>
-                <p className="mb-4">
-                  Die auf unserer Webseite veröffentlichen Inhalte und Werke unterliegen dem deutschen Urheberrecht (http://www.gesetze-im-internet.de/bundesrecht/urhg/gesamt.pdf). Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung des geistigen Eigentums in ideeller und materieller Sicht des Urhebers außerhalb der Grenzen des Urheberrechtes bedürfen der vorherigen schriftlichen Zustimmung des jeweiligen Urhebers i.S.d. Urhebergesetzes (http://www.gesetze-im-internet.de/bundesrecht/urhg/gesamt.pdf). Downloads und Kopien dieser Seite sind nur für den privaten und nicht kommerziellen Gebrauch erlaubt. Sind die Inhalte auf unserer Webseite nicht von uns erstellt worden, sind die Urheberrechte Dritter zu beachten. Die Inhalte Dritter werden als solche kenntlich gemacht. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte unverzüglich entfernen.
-                </p>
-              </div>
+              <h3 className="font-bold mb-4">
+                Urheberrecht
+              </h3>
+              <p className="mb-4">
+                Die auf unserer Webseite veröffentlichen Inhalte und Werke unterliegen dem deutschen Urheberrecht (http://www.gesetze-im-internet.de/bundesrecht/urhg/gesamt.pdf). Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung des geistigen Eigentums in ideeller und materieller Sicht des Urhebers außerhalb der Grenzen des Urheberrechtes bedürfen der vorherigen schriftlichen Zustimmung des jeweiligen Urhebers i.S.d. Urhebergesetzes (http://www.gesetze-im-internet.de/bundesrecht/urhg/gesamt.pdf). Downloads und Kopien dieser Seite sind nur für den privaten und nicht kommerziellen Gebrauch erlaubt. Sind die Inhalte auf unserer Webseite nicht von uns erstellt worden, sind die Urheberrechte Dritter zu beachten. Die Inhalte Dritter werden als solche kenntlich gemacht. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte unverzüglich entfernen.
+              </p>
             </div>
           </div>
         </div>
@@ -196,7 +144,7 @@ export default function ImprintPage() {
           <div
             className="hidden lg:flex w-full max-w-[1760px] items-start justify-between px-8 xl:px-12 py-8 rounded-[50px] border border-white"
             style={{
-              background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.80) 0%, rgba(153, 153, 153, 0.80) 100%)',
+              background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.90) 0%, rgba(149, 186, 255, 0.90) 100%)',
               backdropFilter: 'blur(5px)',
               color: '#454545'
             }}
@@ -248,7 +196,7 @@ export default function ImprintPage() {
           <div
             className="lg:hidden w-full flex flex-col items-center gap-8 px-6 py-8 rounded-[30px] border border-white"
             style={{
-              background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.80) 0%, rgba(153, 153, 153, 0.80) 100%)',
+              background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.90) 0%, rgba(149, 186, 255, 0.90) 100%)',
               backdropFilter: 'blur(5px)',
               color: '#454545'
             }}
