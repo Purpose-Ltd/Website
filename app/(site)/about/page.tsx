@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react'
 import PurposeLogo from '@/components/icons/PurposeLogo'
 import CTAButton from '@/components/ui/CTAButton'
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
+
 export default function AboutPage() {
   const [isScrolled, setIsScrolled] = useState(false)
 
@@ -178,7 +180,7 @@ export default function AboutPage() {
               {/* Lukas - Top center */}
               <div className="flex flex-col items-center mb-8">
                 <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-[#D9D9D9] overflow-hidden">
-                  <img src="/images/team/lf.jpeg" alt="Lukas Faber" className="w-full h-full object-cover" />
+                  <img src={`${basePath}/images/team/lf.jpeg`} alt="Lukas Faber" className="w-full h-full object-cover" />
                 </div>
                 <div className="font-inter text-lg sm:text-xl font-bold text-[#454545] text-center mt-3">
                   Lukas Faber
@@ -193,7 +195,7 @@ export default function AboutPage() {
                 {/* Wael */}
                 <div className="flex flex-col items-center">
                   <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#D9D9D9] overflow-hidden">
-                    <img src="/images/team/wf.jpeg" alt="Wael Feriz" className="w-full h-full object-cover" />
+                    <img src={`${basePath}/images/team/wf.jpeg`} alt="Wael Feriz" className="w-full h-full object-cover" />
                   </div>
                   <div className="font-inter text-base sm:text-lg font-bold text-[#454545] text-center mt-3">
                     Wael Feriz
@@ -206,7 +208,7 @@ export default function AboutPage() {
                 {/* Polina */}
                 <div className="flex flex-col items-center">
                   <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#D9D9D9] overflow-hidden">
-                    <img src="/images/team/ps.jpeg" alt="Polina Shnaider" className="w-full h-full object-cover" />
+                    <img src={`${basePath}/images/team/ps.jpeg`} alt="Polina Shnaider" className="w-full h-full object-cover" />
                   </div>
                   <div className="font-inter text-base sm:text-lg font-bold text-[#454545] text-center mt-3">
                     Polina Shnaider
@@ -219,7 +221,7 @@ export default function AboutPage() {
                 {/* Mieszko */}
                 <div className="flex flex-col items-center">
                   <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#D9D9D9] overflow-hidden">
-                    <img src="/images/team/mc.jpeg" alt="Mieszko Chowaniec" className="w-full h-full object-cover" />
+                    <img src={`${basePath}/images/team/mc.jpeg`} alt="Mieszko Chowaniec" className="w-full h-full object-cover" />
                   </div>
                   <div className="font-inter text-base sm:text-lg font-bold text-[#454545] text-center mt-3">
                     Mieszko Chowaniec
@@ -545,7 +547,7 @@ Munich-based, globally minded - we&apos;re creating a world where talent discove
                   overflow: 'hidden'
                 }}
               >
-                <img src="/images/team/lf.jpeg" alt="Lukas Faber" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src={`${basePath}/images/team/lf.jpeg`} alt="Lukas Faber" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
               <div
                 className="font-inter"
@@ -596,7 +598,7 @@ Munich-based, globally minded - we&apos;re creating a world where talent discove
                   overflow: 'hidden'
                 }}
               >
-                <img src="/images/team/wf.jpeg" alt="Wael Feriz" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src={`${basePath}/images/team/wf.jpeg`} alt="Wael Feriz" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
               <div
                 className="font-inter"
@@ -648,7 +650,7 @@ Munich-based, globally minded - we&apos;re creating a world where talent discove
                   overflow: 'hidden'
                 }}
               >
-                <img src="/images/team/ps.jpeg" alt="Polina Shnaider" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src={`${basePath}/images/team/ps.jpeg`} alt="Polina Shnaider" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
               <div
                 className="font-inter"
@@ -699,7 +701,7 @@ Munich-based, globally minded - we&apos;re creating a world where talent discove
                   overflow: 'hidden'
                 }}
               >
-                <img src="/images/team/mc.jpeg" alt="Mieszko Chowaniec" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src={`${basePath}/images/team/mc.jpeg`} alt="Mieszko Chowaniec" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
               <div
                 className="font-inter"

@@ -5,6 +5,8 @@
 import { useState, useEffect } from 'react'
 import Header from '@/components/shared/Header'
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
+
 export default function Home() {
   const [openIndividualBox, setOpenIndividualBox] = useState<null | 1 | 2 | 3>(null)
   const [diskRotation, setDiskRotation] = useState(0)
@@ -15,17 +17,17 @@ export default function Home() {
   // Platform View screenshots data
   const platformViews = [
     {
-      image: '/platform-view-0.png',
+      image: `${basePath}/platform-view-0.png`,
       title: 'Process Overview',
       description: 'Pre-screened talent flows seamlessly from Purpose to your ATS, delivering ideal candidates directly.'
     },
     {
-      image: '/platform-view-1.png',
+      image: `${basePath}/platform-view-1.png`,
       title: 'ATS Integration',
       description: 'Purpose integrates with your existing systems in just a few clicks. Select positions and define criteria.'
     },
     {
-      image: '/platform-view-2.png',
+      image: `${basePath}/platform-view-2.png`,
       title: 'Connect your ATS',
       description: 'Choose your ATS platform and connect in seconds. SmartRecruiters and Personio supported.'
     }
@@ -1140,12 +1142,12 @@ export default function Home() {
               <img
                 src={
                   applyManageOpen
-                    ? "/matches.gif"
+                    ? `${basePath}/matches.gif`
                     : tweakPreferencesOpen
-                      ? "/preferences.gif"
+                      ? `${basePath}/preferences.gif`
                       : uploadCVOpen
-                        ? "/Gif4.gif"
-                        : "/login.gif"
+                        ? `${basePath}/Gif4.gif`
+                        : `${basePath}/login.gif`
                 }
                 alt="Phone animation"
                 className="w-48 sm:w-56 md:w-64 h-auto transition-opacity duration-300"
@@ -1251,14 +1253,14 @@ export default function Home() {
                 href="#"
                 className="flex items-center justify-center gap-3 py-3 px-6 rounded-full bg-black text-white transition-transform duration-200 hover:scale-[1.02]"
               >
-                <img src="/playstore.svg" alt="Play Store" className="w-5 h-5" />
+                <img src={`${basePath}/playstore.svg`} alt="Play Store" className="w-5 h-5" />
                 <span className="text-sm font-medium">Google Play</span>
               </a>
               <a
                 href="#"
                 className="flex items-center justify-center gap-3 py-3 px-6 rounded-full bg-black text-white transition-transform duration-200 hover:scale-[1.02]"
               >
-                <img src="/Apple.svg" alt="App Store" className="w-5 h-5" />
+                <img src={`${basePath}/Apple.svg`} alt="App Store" className="w-5 h-5" />
                 <span className="text-sm font-medium">App Store</span>
               </a>
             </div>
@@ -1278,12 +1280,12 @@ export default function Home() {
             <img
               src={
                 applyManageOpen
-                  ? "/matches.gif"
+                  ? `${basePath}/matches.gif`
                   : tweakPreferencesOpen
-                    ? "/preferences.gif"
+                    ? `${basePath}/preferences.gif`
                     : uploadCVOpen
-                      ? "/Gif4.gif"
-                      : "/login.gif"
+                      ? `${basePath}/Gif4.gif`
+                      : `${basePath}/login.gif`
               }
               alt="Phone animation"
               className="w-full h-full object-cover transition-opacity duration-300"
@@ -1316,8 +1318,8 @@ export default function Home() {
               zIndex: 5
             }}
           >
-            <img src="/playstore.svg" alt="Play Store icon" />
-            <img src="/path90.svg" alt="Google Play text" />
+            <img src={`${basePath}/playstore.svg`} alt="Play Store icon" />
+            <img src={`${basePath}/path90.svg`} alt="Google Play text" />
           </div>
 
           {/* App Store Button - Desktop */}
@@ -1332,7 +1334,7 @@ export default function Home() {
               zIndex: 5
             }}
           >
-            <img src="/Apple.svg" alt="Apple icon" />
+            <img src={`${basePath}/Apple.svg`} alt="Apple icon" />
             <span style={{
               color: '#FFF',
               fontFamily: '-apple-system, BlinkMacSystemFont, "SF Compact Display", "SF Pro Display", system-ui, sans-serif',
@@ -1527,7 +1529,7 @@ export default function Home() {
             <>
           {/* Central logo in circle */}
           <img
-            src="/logo.png"
+            src={`${basePath}/logo.png`}
             alt="Purpose Logo"
             className="hidden lg:block absolute flex-shrink-0"
             style={{
@@ -1570,7 +1572,7 @@ export default function Home() {
             }}
           >
             <img
-              src="/head-6.png"
+              src={`${basePath}/head-6.png`}
               alt="Line icon 6"
               style={{
                 position: 'absolute',
@@ -1626,7 +1628,7 @@ export default function Home() {
             }}
           >
             <img
-              src="/head-1.png"
+              src={`${basePath}/head-1.png`}
               alt="Line icon"
               style={{
                 position: 'absolute',
@@ -1681,7 +1683,7 @@ export default function Home() {
             }}
           >
             <img
-              src="/head-2.png"
+              src={`${basePath}/head-2.png`}
               alt="Line icon 2"
               style={{
                 position: 'absolute',
@@ -1736,7 +1738,7 @@ export default function Home() {
             }}
           >
             <img
-              src="/head-3.png"
+              src={`${basePath}/head-3.png`}
               alt="Line icon 3"
               style={{
                 position: 'absolute',
@@ -1791,7 +1793,7 @@ export default function Home() {
             }}
           >
             <img
-              src="/head-4.png"
+              src={`${basePath}/head-4.png`}
               alt="Line icon 4"
               style={{
                 position: 'absolute',
@@ -1846,7 +1848,7 @@ export default function Home() {
             }}
           >
             <img
-              src="/head-5.png"
+              src={`${basePath}/head-5.png`}
               alt="Line icon 5"
               style={{
                 position: 'absolute',
@@ -1901,7 +1903,7 @@ export default function Home() {
             }}
           >
             <img
-              src="/head-3.png"
+              src={`${basePath}/head-3.png`}
               alt="Line icon 7"
               style={{
                 position: 'absolute',
@@ -1956,7 +1958,7 @@ export default function Home() {
             }}
           >
             <img
-              src="/head-4.png"
+              src={`${basePath}/head-4.png`}
               alt="Line icon 8"
               style={{
                 position: 'absolute',
@@ -2425,40 +2427,40 @@ export default function Home() {
                 }}
               >
               {/* First set of logos */}
-              <img src="/logos/logo1.png" alt="Company logo" style={{ height: '40px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo2.png" alt="Company logo" style={{ height: '55px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo3.png" alt="Company logo" style={{ height: '55px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo4.png" alt="Company logo" style={{ height: '40px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo5.svg" alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo6.png" alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo7.png" alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo8.png" alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo9.png" alt="Company logo" style={{ height: '50px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo10.png" alt="Company logo" style={{ height: '35px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo1.png`} alt="Company logo" style={{ height: '40px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo2.png`} alt="Company logo" style={{ height: '55px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo3.png`} alt="Company logo" style={{ height: '55px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo4.png`} alt="Company logo" style={{ height: '40px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo5.svg`} alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo6.png`} alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo7.png`} alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo8.png`} alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo9.png`} alt="Company logo" style={{ height: '50px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo10.png`} alt="Company logo" style={{ height: '35px', width: 'auto', objectFit: 'contain' }} />
 
               {/* Duplicate set for seamless loop */}
-              <img src="/logos/logo1.png" alt="Company logo" style={{ height: '40px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo2.png" alt="Company logo" style={{ height: '55px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo3.png" alt="Company logo" style={{ height: '55px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo4.png" alt="Company logo" style={{ height: '40px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo5.svg" alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo6.png" alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo7.png" alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo8.png" alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo9.png" alt="Company logo" style={{ height: '50px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo10.png" alt="Company logo" style={{ height: '35px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo1.png`} alt="Company logo" style={{ height: '40px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo2.png`} alt="Company logo" style={{ height: '55px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo3.png`} alt="Company logo" style={{ height: '55px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo4.png`} alt="Company logo" style={{ height: '40px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo5.svg`} alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo6.png`} alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo7.png`} alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo8.png`} alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo9.png`} alt="Company logo" style={{ height: '50px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo10.png`} alt="Company logo" style={{ height: '35px', width: 'auto', objectFit: 'contain' }} />
 
               {/* Third set for extra smooth loop */}
-              <img src="/logos/logo1.png" alt="Company logo" style={{ height: '40px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo2.png" alt="Company logo" style={{ height: '55px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo3.png" alt="Company logo" style={{ height: '55px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo4.png" alt="Company logo" style={{ height: '40px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo5.svg" alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo6.png" alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo7.png" alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo8.png" alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo9.png" alt="Company logo" style={{ height: '50px', width: 'auto', objectFit: 'contain' }} />
-              <img src="/logos/logo10.png" alt="Company logo" style={{ height: '35px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo1.png`} alt="Company logo" style={{ height: '40px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo2.png`} alt="Company logo" style={{ height: '55px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo3.png`} alt="Company logo" style={{ height: '55px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo4.png`} alt="Company logo" style={{ height: '40px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo5.svg`} alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo6.png`} alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo7.png`} alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo8.png`} alt="Company logo" style={{ height: '30px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo9.png`} alt="Company logo" style={{ height: '50px', width: 'auto', objectFit: 'contain' }} />
+              <img src={`${basePath}/logos/logo10.png`} alt="Company logo" style={{ height: '35px', width: 'auto', objectFit: 'contain' }} />
               </div>
             </div>
           </div>
@@ -2970,28 +2972,28 @@ export default function Home() {
                   }}
                 >
                 {/* First set of logos */}
-                <img src="/logos/logo1.png" alt="Company logo" className="h-8 w-auto object-contain" />
-                <img src="/logos/logo2.png" alt="Company logo" className="h-10 w-auto object-contain" />
-                <img src="/logos/logo3.png" alt="Company logo" className="h-10 w-auto object-contain" />
-                <img src="/logos/logo4.png" alt="Company logo" className="h-8 w-auto object-contain" />
-                <img src="/logos/logo5.svg" alt="Company logo" className="h-6 w-auto object-contain" />
-                <img src="/logos/logo6.png" alt="Company logo" className="h-6 w-auto object-contain" />
-                <img src="/logos/logo7.png" alt="Company logo" className="h-6 w-auto object-contain" />
-                <img src="/logos/logo8.png" alt="Company logo" className="h-6 w-auto object-contain" />
-                <img src="/logos/logo9.png" alt="Company logo" className="h-10 w-auto object-contain" />
-                <img src="/logos/logo10.png" alt="Company logo" className="h-7 w-auto object-contain" />
+                <img src={`${basePath}/logos/logo1.png`} alt="Company logo" className="h-8 w-auto object-contain" />
+                <img src={`${basePath}/logos/logo2.png`} alt="Company logo" className="h-10 w-auto object-contain" />
+                <img src={`${basePath}/logos/logo3.png`} alt="Company logo" className="h-10 w-auto object-contain" />
+                <img src={`${basePath}/logos/logo4.png`} alt="Company logo" className="h-8 w-auto object-contain" />
+                <img src={`${basePath}/logos/logo5.svg`} alt="Company logo" className="h-6 w-auto object-contain" />
+                <img src={`${basePath}/logos/logo6.png`} alt="Company logo" className="h-6 w-auto object-contain" />
+                <img src={`${basePath}/logos/logo7.png`} alt="Company logo" className="h-6 w-auto object-contain" />
+                <img src={`${basePath}/logos/logo8.png`} alt="Company logo" className="h-6 w-auto object-contain" />
+                <img src={`${basePath}/logos/logo9.png`} alt="Company logo" className="h-10 w-auto object-contain" />
+                <img src={`${basePath}/logos/logo10.png`} alt="Company logo" className="h-7 w-auto object-contain" />
 
                 {/* Duplicate set for seamless scroll */}
-                <img src="/logos/logo1.png" alt="Company logo" className="h-8 w-auto object-contain" />
-                <img src="/logos/logo2.png" alt="Company logo" className="h-10 w-auto object-contain" />
-                <img src="/logos/logo3.png" alt="Company logo" className="h-10 w-auto object-contain" />
-                <img src="/logos/logo4.png" alt="Company logo" className="h-8 w-auto object-contain" />
-                <img src="/logos/logo5.svg" alt="Company logo" className="h-6 w-auto object-contain" />
-                <img src="/logos/logo6.png" alt="Company logo" className="h-6 w-auto object-contain" />
-                <img src="/logos/logo7.png" alt="Company logo" className="h-6 w-auto object-contain" />
-                <img src="/logos/logo8.png" alt="Company logo" className="h-6 w-auto object-contain" />
-                <img src="/logos/logo9.png" alt="Company logo" className="h-10 w-auto object-contain" />
-                <img src="/logos/logo10.png" alt="Company logo" className="h-7 w-auto object-contain" />
+                <img src={`${basePath}/logos/logo1.png`} alt="Company logo" className="h-8 w-auto object-contain" />
+                <img src={`${basePath}/logos/logo2.png`} alt="Company logo" className="h-10 w-auto object-contain" />
+                <img src={`${basePath}/logos/logo3.png`} alt="Company logo" className="h-10 w-auto object-contain" />
+                <img src={`${basePath}/logos/logo4.png`} alt="Company logo" className="h-8 w-auto object-contain" />
+                <img src={`${basePath}/logos/logo5.svg`} alt="Company logo" className="h-6 w-auto object-contain" />
+                <img src={`${basePath}/logos/logo6.png`} alt="Company logo" className="h-6 w-auto object-contain" />
+                <img src={`${basePath}/logos/logo7.png`} alt="Company logo" className="h-6 w-auto object-contain" />
+                <img src={`${basePath}/logos/logo8.png`} alt="Company logo" className="h-6 w-auto object-contain" />
+                <img src={`${basePath}/logos/logo9.png`} alt="Company logo" className="h-10 w-auto object-contain" />
+                <img src={`${basePath}/logos/logo10.png`} alt="Company logo" className="h-7 w-auto object-contain" />
                 </div>
               </div>
             </div>
