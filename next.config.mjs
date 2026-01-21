@@ -1,11 +1,9 @@
-const basePathValue = process.env.NEXT_PUBLIC_BASE_PATH || ''
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
   transpilePackages: ["next-image-export-optimizer"],
-  basePath: basePathValue,
-  assetPrefix: basePathValue,
+  basePath: '/Website',
+  assetPrefix: '/Website',
   images: {
     loader: 'custom',
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],

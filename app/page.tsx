@@ -5,7 +5,7 @@
 import { useState, useEffect } from 'react'
 import Header from '@/components/shared/Header'
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
+const basePath = '/Website'
 
 export default function Home() {
   const [openIndividualBox, setOpenIndividualBox] = useState<null | 1 | 2 | 3>(null)
