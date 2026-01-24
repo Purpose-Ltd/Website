@@ -781,15 +781,15 @@ Munich-based, globally minded - we&apos;re creating a world where talent discove
             </div>
             <div className="flex flex-col items-center gap-2">
               <div className="text-[#454545] font-helvetica text-base font-bold">Legal</div>
-              <a href="/terms-and-conditions" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
+              <Link href="/terms-and-conditions" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
                 Terms & Conditions
-              </a>
-              <a href="/imprint" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
+              </Link>
+              <Link href="/imprint" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
                 Imprint
-              </a>
-              <a href="/privacy-policy" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
+              </Link>
+              <Link href="/privacy-policy" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
                 Privacy Policy
-              </a>
+              </Link>
             </div>
             <div className="text-[#454545] font-helvetica text-[10px]">
               © Purpose, 2025
@@ -929,7 +929,7 @@ Munich-based, globally minded - we&apos;re creating a world where talent discove
                 Legal
               </h2>
               <nav className="flex flex-col gap-2">
-                <a
+                <Link
                   href="/terms-and-conditions"
                   className="text-[#454545] hover:text-[#000000] transition-colors"
                   style={{
@@ -939,8 +939,8 @@ Munich-based, globally minded - we&apos;re creating a world where talent discove
                   }}
                 >
                   Terms & Conditions
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/imprint"
                   className="text-[#454545] hover:text-[#000000] transition-colors"
                   style={{
@@ -950,8 +950,8 @@ Munich-based, globally minded - we&apos;re creating a world where talent discove
                   }}
                 >
                   Imprint
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/privacy-policy"
                   className="text-[#454545] hover:text-[#000000] transition-colors"
                   style={{
@@ -961,7 +961,7 @@ Munich-based, globally minded - we&apos;re creating a world where talent discove
                   }}
                 >
                   Privacy Policy
-                </a>
+                </Link>
               </nav>
             </div>
           </div>

@@ -3,6 +3,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import Header from '@/components/shared/Header'
 
 const basePath = '/Website'
@@ -3123,7 +3124,7 @@ export default function Home() {
                 Legal
               </h2>
               <nav className="flex flex-col gap-2">
-                <a
+                <Link
                   href="/terms-and-conditions"
                   className="text-[#454545] hover:text-[#000000] transition-colors"
                   style={{
@@ -3133,8 +3134,8 @@ export default function Home() {
                   }}
                 >
                   Terms & Conditions
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/imprint"
                   className="text-[#454545] hover:text-[#000000] transition-colors"
                   style={{
@@ -3144,8 +3145,8 @@ export default function Home() {
                   }}
                 >
                   Imprint
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/privacy-policy"
                   className="text-[#454545] hover:text-[#000000] transition-colors"
                   style={{
@@ -3155,7 +3156,7 @@ export default function Home() {
                   }}
                 >
                   Privacy Policy
-                </a>
+                </Link>
               </nav>
             </div>
           </div>

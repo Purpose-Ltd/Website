@@ -205,15 +205,15 @@ export default function PrivacyPolicyPage() {
                 Legal
               </div>
               <nav className="flex flex-col gap-2">
-                <a href="/terms-and-conditions" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
+                <Link href="/terms-and-conditions" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
                   Terms & Conditions
-                </a>
-                <a href="/imprint" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
+                </Link>
+                <Link href="/imprint" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
                   Imprint
-                </a>
-                <a href="/privacy-policy" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
+                </Link>
+                <Link href="/privacy-policy" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
                   Privacy Policy
-                </a>
+                </Link>
               </nav>
             </div>
           </div>
@@ -246,15 +246,15 @@ export default function PrivacyPolicyPage() {
             </div>
             <div className="flex flex-col items-center gap-2">
               <div className="text-[#454545] font-helvetica text-base font-bold">Legal</div>
-              <a href="/terms-and-conditions" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
+              <Link href="/terms-and-conditions" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
                 Terms & Conditions
-              </a>
-              <a href="/imprint" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
+              </Link>
+              <Link href="/imprint" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
                 Imprint
-              </a>
-              <a href="/privacy-policy" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
+              </Link>
+              <Link href="/privacy-policy" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
                 Privacy Policy
-              </a>
+              </Link>
             </div>
             <div className="text-[#454545] font-helvetica text-[10px]">
               © Purpose, 2025
