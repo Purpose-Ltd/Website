@@ -19,18 +19,18 @@ export default function Home() {
   const platformViews = [
     {
       image: `${basePath}/platform-view-0.png`,
-      title: 'Process Overview',
-      description: 'Pre-screened talent flows seamlessly from Purpose to your ATS, delivering ideal candidates directly.'
-    },
-    {
-      image: `${basePath}/platform-view-1.png`,
       title: 'ATS Integration',
       description: 'Purpose integrates with your existing systems in just a few clicks. Select positions and define criteria.'
     },
     {
+      image: `${basePath}/platform-view-1.png`,
+      title: 'Matching & Screening',
+      description: 'The dual-layer process ensures only the most relevant and qualified candidates reach companies.'
+    },
+    {
       image: `${basePath}/platform-view-2.png`,
-      title: 'Connect your ATS',
-      description: 'Choose your ATS platform and connect in seconds. SmartRecruiters and Personio supported.'
+      title: 'Automated Transfer',
+      description: 'Purpose delivers pre-screened candidates directly to your ATS. You can switch between manual or automatic transfer.'
     }
   ]
 
@@ -110,9 +110,9 @@ export default function Home() {
       {/* Gradient wrapper spanning both Hero and Summary sections */}
       <div className="overflow-visible" style={{ background: 'linear-gradient(180deg, #EEE9FC 0%, #D3E3FF 50%, #DDFCF6 100%)' }}>
         {/* Hero Section - First Screen */}
-      <div className="relative w-full min-h-screen lg:min-h-[900px] xl:min-h-[1000px] 2xl:min-h-[1054px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0 overflow-visible">
+      <div className="relative w-full min-h-screen lg:min-h-[900px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0 overflow-visible">
         {/* Hero content container - Responsive with clamped height */}
-        <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:min-h-[900px] xl:min-h-[1000px] 2xl:min-h-[1054px]">
+        <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:min-h-[900px]">
           {/* Header inside 1552px container */}
           <Header />
 
@@ -348,7 +348,7 @@ export default function Home() {
       </div>
 
       {/* Summary Screen - Below Hero */}
-      <div className="relative w-full min-h-screen lg:min-h-[900px] xl:min-h-[1000px] 2xl:min-h-[1054px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0 overflow-hidden">
+      <div className="relative w-full min-h-screen lg:min-h-[900px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0 overflow-hidden">
         {/* Mobile decorative circles - 3 overlapping circles */}
         <div
           className="xl:hidden absolute w-[340px] h-[340px] rounded-full pointer-events-none"
@@ -382,7 +382,7 @@ export default function Home() {
         />
 
         {/* Summary content container - Same dimensions as hero */}
-        <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:min-h-[900px] xl:min-h-[1000px] 2xl:min-h-[1054px]">
+        <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:min-h-[900px]">
           {/* Decorative circles on the right - continuing from hero */}
           {/* Upper right circle */}
           <div
@@ -600,8 +600,8 @@ export default function Home() {
               fill="none"
               className="absolute flex-shrink-0"
               style={{
-                top: '45px',
-                left: '139px',
+                top: '40px',
+                left: '185px',
                 filter: 'drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25))'
               }}
             >
@@ -672,8 +672,8 @@ export default function Home() {
               fill="none"
               className="absolute flex-shrink-0"
               style={{
-                top: '45px',
-                left: '139px',
+                top: '40px',
+                left: '185px',
                 filter: 'drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25))'
               }}
             >
@@ -737,13 +737,13 @@ export default function Home() {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="80"
-              height="85"
+              height="80"
               viewBox="0 0 80 85"
               fill="none"
               className="absolute flex-shrink-0"
               style={{
-                top: '45px',
-                left: '139px',
+                top: '40px',
+                left: '185px',
                 filter: 'drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25))'
               }}
             >
@@ -803,7 +803,7 @@ export default function Home() {
       {/* End gradient wrapper */}
 
       {/* Individuals Section */}
-      <section id="individuals" className="relative w-full min-h-screen lg:h-[1370px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0 overflow-hidden">
+      <section id="individuals" className="relative w-full min-h-screen lg:min-h-0 flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0 overflow-hidden">
         {/* Transition gradient at boundary */}
         <div className="absolute w-full h-[200px] bg-gradient-to-b from-transparent to-white lg:block hidden" style={{ top: '-100px', left: 0, right: 0, zIndex: -8 }} />
 
@@ -850,7 +850,7 @@ export default function Home() {
         />
 
         {/* Individuals content container - Same dimensions as Companies */}
-        <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:h-[1370px]">
+        <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:h-[1050px]">
           {/* Central gradient box - same as Companies */}
           <div
             className="hidden lg:block absolute w-[1760px] h-[927px] flex-shrink-0"
@@ -1353,7 +1353,7 @@ export default function Home() {
       </section>
 
       {/* Companies Section */}
-      <section id="companies" className="relative w-full min-h-screen lg:h-[1054px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0 overflow-hidden lg:-mt-[200px]">
+      <section id="companies" className="relative w-full min-h-screen lg:min-h-0 flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0 overflow-hidden">
         {/* Background layer - gradient on mobile, subtle gradient on desktop */}
         <div className="hidden lg:block absolute inset-0 bg-gradient-to-b from-white to-[#F5F5F7]" style={{ zIndex: -10 }} />
         <div
@@ -1397,7 +1397,7 @@ export default function Home() {
         />
 
         {/* Companies content container - Same dimensions as hero */}
-        <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:h-[1054px]">
+        <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:h-[960px]">
           {/* Central gradient box */}
           <div
             className="hidden lg:block absolute w-[1760px] h-[927px] flex-shrink-0"
@@ -2261,7 +2261,7 @@ export default function Home() {
       </section>
 
       {/* Credentials Section */}
-      <section id="credentials" className="relative w-full min-h-screen lg:h-[1800px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0 overflow-hidden">
+      <section id="credentials" className="relative w-full min-h-screen lg:min-h-0 flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0 overflow-hidden">
         {/* Background layer - gradient on mobile, gray on desktop */}
         <div className="hidden lg:block absolute inset-0 bg-[#F5F5F7]" style={{ zIndex: -10 }} />
         <div
@@ -2305,7 +2305,7 @@ export default function Home() {
         />
 
         {/* Credentials content container */}
-        <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:h-[1800px]">
+        <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:h-[1500px]">
           {/* Central gradient box */}
           <div
             className="hidden lg:block absolute w-[1760px] h-[1500px] flex-shrink-0"
