@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import PurposeLogo from '@/components/icons/PurposeLogo'
 import CTAButton from '@/components/ui/CTAButton'
 
-const basePath = '/Website'
+const basePath = ''
 
 export default function AboutPage() {
   const [isScrolled, setIsScrolled] = useState(false)
