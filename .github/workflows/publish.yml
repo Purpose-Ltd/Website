@@ -53,7 +53,7 @@ jobs:
       - name: Build with Next.js 🏗️
         run: yarn build
         env:
-          NEXT_PUBLIC_BASE_PATH: /Website
+          NEXT_PUBLIC_BASE_PATH: ''
 
       - name: Upload artifact 📡
         uses: actions/upload-pages-artifact@v3
