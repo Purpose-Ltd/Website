@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Header from '@/components/shared/Header'
 
-const basePath = '/Website'
+const basePath = ''
 
 export default function Home() {
   const [openIndividualBox, setOpenIndividualBox] = useState<null | 1 | 2 | 3>(null)
