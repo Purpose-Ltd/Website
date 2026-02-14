@@ -40,7 +40,7 @@ export default function Header() {
             />
           )}
           {/* Logo - Responsive positioning */}
-          <div className="absolute opacity-0 animate-fade-in left-4 top-4 sm:left-8 sm:top-8 lg:left-[-80px] lg:top-[20px]">
+          <div className="absolute opacity-0 animate-fade-in left-4 top-4 sm:left-8 sm:top-8 lg:left-[0px] lg:top-[20px]">
             <Link href="/">
               <span className="sr-only">Purpose</span>
               <div className="scale-75 sm:scale-90 lg:scale-100 origin-left">
@@ -73,7 +73,7 @@ export default function Header() {
 
           {/* CTA Button - Responsive positioning */}
           <div
-            className="hidden lg:block absolute opacity-0 animate-fade-in-delay-3 top-[20px] right-[-40px] xl:right-[-60px] 2xl:right-[-80px]"
+            className="hidden lg:block absolute opacity-0 animate-fade-in-delay-3 top-[20px] right-[0px]"
           >
             <CTAButton href="/cta">Start hiring</CTAButton>
           </div>

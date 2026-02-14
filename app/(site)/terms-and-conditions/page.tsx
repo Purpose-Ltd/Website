@@ -6,12 +6,12 @@ import CTAButton from '@/components/ui/CTAButton'
 
 export default function TermsAndConditionsPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #EEE9FC 0%, #D3E3FF 50%, #DDFCF6 100%)' }}>
       {/* Header - Non-sticky */}
       <div className="flex justify-center px-4 pt-4">
         <div className="relative w-full max-w-[1552px] h-24">
           {/* Logo */}
-          <div className="absolute left-4 top-4 sm:left-8 sm:top-8 lg:left-[-80px] lg:top-[20px]">
+          <div className="absolute left-4 top-4 sm:left-8 sm:top-8 lg:left-[0px] lg:top-[20px]">
             <Link href="/">
               <span className="sr-only">Purpose</span>
               <div className="scale-75 sm:scale-90 lg:scale-100 origin-left">
@@ -25,7 +25,7 @@ export default function TermsAndConditionsPage() {
             href="/#individuals"
             className="hidden lg:block absolute text-xl xl:text-2xl font-bold leading-6 text-[#120C2B] hover:text-[var(--primary-button)] transition-colors cursor-pointer"
             style={{
-              left: '187px',
+              left: '267px',
               top: '30px'
             }}
           >
@@ -35,7 +35,7 @@ export default function TermsAndConditionsPage() {
             href="/#companies"
             className="hidden lg:block absolute text-xl xl:text-2xl font-bold leading-6 text-[#120C2B] hover:text-[var(--primary-button)] transition-colors cursor-pointer"
             style={{
-              left: '370.94px',
+              left: '450px',
               top: '30px'
             }}
           >
@@ -45,7 +45,7 @@ export default function TermsAndConditionsPage() {
             href="/#about"
             className="hidden lg:block absolute text-xl xl:text-2xl font-bold leading-6 text-[#120C2B] hover:text-[var(--primary-button)] transition-colors cursor-pointer"
             style={{
-              left: '559.8px',
+              left: '640px',
               top: '30px'
             }}
           >
@@ -57,7 +57,7 @@ export default function TermsAndConditionsPage() {
             className="hidden lg:block absolute"
             style={{
               top: '20px',
-              right: '-80px'
+              right: '0px'
             }}
           >
             <CTAButton href="/cta">Transform your hiring</CTAButton>
@@ -66,14 +66,12 @@ export default function TermsAndConditionsPage() {
       </div>
 
       {/* Terms & Conditions Content Section */}
-      <section className="relative w-full flex items-center justify-center px-4 sm:px-8 py-10 bg-white">
+      <section className="relative w-full flex items-center justify-center px-4 sm:px-8 py-10" style={{ background: 'linear-gradient(180deg, #EEE9FC 0%, #D3E3FF 50%, #DDFCF6 100%)' }}>
         <div className="relative w-full max-w-[1552px] flex justify-center">
           {/* Content Box */}
           <div
-            className="w-full max-w-[1760px] flex flex-col items-center px-4 sm:px-8 lg:px-12 rounded-[30px] lg:rounded-[50px] border border-white"
+            className="w-full max-w-[1760px] flex flex-col items-center px-4 sm:px-8 lg:px-12"
             style={{
-              background: 'linear-gradient(180deg, #EEE9FC 0%, #D3E3FF 50%, #DDFCF6 100%)',
-              backdropFilter: 'blur(5px)',
               paddingTop: '40px',
               paddingBottom: '60px'
             }}
@@ -84,7 +82,7 @@ export default function TermsAndConditionsPage() {
             </h1>
 
             {/* Content */}
-            <div className="w-full max-w-4xl mt-12 sm:mt-16 lg:mt-[100px] px-4 sm:px-8 lg:px-0 text-[#454545] font-helvetica text-base sm:text-lg lg:text-xl leading-normal">
+            <div className="w-full max-w-4xl mt-12 sm:mt-16 lg:mt-[100px] px-4 sm:px-8 lg:px-0 text-[#454545] font-helvetica text-base sm:text-lg lg:text-xl leading-norma" style={{ marginLeft: '-600px' }}>
               <p className="font-bold mb-2">§ 1 Geltungsbereich</p>
               <p className="mb-6">
                 Diese AGB gelten für die Website purpose.hr sowie alle über diese erbrachten Informations- und Buchungsleistungen (§ 305 BGB). Für weitere Services gelten separate Bedingungen. Abweichende Nutzerbedingungen werden nicht anerkannt (§ 305b BGB).
@@ -92,7 +90,7 @@ export default function TermsAndConditionsPage() {
 
               <p className="font-bold mb-2">§ 2 Anbieter</p>
               <p className="mb-6">
-                Purpose UG (haftungsbeschränkt), Seidl-Kreuz-Weg 94, 85737 Ismaning<br />
+                Purpose UG (haftungsbeschränkt), Ansprengerstraße 8, 80803 München<br />
                 Vertreten durch: Lukas Faber<br />
                 HRB München 292052, USt-IdNr: DE368116002
               </p>
@@ -159,112 +157,14 @@ export default function TermsAndConditionsPage() {
               </p>
 
               <p className="mt-8">
-                Stand: 20.10.2025 | Version: 1.0
+                Stand: 02/2026 | Version: 1.0
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer Section */}
-      <section id="imprint" className="relative w-full flex items-center justify-center px-4 sm:px-8 bg-white" style={{ paddingTop: '15px', paddingBottom: '80px' }}>
-        <div className="relative w-full max-w-[1552px] flex justify-center">
-          {/* Desktop Footer */}
-          <div
-            className="hidden lg:flex w-full max-w-[1760px] items-center justify-between px-8 xl:px-12 py-8 rounded-[50px] border border-white"
-            style={{
-              background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.90) 0%, rgba(149, 186, 255, 0.90) 100%)',
-              backdropFilter: 'blur(5px)',
-              color: '#454545'
-            }}
-          >
-            {/* Left side - Company information */}
-            <div className="flex-shrink-0 flex flex-col gap-4">
-              <PurposeLogo />
-              <div className="text-[#454545] font-helvetica text-sm xl:text-base leading-[120%]">
-                Purpose UG (haftungsbeschränkt)<br />
-                Seidl-Kreuz-Weg 94<br />
-                85737 Ismaning<br />
-                Germany
-              </div>
-              <div className="text-[#454545] font-helvetica text-[10px] leading-[120%]">
-                © Purpose, 2025
-              </div>
-            </div>
-
-            {/* Middle - Registered Office */}
-            <div className="text-[#454545] text-center font-helvetica text-sm xl:text-base leading-[120%]">
-              <div className="font-bold">Registered Office</div>
-              <div className="mt-2">
-                Ismaning - HRB Munich 292052<br />
-                Tax number: 143/173/60143<br />
-                VAT ID No.: DE368116002
-              </div>
-            </div>
-
-            {/* Right - Legal */}
-            <div className="flex flex-col">
-              <div className="text-[#454545] font-helvetica text-base font-bold leading-[120%] mb-4 text-center">
-                Legal
-              </div>
-              <nav className="flex flex-col gap-2">
-                <Link href="/terms-and-conditions" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
-                  Terms & Conditions
-                </Link>
-                <Link href="/imprint" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
-                  Imprint
-                </Link>
-                <Link href="/privacy-policy" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
-                  Privacy Policy
-                </Link>
-              </nav>
-            </div>
-          </div>
-
-          {/* Mobile Footer */}
-          <div
-            className="lg:hidden w-full flex flex-col items-center gap-8 px-6 py-8 rounded-[30px] border border-white"
-            style={{
-              background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.90) 0%, rgba(149, 186, 255, 0.90) 100%)',
-              backdropFilter: 'blur(5px)',
-              color: '#454545'
-            }}
-          >
-            <div className="scale-90">
-              <PurposeLogo />
-            </div>
-            <div className="text-[#454545] font-helvetica text-sm leading-[120%] text-center">
-              Purpose UG (haftungsbeschränkt)<br />
-              Seidl-Kreuz-Weg 94<br />
-              85737 Ismaning<br />
-              Germany
-            </div>
-            <div className="text-[#454545] text-center font-helvetica text-sm leading-[120%]">
-              <div className="font-bold">Registered Office</div>
-              <div className="mt-2">
-                Ismaning - HRB Munich 292052<br />
-                Tax number: 143/173/60143<br />
-                VAT ID No.: DE368116002
-              </div>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <div className="text-[#454545] font-helvetica text-base font-bold">Legal</div>
-              <Link href="/terms-and-conditions" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
-                Terms & Conditions
-              </Link>
-              <Link href="/imprint" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
-                Imprint
-              </Link>
-              <Link href="/privacy-policy" className="text-[#454545] hover:text-[#000000] transition-colors font-helvetica text-sm">
-                Privacy Policy
-              </Link>
-            </div>
-            <div className="text-[#454545] font-helvetica text-[10px]">
-              © Purpose, 2025
-            </div>
-          </div>
-        </div>
-      </section>
+    
     </div>
   )
 }

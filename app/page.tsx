@@ -154,10 +154,10 @@ export default function Home() {
             {/* Decorative circles on the right - only visible on xl+ screens to prevent overflow */}
             {/* Upper right circle */}
             <div
-              className="hidden xl:block absolute w-[500px] xl:w-[550px] 2xl:w-[668px] h-[500px] xl:h-[550px] 2xl:h-[668px] rounded-full bg-circle-gradient flex-shrink-0 animate-wobble-1"
+              className="hidden xl:block absolute w-[500px] xl:w-[550px] 2xl:w-[668px] h-[500px] xl:h-[550px] 2xl:h-[668px] rounded-full bg-circle-gradient flex-shrink-0"
               style={{
-                left: `calc(40% + ${(60 - 40) * scrollProgress}%)`,
-                bottom: `calc(40% + ${(62 - 40) * scrollProgress}%)`,
+                left: '1200px',
+                top: '-450px',
                 transform: 'rotate(134.213deg)',
                 opacity: 1,
                 zIndex: 0,
@@ -166,10 +166,10 @@ export default function Home() {
             />
             {/* Lower right circle */}
             <div
-              className="hidden xl:block absolute w-[500px] xl:w-[550px] 2xl:w-[668px] h-[500px] xl:h-[550px] 2xl:h-[668px] rounded-full bg-circle-gradient flex-shrink-0 animate-wobble-2"
+              className="hidden xl:block absolute w-[500px] xl:w-[550px] 2xl:w-[668px] h-[500px] xl:h-[550px] 2xl:h-[668px] rounded-full bg-circle-gradient flex-shrink-0"
               style={{
-                left: `calc(45% + ${(75 - 45) * scrollProgress}%)`,
-                bottom: `calc(35% + ${(30 - 35) * scrollProgress}%)`,
+                left: '1450px',
+                top: '-100px',
                 transform: 'rotate(134.213deg)',
                 opacity: 1,
                 zIndex: 0,
@@ -178,24 +178,12 @@ export default function Home() {
             />
 
             {/* Decorative circles on the left - only visible on xl+ screens */}
-            {/* Top left circle - largest */}
-            <div
-              className="hidden xl:block absolute w-[600px] xl:w-[700px] 2xl:w-[862px] h-[600px] xl:h-[700px] 2xl:h-[862px] rounded-full bg-circle-gradient-reverse flex-shrink-0 animate-wobble-3"
-              style={{
-                top: `calc(30% + ${(18 - 30) * scrollProgress}%)`,
-                right: `calc(40% + ${(75 - 40) * scrollProgress}%)`,
-                transform: 'rotate(134.213deg)',
-                opacity: 1,
-                zIndex: 0,
-                transition: scrollProgress > 0 ? 'top 2.5s ease-in-out, right 2.5s ease-in-out' : 'none'
-              }}
-            />
             {/* Middle left circle - smallest */}
             <div
-              className="hidden xl:block absolute w-[450px] xl:w-[520px] 2xl:w-[619px] h-[450px] xl:h-[520px] 2xl:h-[619px] rounded-full bg-circle-gradient-reverse flex-shrink-0 animate-wobble-4"
+              className="hidden xl:block absolute w-[450px] xl:w-[520px] 2xl:w-[619px] h-[450px] xl:h-[520px] 2xl:h-[619px] rounded-full bg-circle-gradient-reverse flex-shrink-0"
               style={{
-                top: `calc(42% + ${(47 - 42) * scrollProgress}%)`,
-                right: `calc(35% + ${(65 - 35) * scrollProgress}%)`,
+                top: '310px',
+                left: '-592px',
                 transform: 'rotate(134.213deg)',
                 opacity: 1,
                 zIndex: 0,
@@ -204,10 +192,10 @@ export default function Home() {
             />
             {/* Lower left circle - medium */}
             <div
-              className="hidden xl:block absolute w-[500px] xl:w-[550px] 2xl:w-[668px] h-[500px] xl:h-[550px] 2xl:h-[668px] rounded-full bg-circle-gradient-reverse flex-shrink-0 animate-wobble-5"
+              className="hidden xl:block absolute w-[500px] xl:w-[550px] 2xl:w-[668px] h-[500px] xl:h-[550px] 2xl:h-[668px] rounded-full bg-circle-gradient-reverse flex-shrink-0"
               style={{
-                top: `calc(52% + ${(66 - 52) * scrollProgress}%)`,
-                right: `calc(28% + ${(55 - 28) * scrollProgress}%)`,
+                top: '270px',
+                left: '-550px',
                 transform: 'rotate(134.213deg)',
                 opacity: 1,
                 zIndex: 0,
@@ -342,13 +330,12 @@ export default function Home() {
             </div>
             )}
 
-          {/* Separator line at bottom of first screen */}
-          <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#5323E5]/30 to-transparent" />
+          
         </div>
       </div>
 
       {/* Summary Screen - Below Hero */}
-      <div className="relative w-full min-h-screen lg:min-h-[900px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0 overflow-hidden">
+      <div className="relative w-full min-h-screen lg:min-h-[900px] flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0">
         {/* Mobile decorative circles - 3 overlapping circles */}
         <div
           className="xl:hidden absolute w-[340px] h-[340px] rounded-full pointer-events-none"
@@ -386,20 +373,20 @@ export default function Home() {
           {/* Decorative circles on the right - continuing from hero */}
           {/* Upper right circle */}
           <div
-            className="hidden xl:block absolute w-[450px] xl:w-[520px] 2xl:w-[620px] h-[450px] xl:h-[520px] 2xl:h-[620px] rounded-full bg-circle-gradient flex-shrink-0 opacity-0 animate-fade-in-slow"
+            className="hidden xl:block absolute w-[450px] xl:w-[520px] 2xl:w-[620px] h-[450px] xl:h-[520px] 2xl:h-[620px] rounded-full bg-circle-gradient flex-shrink-0"
             style={{
-              right: '-15%',
-              top: '0px',
+              top: '-150px',
+              left: '1400px',
               transform: 'rotate(134.213deg)',
               zIndex: 0
             }}
           />
           {/* Lower right circle */}
           <div
-            className="hidden xl:block absolute w-[400px] xl:w-[480px] 2xl:w-[550px] h-[400px] xl:h-[480px] 2xl:h-[550px] rounded-full bg-circle-gradient flex-shrink-0 opacity-0 animate-fade-in-slow-1"
+            className="hidden xl:block absolute w-[400px] xl:w-[480px] 2xl:w-[550px] h-[400px] xl:h-[480px] 2xl:h-[550px] rounded-full bg-circle-gradient flex-shrink-0"
             style={{
-              right: '-20%',
-              top: '30%',
+              top: '100px',
+              left: '1500px',
               transform: 'rotate(134.213deg)',
               zIndex: 0
             }}
@@ -408,20 +395,20 @@ export default function Home() {
           {/* Decorative circles on the left - continuing from hero */}
           {/* Top left circle */}
           <div
-            className="hidden xl:block absolute w-[500px] xl:w-[600px] 2xl:w-[700px] h-[500px] xl:h-[600px] 2xl:h-[700px] rounded-full bg-circle-gradient-reverse flex-shrink-0 opacity-0 animate-fade-in-slow-2"
+            className="hidden xl:block absolute w-[500px] xl:w-[600px] 2xl:w-[700px] h-[500px] xl:h-[600px] 2xl:h-[700px] rounded-full bg-circle-gradient-reverse flex-shrink-0"
             style={{
-              top: '45%',
-              left: '-25%',
+              top: '200px',
+              left: '-600px',
               transform: 'rotate(134.213deg)',
               zIndex: 0
             }}
           />
           {/* Lower left circle */}
           <div
-            className="hidden xl:block absolute w-[420px] xl:w-[500px] 2xl:w-[580px] h-[420px] xl:h-[500px] 2xl:h-[580px] rounded-full bg-circle-gradient-reverse flex-shrink-0 opacity-0 animate-fade-in-slow-3"
+            className="hidden xl:block absolute w-[420px] xl:w-[500px] 2xl:w-[580px] h-[420px] xl:h-[500px] 2xl:h-[580px] rounded-full bg-circle-gradient-reverse flex-shrink-0"
             style={{
-              top: '70%',
-              left: '-18%',
+              top: '350px',
+              left: '-500px',
               transform: 'rotate(134.213deg)',
               zIndex: 0
             }}
@@ -429,9 +416,10 @@ export default function Home() {
 
           {/* Heading text above boxes - Desktop */}
           <h2
-            className="hidden lg:block absolute inset-x-0 mx-auto lg:max-w-[800px] xl:max-w-[900px] 2xl:max-w-[1018px] flex-shrink-0 text-center font-dm-sans text-3xl lg:text-4xl xl:text-[42px] 2xl:text-[48px] font-bold leading-[120%] text-[#454545] opacity-0 animate-fade-in-delay-3"
+            className="hidden lg:block absolute inset-x-0 mx-auto max-w-[1018px] flex-shrink-0 text-center font-dm-sans text-3xl lg:text-4xl xl:text-[42px] 2xl:text-[48px] font-bold leading-[120%] text-[#454545] opacity-0 animate-fade-in-delay-3"
             style={{
-              top: '10%'
+              top: '10%',
+              height: "56px",
             }}
           >
             Powered by{' '}
@@ -580,9 +568,9 @@ export default function Home() {
 
           {/* First rectangle - Desktop */}
           <div
-            className="hidden lg:block absolute w-[450px] h-[380px] flex-shrink-0 transition-all duration-300 opacity-50 hover:opacity-100 hover:-translate-y-3"
+            className="hidden lg:block absolute w-[450px] h-[500px] flex-shrink-0 transition-all duration-300 opacity-50 hover:opacity-100 hover:-translate-y-3"
             style={{
-              top: '340px',
+              top: '250px',
               left: '56px',
               borderRadius: '50px',
               border: '2px solid var(--glass-stroke, #FFF)',
@@ -600,7 +588,7 @@ export default function Home() {
               fill="none"
               className="absolute flex-shrink-0"
               style={{
-                top: '40px',
+                top: '100px',
                 left: '185px',
                 filter: 'drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25))'
               }}
@@ -630,7 +618,7 @@ export default function Home() {
             <h3
               className="absolute w-full text-center font-dm-sans text-[24px] font-bold leading-[120%] text-white px-6"
               style={{
-                top: '150px',
+                top: '210px',
                 left: '0'
               }}
             >
@@ -641,7 +629,7 @@ export default function Home() {
             <p
               className="absolute w-full text-center font-dm-sans text-[22px] font-medium leading-[120%] px-12"
               style={{
-                top: '200px',
+                top: '280px',
                 left: '0',
                 color: 'rgba(255, 255, 255, 0.80)'
               }}
@@ -652,9 +640,9 @@ export default function Home() {
 
           {/* Second rectangle */}
           <div
-            className="hidden lg:block absolute w-[450px] h-[380px] flex-shrink-0 transition-all duration-300 opacity-50 hover:opacity-100 hover:-translate-y-3"
+            className="hidden lg:block absolute w-[450px] h-[500px] flex-shrink-0 transition-all duration-300 opacity-50 hover:opacity-100 hover:-translate-y-3"
             style={{
-              top: '340px',
+              top: '250px',
               left: '551px',
               borderRadius: '50px',
               border: '2px solid var(--glass-stroke, #FFF)',
@@ -672,7 +660,7 @@ export default function Home() {
               fill="none"
               className="absolute flex-shrink-0"
               style={{
-                top: '40px',
+                top: '100px',
                 left: '185px',
                 filter: 'drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25))'
               }}
@@ -700,7 +688,7 @@ export default function Home() {
             <h3
               className="absolute w-full text-center font-dm-sans text-[24px] font-bold leading-[120%] text-white px-6"
               style={{
-                top: '150px',
+                top: '210px',
                 left: '0'
               }}
             >
@@ -711,7 +699,7 @@ export default function Home() {
             <p
               className="absolute w-full text-center font-dm-sans text-[22px] font-medium leading-[120%] px-12"
               style={{
-                top: '200px',
+                top: '280px',
                 left: '0',
                 color: 'rgba(255, 255, 255, 0.80)'
               }}
@@ -722,9 +710,9 @@ export default function Home() {
 
           {/* Third rectangle */}
           <div
-            className="hidden lg:block absolute w-[450px] h-[380px] flex-shrink-0 transition-all duration-300 opacity-50 hover:opacity-100 hover:-translate-y-3"
+            className="hidden lg:block absolute w-[450px] h-[500px] flex-shrink-0 transition-all duration-300 opacity-50 hover:opacity-100 hover:-translate-y-3"
             style={{
-              top: '340px',
+              top: '250px',
               left: '1046px',
               borderRadius: '50px',
               border: '2px solid var(--glass-stroke, #FFF)',
@@ -742,7 +730,7 @@ export default function Home() {
               fill="none"
               className="absolute flex-shrink-0"
               style={{
-                top: '40px',
+                top: '100px',
                 left: '185px',
                 filter: 'drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25))'
               }}
@@ -777,7 +765,7 @@ export default function Home() {
             <h3
               className="absolute w-full text-center font-dm-sans text-[24px] font-bold leading-[120%] text-white px-6"
               style={{
-                top: '150px',
+                top: '210px',
                 left: '0'
               }}
             >
@@ -788,7 +776,7 @@ export default function Home() {
             <p
               className="absolute w-full text-center font-dm-sans text-[22px] font-medium leading-[120%] px-12"
               style={{
-                top: '200px',
+                top: '280px',
                 left: '0',
                 color: 'rgba(255, 255, 255, 0.80)'
               }}
@@ -803,12 +791,10 @@ export default function Home() {
       {/* End gradient wrapper */}
 
       {/* Individuals Section */}
-      <section id="individuals" className="relative w-full min-h-screen lg:min-h-0 flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0 overflow-hidden">
+      <section id="individuals" className="relative w-full min-h-screen lg:min-h-0 flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0">
         {/* Transition gradient at boundary */}
-        <div className="absolute w-full h-[200px] bg-gradient-to-b from-transparent to-white lg:block hidden" style={{ top: '-100px', left: 0, right: 0, zIndex: -8 }} />
-
         {/* Background layer - gradient on mobile, white on desktop */}
-        <div className="hidden lg:block absolute inset-0 bg-white" style={{ zIndex: -10 }} />
+        <div className="hidden lg:block absolute inset-0" style={{ background: 'radial-gradient(169.11% 136.3% at 17.79% 0%, #DDFCF6 0%, #DDFCF6 7.9%, #DDFCF6 43.72%, #5472FF 58.42%, #5323E5 100%)', zIndex: -10 }} />
         <div
           className="lg:hidden absolute inset-0"
           style={{
@@ -816,7 +802,6 @@ export default function Home() {
             zIndex: -10
           }}
         />
-
         {/* Mobile decorative circles - 3 overlapping circles */}
         <div
           className="xl:hidden absolute w-[340px] h-[340px] rounded-full pointer-events-none"
@@ -1355,7 +1340,7 @@ export default function Home() {
       {/* Companies Section */}
       <section id="companies" className="relative w-full min-h-screen lg:min-h-0 flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0 overflow-hidden">
         {/* Background layer - gradient on mobile, subtle gradient on desktop */}
-        <div className="hidden lg:block absolute inset-0 bg-gradient-to-b from-white to-[#F5F5F7]" style={{ zIndex: -10 }} />
+        <div className="hidden lg:block absolute inset-0" style={{ background: 'radial-gradient(150.79% 126.08% at 17.79% 0%, #5472FF 14.25%, #5323E5 62.8%, #DDFCF6 74.63%, #DDFCF6 100%)', zIndex: -10 }} />
         <div
           className="lg:hidden absolute inset-0"
           style={{
@@ -1397,7 +1382,7 @@ export default function Home() {
         />
 
         {/* Companies content container - Same dimensions as hero */}
-        <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:h-[960px]">
+        <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:h-[1054px]">
           {/* Central gradient box */}
           <div
             className="hidden lg:block absolute w-[1760px] h-[927px] flex-shrink-0"
@@ -1872,7 +1857,7 @@ export default function Home() {
             fill="none"
             className="hidden lg:block absolute flex-shrink-0"
             style={{
-              bottom: 'calc(1054px - 63.5px - 927px + 401px)',
+              bottom: '465px',
               right: 'calc(1552px - 96px - 1360px + 278px)'
             }}
           >
@@ -1896,7 +1881,7 @@ export default function Home() {
           <div
             className="hidden lg:block absolute"
             style={{
-              bottom: 'calc(1054px - 63.5px - 927px + 401px)',
+              bottom: '465px',
               right: 'calc(1552px - 96px - 1360px + 278px)',
               width: '489px',
               height: '14px',
@@ -2261,9 +2246,9 @@ export default function Home() {
       </section>
 
       {/* Credentials Section */}
-      <section id="credentials" className="relative w-full min-h-screen lg:min-h-0 flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0 overflow-hidden">
+      <section id="credentials" className="relative w-full min-h-screen lg:min-h-0 flex items-center justify-center px-4 sm:px-8 py-20 sm:py-24 lg:py-0">
         {/* Background layer - gradient on mobile, gray on desktop */}
-        <div className="hidden lg:block absolute inset-0 bg-[#F5F5F7]" style={{ zIndex: -10 }} />
+        <div className="hidden lg:block absolute inset-0" style={{ background: 'linear-gradient(180deg, #DDFCF6 0%, #D3E3FF 50%, #E1E6FD 75%, #EEE9FC 100%)', zIndex: -10 }} />
         <div
           className="lg:hidden absolute inset-0"
           style={{
@@ -2306,35 +2291,64 @@ export default function Home() {
 
         {/* Credentials content container */}
         <div className="relative w-full max-w-[1552px] min-h-[600px] sm:min-h-[700px] lg:h-[1500px]">
-          {/* Central gradient box */}
+          {/* Decorative circles */}
+          {/* Upper left circle */}
           <div
-            className="hidden lg:block absolute w-[1760px] h-[1500px] flex-shrink-0"
+            className="hidden xl:block absolute w-[420px] xl:w-[500px] 2xl:w-[580px] h-[420px] xl:h-[500px] 2xl:h-[580px] rounded-full bg-circle-gradient-reverse flex-shrink-0"
             style={{
-              top: '63.5px',
-              left: '-104px',
-              borderRadius: '200px',
-              background: 'linear-gradient(180deg, #EEE9FC 0%, #D3E3FF 50%, #DDFCF6 100%)'
+              top: '500px',
+              left: '-500px',
+              transform: 'rotate(134.213deg)',
+              zIndex: 0
             }}
           />
-
-          {/* "Credentials" text inside gradient box */}
-          <h3
-            className="hidden lg:block absolute w-[200px] h-[29px] flex-shrink-0 font-dm-sans text-[30px] font-bold leading-[120%] text-[#454545]"
+          {/* Middle left circle */}
+          <div
+            className="hidden xl:block absolute w-[420px] xl:w-[500px] 2xl:w-[580px] h-[420px] xl:h-[500px] 2xl:h-[580px] rounded-full bg-circle-gradient-reverse flex-shrink-0"
             style={{
-              top: 'calc(63.5px + 60px)',
-              left: 'calc(-104px + 95px)'
+              top: '600px',
+              left: '-350px',
+              transform: 'rotate(134.213deg)',
+              zIndex: 0
             }}
-          >
-            Credentials
-          </h3>
-
+          />
+          {/* Lower left circle */}
+          <div
+            className="hidden xl:block absolute w-[420px] xl:w-[500px] 2xl:w-[580px] h-[420px] xl:h-[500px] 2xl:h-[580px] rounded-full bg-circle-gradient-reverse flex-shrink-0"
+            style={{
+              top: '900px',
+              left: '-300px',
+              transform: 'rotate(134.213deg)',
+              zIndex: 0
+            }}
+          />
+          {/* Lower right circle */}
+          <div
+            className="hidden xl:block absolute w-[420px] xl:w-[500px] 2xl:w-[580px] h-[420px] xl:h-[500px] 2xl:h-[580px] rounded-full bg-circle-gradient-reverse flex-shrink-0"
+            style={{
+              top: '0px',
+              left: '1500px',
+              transform: 'rotate(134.213deg)',
+              zIndex: 0
+            }}
+          />
+          {/* Upper right circle */}
+          <div
+            className="hidden xl:block absolute w-[420px] xl:w-[500px] 2xl:w-[580px] h-[420px] xl:h-[500px] 2xl:h-[580px] rounded-full bg-circle-gradient-reverse flex-shrink-0"
+            style={{
+              top: '-150px',
+              left: '1200px',
+              transform: 'rotate(134.213deg)',
+              zIndex: 0
+            }}
+          />
           {/* Main heading "Why Purpose works" */}
           <h1
             className="hidden lg:block absolute font-dm-sans flex-shrink-0"
             style={{
               width: '601px',
               height: '62.007px',
-              top: '155.11px',
+              top: '230px',
               left: '50%',
               transform: 'translateX(-50%)',
               color: '#454545',
@@ -2365,7 +2379,7 @@ export default function Home() {
             style={{
               width: '426px',
               height: '19px',
-              top: 'calc(63.5px + 1300px)',
+              top: '1300px',
               left: '50%',
               transform: 'translateX(-50%)',
               flexShrink: 0,
@@ -2414,7 +2428,7 @@ export default function Home() {
             <div
               className="absolute"
               style={{
-                top: '1360px',
+                top: '1325px',
                 left: '0',
                 width: '1760px',
                 height: '60px'
@@ -3001,19 +3015,16 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/* Divider line */}
+<div className="w-full h-[1px]" style={{ background: 'linear-gradient(90deg, transparent 0%, #5323E5 50%, transparent 100%)' }} />
 
       {/* Imprint Section */}
-      <section id="imprint" className="relative w-full flex items-center justify-center px-4 sm:px-8 py-20 bg-[#F5F5F7]">
+      <section id="imprint" className="relative w-full flex items-center justify-center px-4 sm:px-8 py-20" style={{ background: 'linear-gradient(180deg, #EEE9FC 0%, #D3E3FF 50%, #DDFCF6 100%)' }}>
         <div className="relative w-full max-w-[1552px] flex justify-center">
           {/* Imprint Box - Responsive */}
           <div
             className="w-full lg:w-[1760px] flex flex-col lg:flex-row items-center lg:items-center justify-center lg:justify-between gap-8 lg:gap-0 px-6 sm:px-8 lg:px-12 py-8"
             style={{
-              minHeight: '220px',
-              borderRadius: '30px',
-              border: '1px solid #FFF',
-              background: 'linear-gradient(180deg, rgba(221, 252, 246, 0.90) 0%, rgba(149, 186, 255, 0.90) 100%)',
-              backdropFilter: 'blur(5px)',
               color: '#454545'
             }}
           >
@@ -3028,7 +3039,9 @@ export default function Home() {
                 fill="none"
                 style={{
                   transform: 'rotate(0deg)',
-                  flexShrink: 0
+                  flexShrink: 0,
+                  marginLeft: '-80px',
+                  marginBottom: '-90px'
                 }}
               >
                 <path d="M18.9836 14.2483C17.9368 18.9753 13.8839 22.3219 9.21178 22.3219L9.04768 22.3219L10.3804 16.3099C10.6142 15.2546 9.84086 14.2483 8.79654 14.2483L1.79462 14.2483L2.14521 12.6718L2.23721 12.246L3.4158 6.94358C3.51277 6.4972 3.90066 6.17725 4.34574 6.17725L12.7923 6.17725C16.8776 6.17725 19.8987 10.1199 18.9836 14.2509" fill="#5323E5"/>
@@ -3064,17 +3077,20 @@ export default function Home() {
               <div
                 className="text-center lg:text-left"
                 style={{
-                  color: '#454545',
+                  color: '#120C2B',
                   fontFamily: 'Helvetica',
-                  fontSize: '14px',
-                  fontWeight: 400,
-                  lineHeight: '150%'
+                  fontSize: '18px',
+                  fontStyle: "normal",
+                  fontWeight: 500,
+                  lineHeight: '140%',
+                  marginLeft: '-80px',
+                  marginTop: '80px'
                 }}
               >
                 Purpose UG (haftungsbeschränkt)<br />
-                Seidl-Kreuz-Weg 94<br />
-                85737 Ismaning<br />
-                Germany
+                Ansprengerstraße 8<br />
+                80803 München<br />
+                Deutschland
               </div>
 
               {/* Copyright text */}
@@ -3085,10 +3101,12 @@ export default function Home() {
                   fontFamily: 'Helvetica',
                   fontSize: '10px',
                   fontWeight: 400,
-                  lineHeight: '120%'
+                  lineHeight: '120%',
+                  marginLeft: '-80px',
+                  marginTop: '10px'
                 }}
               >
-                © Purpose, 2025
+                © Purpose, 2026
               </div>
             </div>
 
@@ -3096,10 +3114,12 @@ export default function Home() {
             <div
               className="text-center"
               style={{
-                color: '#454545',
+                color: '#120c2b',
                 fontFamily: 'Helvetica',
-                fontSize: '14px',
-                lineHeight: '150%'
+                fontSize: '18px',
+                lineHeight: '140%',
+                marginLeft: '-35px',
+                marginTop: '-50px'
               }}
             >
               <div style={{ fontWeight: 700, marginBottom: '8px' }}>Registered Office</div>
@@ -3111,14 +3131,15 @@ export default function Home() {
             </div>
 
             {/* Right - Legal */}
-            <div className="flex flex-col items-center lg:items-start">
+            <div className="flex flex-col items-center lg:items-center">
               <h2
-                className="text-center lg:text-left font-bold mb-4"
+                className="text-center font-bold mb-4"
                 style={{
-                  color: '#454545',
+                  color: '#120c2b',
                   fontFamily: 'Helvetica',
-                  fontSize: '16px',
-                  lineHeight: '120%'
+                  fontSize: '18px',
+                  lineHeight: '140%',
+                  marginTop: '-27px'
                 }}
               >
                 Legal
@@ -3126,33 +3147,33 @@ export default function Home() {
               <nav className="flex flex-col gap-2">
                 <Link
                   href="/terms-and-conditions"
-                  className="text-[#454545] hover:text-[#000000] transition-colors"
+                  className="text-[#120c2b] hover:text-[#000000] transition-colors"
                   style={{
                     fontFamily: 'Helvetica',
-                    fontSize: '14px',
-                    lineHeight: '120%'
+                    fontSize: '18px',
+                    lineHeight: '140%'
                   }}
                 >
                   Terms & Conditions
                 </Link>
                 <Link
                   href="/imprint"
-                  className="text-[#454545] hover:text-[#000000] transition-colors"
+                  className="text-[#120c2b] hover:text-[#000000] transition-colors text-center"
                   style={{
                     fontFamily: 'Helvetica',
-                    fontSize: '14px',
-                    lineHeight: '120%'
+                    fontSize: '18px',
+                    lineHeight: '140%'
                   }}
                 >
                   Imprint
                 </Link>
                 <Link
                   href="/privacy-policy"
-                  className="text-[#454545] hover:text-[#000000] transition-colors"
+                  className="text-[#120c2b] hover:text-[#000000] transition-colors text-center"
                   style={{
                     fontFamily: 'Helvetica',
-                    fontSize: '14px',
-                    lineHeight: '120%'
+                    fontSize: '18px',
+                    lineHeight: '140%'
                   }}
                 >
                   Privacy Policy
