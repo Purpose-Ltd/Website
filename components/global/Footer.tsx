@@ -20,8 +20,8 @@ export default function Footer() {
             </Link>
 
             <p className="text-[#120C2B] text-base xl:text-lg font-medium leading-[120%] font-dm-sans">
-              Purpose UG (haftungsbeschränkt) <br /> Seidl-Kreuz-Weg 94 <br />
-              85737 Ismaning <br />
+              Purpose Technologies UG (haftungsbeschränkt) <br /> Ansprengerstraße 8 <br />
+              80803 München <br />
               Germany
             </p>
           </div>
@@ -32,16 +32,16 @@ export default function Footer() {
               Registered Office
             </h3>
             <p className="text-[#120C2B] text-base xl:text-lg font-medium leading-[120%] font-dm-sans">
-              Ismaning - HRB Munich 292052 <br />
-              Tax number: 143/173/60143 <br />
-              VAT ID No.: DE368116002
+              München - HRB ... <br />
+              Tax number: ... <br />
+              VAT ID No.: ...
             </p>
           </div>
 
           {/* legal links   */}
           <div className="flex flex-col gap-3 sm:gap-4.5 text-center md:pt-3">
             <h3 className="text-[#120C2B] text-lg xl:text-xl font-bold leading-[120%] font-dm-sans ">
-              Legal Links
+              Legal
             </h3>
             <div className="flex flex-col gap-1.5">
               {legalLinks.map((link) => (

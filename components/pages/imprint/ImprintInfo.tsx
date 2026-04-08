@@ -7,9 +7,9 @@ export default function ImprintInfo() {
       title: "Legal",
       des: (
         <>
-          Purpose UG (haftungsbeschränkt) <br />
-          Seidl-Kreuz-Weg 94 <br />
-          85737 Ismaning <br />
+          Purpose Technologies UG (haftungsbeschränkt) <br />
+          Ansprengerstraße 8 <br />
+          80803 München <br />
           Deutschland
         </>
       ),

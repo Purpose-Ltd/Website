@@ -69,7 +69,7 @@ export default function PrivacyPolicyContents() {
           ))}
 
           <p className="text-[#454545] text-base md:text-xl font-dm-sans font-normal leading-[120%]">
-            Stand: 20.10.2025
+            Stand: 04/26
           </p>
         </div>
       </div>
@@ -80,15 +80,15 @@ const privacySections = [
   {
     title: "I. Verantwortlicher",
     contentBlock: [
-      "Purpose UG (haftungsbeschränkt)",
-      "Seidl-Kreuz-Weg 94",
-      "85737 Ismaning",
+      "Purpose Technologies UG (haftungsbeschränkt)",
+      "Ansprengerstraße 8",
+      "80803 München",
       "Deutschland",
       <>
         <br />
       </>,
       "Telefon: +49 1522 77 32 940",
-      "E-Mail: hello@purpose.hr",
+      "E-Mail: hello@purpos3.de",
       "Vertreten durch: Lukas Faber",
     ],
   },

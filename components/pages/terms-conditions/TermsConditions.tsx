@@ -7,7 +7,7 @@ export default function TermConditions() {
       title: " Geltungsbereich",
       des: (
         <>
-          Diese AGB gelten für die Website purpose.hr sowie alle über diese
+          Diese AGB gelten für die Website purpos3.de sowie alle über diese
           erbrachten Informations- und Buchungsleistungen (§ 305 BGB). Für
           weitere Services gelten separate Bedingungen. Abweichende
           Nutzerbedingungen werden nicht anerkannt (§ 305b BGB).
@@ -19,9 +19,9 @@ export default function TermConditions() {
       title: "Anbieter",
       des: (
         <>
-          Purpose UG (haftungsbeschränkt), Seidl-Kreuz-Weg 94, 85737 Ismaning.
-          <br /> Vertreten durch: Lukas Faber <br /> HRB München 292052,
-          USt-IdNr: DE368116002
+          Purpose Technologies UG (haftungsbeschränkt), Ansprengerstraße 8, 80803 München.
+          <br /> Vertreten durch: Lukas Faber <br /> HRB ...,
+          USt-IdNr: ...
         </>
       ),
     },
@@ -178,7 +178,7 @@ export default function TermConditions() {
             </div>
           ))}
           <p className="text-[#454545] text-base md:text-xl font-dm-sans font-normal leading-[120%]">
-            Stand: 20.10.2025 | Version: 1.0
+            Stand: 04/26 | Version: 1.0
           </p>
         </div>
       </div>

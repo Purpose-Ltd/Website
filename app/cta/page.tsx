@@ -35,12 +35,12 @@ export default function CTAPage() {
 
             <div className="flex items-center lg:gap-7.75 gap-5 flex-wrap justify-center w-fit mx-auto gap-y-6">
               <Link
-                href=""
-                className="lg:px-16.5 px-14 py-2.75 text-white xl:text-2xl text-xl leading-[120%] font-medium rounded-[18px] border border-white/25 relative  text-center"
+                href="https://calendly.com/"
+                className="lg:px-16.5 px-14 py-2.75 text-white xl:text-2xl text-xl leading-[120%] font-medium rounded-[18px] relative text-center transition-all duration-300 hover:scale-105 active:scale-95 inline-block"
                 style={{
                   boxShadow: "0 6px 4px 0 rgba(0, 0, 0, 0.25)",
                   background:
-                    "linear-gradient(90deg, #213D83 0%, #4F647D 100%)",
+                    "linear-gradient(145deg, #E307DB 10.53%, #10C5F2 81.23%)",
                 }}
               >
                 <LuArrowUpRight
@@ -50,12 +50,12 @@ export default function CTAPage() {
                 Get Demo
               </Link>
               <Link
-                href=""
-                className="lg:px-16.5 px-14 py-2.75 text-white xl:text-2xl text-xl leading-[120%] font-medium rounded-[18px] border border-white/25 relative  text-center"
+                href="https://stage.web.purpos3.de/"
+                className="lg:px-16.5 px-14 py-2.75 text-white xl:text-2xl text-xl leading-[120%] font-medium rounded-[18px] relative text-center transition-all duration-300 hover:scale-105 active:scale-95 inline-block"
                 style={{
                   boxShadow: "0 6px 4px 0 rgba(0, 0, 0, 0.25)",
                   background:
-                    "linear-gradient(90deg, #213D83 0%, #4F647D 100%)",
+                    "linear-gradient(145deg, #E307DB 10.53%, #10C5F2 81.23%)",
                 }}
               >
                 <LuArrowUpRight
